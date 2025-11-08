@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Timer from "../Timer/Timer";
 import formatTime from "../../utils/formatTime";
+import DIFFICULTY_LEVELS from '../../utils/constants';
+import { Question, GameResult, GameState } from '../../types';
 import './App.scss';
-import { DifficultyLevels, Question, GameResult, GameState } from '../../types';
-
-const DIFFICULTY_LEVELS: DifficultyLevels = {
-  easy: { time: 300, questions: 5, maxNumber: 5 },
-  medium: { time: 240, questions: 10, maxNumber: 9 },
-  hard: { time: 180, questions: 15, maxNumber: 12 }
-};
 
 type Difficulty = keyof typeof DIFFICULTY_LEVELS;
 
