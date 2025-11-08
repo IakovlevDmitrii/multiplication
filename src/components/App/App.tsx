@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './App.css';
+import Timer from "../Timer/Timer";
+import formatTime from "../../utils/formatTime";
+import './App.scss';
 import { DifficultyLevels, Question, GameResult, GameState } from '../../types';
 
 const DIFFICULTY_LEVELS: DifficultyLevels = {
@@ -90,14 +92,7 @@ function App() {
     return () => clearInterval(timer);
   }, [gameState, timeLeft]);
 
-  // Форматирование времени
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  };
-
-  // Добавление цифры с клавиатуры
+   // Добавление цифры с клавиатуры
   const handleNumberClick = (number: string): void => {
     setUserAnswer(prev => prev + number);
   };
@@ -142,11 +137,7 @@ function App() {
            <div className="difficulty">
              Сложность: <span className="diff-badge">{difficulty}</span>
            </div>
-           {gameState === 'playing' && (
-              <div className="time-left">
-                Время: <span className="time">{formatTime(timeLeft)}</span>
-              </div>
-           )}
+           {gameState === 'playing' && <Timer timeLeft={timeLeft} />}
          </div>
        </header>
 
