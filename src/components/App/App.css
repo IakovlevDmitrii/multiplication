@@ -1,0 +1,315 @@
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 1.1em;
+}
+
+.diff-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.time {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Экран выбора сложности */
+.start-screen {
+  text-align: center;
+}
+
+.difficulty-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.difficulty-btn {
+  padding: 20px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.difficulty-btn.active {
+  border-color: #667eea;
+  background: #f0f4ff;
+  transform: translateY(-2px);
+}
+
+.difficulty-btn:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.diff-level {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.diff-info {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.start-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Игровой экран */
+.game-screen {
+  text-align: center;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.question {
+  font-size: 4em;
+  font-weight: bold;
+  margin: 40px 0;
+  color: #333;
+}
+
+.answer-input-section {
+  margin-top: 30px;
+}
+
+.answer-display {
+  font-size: 3em;
+  font-weight: bold;
+  margin: 20px 0;
+  min-height: 80px;
+  color: #667eea;
+  border-bottom: 3px solid #667eea;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+/* Виртуальная клавиатура */
+.virtual-keyboard {
+  max-width: 300px;
+  margin: 30px auto;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.key-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5em;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.key-btn:hover {
+  background: #f0f0f0;
+  border-color: #667eea;
+}
+
+.clear-btn {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+}
+
+.backspace-btn {
+  background: #4ecdc4;
+  color: white;
+  border-color: #4ecdc4;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2em;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Экран результатов */
+.results-screen {
+  text-align: center;
+}
+
+.final-score {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #333;
+}
+
+.accuracy {
+  font-size: 1.3em;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.results-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 30px 0;
+  text-align: left;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border-left: 5px solid;
+}
+
+.result-item.correct {
+  background: #d4edda;
+  border-left-color: #28a745;
+}
+
+.result-item.incorrect {
+  background: #f8d7da;
+  border-left-color: #dc3545;
+}
+
+.question-text {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.answer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.correct-answer {
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .app {
+    padding: 10px;
+  }
+
+  .question {
+    font-size: 3em;
+  }
+
+  .answer-display {
+    font-size: 2.5em;
+  }
+
+  .key-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+  }
+
+  .difficulty-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .result-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .answer-text {
+    align-items: flex-start;
+  }
+}
