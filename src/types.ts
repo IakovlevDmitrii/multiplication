@@ -1,8 +1,12 @@
+import DIFFICULTY_LEVELS from "./utils/constants";
+
 export interface DifficultyLevel {
 	time: number;
 	questions: number;
 	maxNumber: number;
 }
+
+export type Difficulty = keyof typeof DIFFICULTY_LEVELS;
 
 export interface DifficultyLevels {
 	[key: string]: DifficultyLevel;

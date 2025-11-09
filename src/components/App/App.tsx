@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Timer from "../Timer/Timer";
+import Header from "../Header/Header";
 import formatTime from "../../utils/formatTime";
 import DIFFICULTY_LEVELS from '../../utils/constants';
 import { Question, GameResult, GameState } from '../../types';
@@ -126,15 +126,11 @@ function App() {
 
   return (
      <div className="app">
-       <header className="app-header">
-         <h1>Умножение</h1>
-         <div className="game-info">
-           <div className="difficulty">
-             Сложность: <span className="diff-badge">{difficulty}</span>
-           </div>
-           {gameState === 'playing' && <Timer timeLeft={timeLeft} />}
-         </div>
-       </header>
+       <Header
+          gameState={gameState}
+          timeLeft={timeLeft}
+          difficulty={difficulty}
+       />
 
        <main className="main-content">
          {gameState === 'idle' && (
