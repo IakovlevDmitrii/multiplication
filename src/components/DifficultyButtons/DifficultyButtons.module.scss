@@ -1,0 +1,42 @@
+.difficultyButtons {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 15px;
+	margin: 30px 0;
+
+	@media (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.difficultyBtn {
+	padding: 20px;
+	border: 2px solid #e0e0e0;
+	background: white;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		border-color: #667eea;
+		transform: translateY(-2px);
+	}
+
+	&.active {
+		border-color: #667eea;
+		background: #f0f4ff;
+		transform: translateY(-2px);
+	}
+}
+
+.diffLevel {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 8px;
+}
+
+.diffInfo {
+	font-size: 0.9em;
+	color: #666;
+}

@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Header from "../Header/Header";
-import formatTime from "../../utils/formatTime";
+import Header from '../Header/Header';
+import DifficultyButtons from '../DifficultyButtons/DifficultyButtons';
 import DIFFICULTY_LEVELS from '../../utils/constants';
-import { Question, GameResult, GameState } from '../../types';
+import { Question, GameResult, GameState, Difficulty } from '../../types';
 import './App.scss';
-
-type Difficulty = keyof typeof DIFFICULTY_LEVELS;
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -136,23 +134,7 @@ function App() {
          {gameState === 'idle' && (
             <div className="start-screen">
               <h2>Выберите уровень сложности:</h2>
-              <div className="difficulty-buttons">
-                {(Object.keys(DIFFICULTY_LEVELS) as Difficulty[]).map((level) => (
-                   <button
-                      key={level}
-                      className={`difficulty-btn ${difficulty === level ? 'active' : ''}`}
-                      onClick={() => setDifficulty(level)}
-                   >
-                     <div className="diff-level">{level}</div>
-                     <div className="diff-info">
-                       {DIFFICULTY_LEVELS[level].questions} вопросов
-                     </div>
-                     <div className="diff-info">
-                       {formatTime(DIFFICULTY_LEVELS[level].time)}
-                     </div>
-                   </button>
-                ))}
-              </div>
+              <DifficultyButtons difficulty={difficulty} onButtonClick={setDifficulty} />
               <button className="start-btn" onClick={startGame}>
                 Начать игру
               </button>
