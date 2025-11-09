@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../Header/Header';
-import DifficultyButtons from '../DifficultyButtons/DifficultyButtons';
+import StartPage from '../StartPage/StartPage';
 import DIFFICULTY_LEVELS from '../../utils/constants';
 import { Question, GameResult, GameState, Difficulty } from '../../types';
 import './App.scss';
@@ -128,13 +128,7 @@ function App() {
 
        <main className="main-content">
          {gameState === 'idle' && (
-            <div className="start-screen">
-              <h2>Выберите уровень сложности:</h2>
-              <DifficultyButtons difficulty={difficulty} setDifficulty={setDifficulty} />
-              <button className="start-btn" onClick={startGame}>
-                Начать игру
-              </button>
-            </div>
+            <StartPage difficulty={difficulty} setDifficulty={setDifficulty} startGame={startGame} />
          )}
 
          {gameState === 'playing' && currentQuestion && (
