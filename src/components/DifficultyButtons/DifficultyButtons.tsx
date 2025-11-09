@@ -7,10 +7,10 @@ import styles from './DifficultyButtons.module.scss';
 
 const DifficultyButtons: FC<{
 	difficulty: Difficulty;
-	onButtonClick: (level: string | number) => void;
-}> = ({ difficulty, onButtonClick }: {
+	setDifficulty: (level: string | number) => void;
+}> = ({ difficulty, setDifficulty }: {
 	difficulty: Difficulty;
-	onButtonClick: (level: string | number) => void;
+	setDifficulty: (level: string | number) => void;
 }): JSX.Element => (
 	<div className={styles.difficultyButtons}>
 		{(Object.keys(DIFFICULTY_LEVELS) as Difficulty[]).map((level: string | number): JSX.Element => (
@@ -19,7 +19,7 @@ const DifficultyButtons: FC<{
 				className={classNames(styles.difficultyBtn, {
 					[styles.active]: difficulty === level
 				})}
-				onClick={(): void => onButtonClick(level)}
+				onClick={(): void => setDifficulty(level)}
 			>
 				<div className={styles.diffLevel}>{level}</div>
 				<div className={styles.diffInfo}>

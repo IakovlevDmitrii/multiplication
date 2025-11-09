@@ -124,17 +124,13 @@ function App() {
 
   return (
      <div className="app">
-       <Header
-          gameState={gameState}
-          timeLeft={timeLeft}
-          difficulty={difficulty}
-       />
+       <Header gameState={gameState} timeLeft={timeLeft} difficulty={difficulty} />
 
        <main className="main-content">
          {gameState === 'idle' && (
             <div className="start-screen">
               <h2>Выберите уровень сложности:</h2>
-              <DifficultyButtons difficulty={difficulty} onButtonClick={setDifficulty} />
+              <DifficultyButtons difficulty={difficulty} setDifficulty={setDifficulty} />
               <button className="start-btn" onClick={startGame}>
                 Начать игру
               </button>
