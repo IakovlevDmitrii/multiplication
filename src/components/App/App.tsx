@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../Header/Header';
 import StartPage from '../StartPage/StartPage';
+import GamePage from '../GamePage/GamePage';
 import DIFFICULTY_LEVELS from '../../utils/constants';
 import { Question, GameResult, GameState, Difficulty } from '../../types';
 import './App.scss';
@@ -32,12 +33,12 @@ function App() {
     setTimeLeft(time);
     setScore(0);
     setResults([]);
-    setUserAnswer(''); // Очищаем поле ввода при новой игре
+    setUserAnswer('');
     setGameState('playing');
     generateQuestion();
   };
 
-  // Проверка ответа (обернута в useCallback)
+  // Проверка ответа
   const checkAnswer = useCallback(() => {
     if (!userAnswer || !currentQuestion) return;
 
@@ -119,7 +120,6 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [handleKeyPress]);
 
-  const currentDifficultyConfig = DIFFICULTY_LEVELS[difficulty];
   const progress = results.length;
 
   return (
@@ -132,82 +132,17 @@ function App() {
          )}
 
          {gameState === 'playing' && currentQuestion && (
-            <div className="game-screen">
-              <div className="progress">
-                Вопрос {progress + 1} из {currentDifficultyConfig.questions}
-                <div className="score">Счет: {score}</div>
-              </div>
-
-              <div className="question-section">
-                <div className="question">
-                  {currentQuestion.num1} × {currentQuestion.num2} = ?
-                </div>
-
-                <div className="answer-input-section">
-                  <div className="answer-display">
-                    {userAnswer || '?'}
-                  </div>
-
-                  <div className="virtual-keyboard">
-                    <div className="keyboard-row">
-                      {[1, 2, 3].map(num => (
-                         <button
-                            key={num}
-                            className="key-btn"
-                            onClick={() => handleNumberClick(num.toString())}
-                         >
-                           {num}
-                         </button>
-                      ))}
-                    </div>
-                    <div className="keyboard-row">
-                      {[4, 5, 6].map(num => (
-                         <button
-                            key={num}
-                            className="key-btn"
-                            onClick={() => handleNumberClick(num.toString())}
-                         >
-                           {num}
-                         </button>
-                      ))}
-                    </div>
-                    <div className="keyboard-row">
-                      {[7, 8, 9].map(num => (
-                         <button
-                            key={num}
-                            className="key-btn"
-                            onClick={() => handleNumberClick(num.toString())}
-                         >
-                           {num}
-                         </button>
-                      ))}
-                    </div>
-                    <div className="keyboard-row">
-                      <button className="key-btn clear-btn" onClick={handleClear}>
-                        C
-                      </button>
-                      <button
-                         className="key-btn"
-                         onClick={() => handleNumberClick('0')}
-                      >
-                        0
-                      </button>
-                      <button className="key-btn backspace-btn" onClick={handleBackspace}>
-                        ⌫
-                      </button>
-                    </div>
-                  </div>
-
-                  <button
-                     className="submit-btn"
-                     onClick={checkAnswer}
-                     disabled={!userAnswer}
-                  >
-                    Ответить
-                  </button>
-                </div>
-              </div>
-            </div>
+            <GamePage
+               progress={progress}
+               difficulty={difficulty}
+               score={score}
+               currentQuestion={currentQuestion}
+               userAnswer={userAnswer}
+               handleNumberClick={handleNumberClick}
+               handleClear={handleClear}
+               handleBackspace={handleBackspace}
+               checkAnswer={checkAnswer}
+            />
          )}
 
          {gameState === 'finished' && (
