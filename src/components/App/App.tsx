@@ -2,11 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../Header/Header';
 import StartPage from '../StartPage/StartPage';
 import GamePage from '../GamePage/GamePage';
+import ResultsPage from '../pages/ResultsPage/ResultsPage';
 import DIFFICULTY_LEVELS from '../../utils/constants';
-import { Question, GameResult, GameState, Difficulty } from '../../types';
-import './App.scss';
+import type { Question, GameResult, GameState, Difficulty } from '../../types';
+import styles from './App.module.scss';
 
-function App() {
+const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [userAnswer, setUserAnswer] = useState<string>('');
   const [score, setScore] = useState<number>(0);
@@ -123,7 +124,7 @@ function App() {
   const progress = results.length;
 
   return (
-     <div className="app">
+     <div className={styles.app}>
        <Header gameState={gameState} timeLeft={timeLeft} difficulty={difficulty} />
 
        <main className="main-content">
@@ -146,42 +147,12 @@ function App() {
          )}
 
          {gameState === 'finished' && (
-            <div className="results-screen">
-              <h2>Игра завершена!</h2>
-              <div className="final-score">
-                Правильных ответов: {score} из {results.length}
-              </div>
-              <div className="accuracy">
-                Точность: {Math.round((score / results.length) * 100)}%
-              </div>
-
-              <div className="results-list">
-                <h3>Результаты:</h3>
-                {results.map((result, index) => (
-                   <div
-                      key={index}
-                      className={`result-item ${result.isCorrect ? 'correct' : 'incorrect'}`}
-                   >
-                     <span className="question-text">{result.question}</span>
-                     <span className="answer-text">
-                    Ваш ответ: {result.userAnswer}
-                       {!result.isCorrect && (
-                          <span className="correct-answer">
-                        Правильно: {result.correctAnswer}
-                      </span>
-                       )}
-                  </span>
-                   </div>
-                ))}
-              </div>
-
-              <button className="restart-btn" onClick={() => {
-                setGameState('idle');
-                setUserAnswer(''); // Очищаем поле ввода при возврате в меню
-              }}>
-                Играть снова
-              </button>
-            </div>
+            <ResultsPage
+               score={score}
+               results={results}
+               setGameState={setGameState}
+               setUserAnswer={setUserAnswer}
+            />
          )}
        </main>
      </div>
