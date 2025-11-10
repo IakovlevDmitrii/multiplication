@@ -1,30 +1,39 @@
+@import '../../styles/mixins';
+
 .difficultyButtons {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 15px;
-	margin: 30px 0;
+	grid-template-columns: 1fr;
+	gap: 10px;
+	margin: 20px 0;
 
-	@media (max-width: 600px) {
-		grid-template-columns: 1fr;
+	@include tablet-up {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 15px;
+		margin: 30px 0;
 	}
 }
 
 .difficultyBtn {
-	padding: 20px;
+	padding: 15px;
 	border: 2px solid #e0e0e0;
 	background: white;
-	border-radius: 10px;
+	border-radius: 8px;
 	cursor: pointer;
 	transition: all 0.3s ease;
 
-	&:hover {
-		border-color: #667eea;
-		transform: translateY(-2px);
+	@include tablet-up {
+		padding: 20px;
+		border-radius: 10px;
 	}
 
 	&.active {
 		border-color: #667eea;
 		background: #f0f4ff;
+		transform: translateY(-2px);
+	}
+
+	&:hover {
+		border-color: #667eea;
 		transform: translateY(-2px);
 	}
 }
