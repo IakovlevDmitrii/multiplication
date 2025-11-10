@@ -1,19 +1,46 @@
+@import '../../styles/mixins';
+
 .appHeader {
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	color: white;
-	padding: 20px;
-	border-radius: 15px;
+	padding: 15px;
+	border-radius: 10px;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+	@include tablet-up {
+		margin-bottom: 30px;
+		padding: 20px;
+		border-radius: 15px;
+	}
+
+	h1 {
+		margin: 0 0 10px 0;
+		font-size: 1.5em;
+
+		@include tablet-up {
+			font-size: 1.8em;
+			margin-bottom: 15px;
+		}
+	}
 }
 
 .gameInfo {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 15px;
-	font-size: 1.1em;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 10px;
+	font-size: 1em;
+
+	@include tablet-up {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 15px;
+		margin-top: 15px;
+		font-size: 1.1em;
+	}
 }
 
 .diffBadge {
