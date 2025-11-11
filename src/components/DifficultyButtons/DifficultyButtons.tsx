@@ -1,36 +1,31 @@
-import React, { FC, JSX } from 'react';
+import React from 'react';
+import DifficultyButton from '../DifficultyButton/DifficultyButton';
+import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { setDifficulty } from '../../store/gameSlice';
 import DIFFICULTY_LEVELS from '../../utils/constants';
-import formatTime from "../../utils/formatTime";
-import { Difficulty } from '../../types';
-import classNames from 'classnames';
+import formatTime from '../../utils/time';
+import type { Difficulty } from '../../types';
 import styles from './DifficultyButtons.module.scss';
 
-const DifficultyButtons: FC<{
-	difficulty: Difficulty;
-	setDifficulty: (level: string | number) => void;
-}> = ({ difficulty, setDifficulty }: {
-	difficulty: Difficulty;
-	setDifficulty: (level: string | number) => void;
-}): JSX.Element => (
-	<div className={styles.difficultyButtons}>
-		{(Object.keys(DIFFICULTY_LEVELS) as Difficulty[]).map((level: string | number): JSX.Element => (
-			<button
-				key={level}
-				className={classNames(styles.difficultyBtn, {
-					[styles.active]: difficulty === level
-				})}
-				onClick={(): void => setDifficulty(level)}
-			>
-				<div className={styles.diffLevel}>{level}</div>
-				<div className={styles.diffInfo}>
-					{DIFFICULTY_LEVELS[level].questions} вопросов
-				</div>
-				<div className={styles.diffInfo}>
-					{formatTime(DIFFICULTY_LEVELS[level].time)}
-				</div>
-			</button>
-		))}
-	</div>
-);
+const DifficultyButtons: React.FC = (): React.JSX.Element => {
+	const dispatch = useAppDispatch();
+	const { difficulty } = useAppSelector((state) => state.game);
+
+	return (
+		<div className={styles.difficultyButtons}>
+			{(Object.keys(DIFFICULTY_LEVELS) as Difficulty[]).map(
+				(level: string | number): React.JSX.Element => (
+					<DifficultyButton
+						key={level}
+						level={level}
+						numberOfQuestions={DIFFICULTY_LEVELS[level].questions}
+						time={formatTime(DIFFICULTY_LEVELS[level].time)}
+						isActive={difficulty === level}
+						setDifficulty={(level) => dispatch(setDifficulty(level))}
+					/>
+			))}
+		</div>
+	);
+};
 
 export default DifficultyButtons;
