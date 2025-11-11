@@ -1,0 +1,38 @@
+@import '../../styles/mixins';
+
+.difficultyBtn {
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  @include tablet-up {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  &.active {
+    border-color: #667eea;
+    background: #f0f4ff;
+    transform: translateY(-2px);
+  }
+
+  &:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+  }
+}
+
+.diffLevel {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.diffInfo {
+  font-size: 0.9em;
+  color: #666;
+}
