@@ -1,6 +1,6 @@
 @import '../../styles/mixins';
 
-.appHeader {
+.header {
 	text-align: center;
 	margin-bottom: 20px;
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -14,15 +14,15 @@
 		padding: 20px;
 		border-radius: 15px;
 	}
+}
 
-	h1 {
-		margin: 0 0 10px 0;
-		font-size: 1.5em;
+h1 {
+	margin: 0 0 10px 0;
+	font-size: 1.5em;
 
-		@include tablet-up {
-			font-size: 1.8em;
-			margin-bottom: 15px;
-		}
+	@include tablet-up {
+		font-size: 1.8em;
+		margin-bottom: 15px;
 	}
 }
 
