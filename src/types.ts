@@ -26,3 +26,15 @@ export interface GameResult {
 }
 
 export type GameState = 'idle' | 'playing' | 'finished';
+
+// Redux state
+export interface GameSliceState {
+	currentQuestion: Question | null;
+	userAnswer: string;
+	score: number;
+	timeLeft: number;
+	gameState: GameState;
+	difficulty: Difficulty;
+	results: GameResult[];
+	totalQuestions: number;
+}
