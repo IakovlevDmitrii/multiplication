@@ -1,0 +1,21 @@
+@import '../../styles/mixins';
+
+.keyboard {
+  max-width: 250px;
+  margin: 30px auto;
+
+  @include tablet-up {
+    max-width: 300px;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  @include tablet-up {
+    gap: 10px;
+  }
+}
