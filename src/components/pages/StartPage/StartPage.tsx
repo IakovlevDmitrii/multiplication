@@ -1,11 +1,11 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import DifficultyButtons from '../../DifficultyButtons/DifficultyButtons';
-import { useAppDispatch } from '../../../hooks/redux';
-import { startGame } from '../../../store/gameSlice';
+import type { OutletContext } from '../../../types';
 import styles from './StartPage.module.scss';
 
 const StartPage: React.FC = (): React.JSX.Element => {
-	const dispatch = useAppDispatch();
+	const { onStartGame } = useOutletContext<OutletContext>();
 
 	return (
 		<div className={styles.startScreen}>
@@ -13,7 +13,7 @@ const StartPage: React.FC = (): React.JSX.Element => {
 			<DifficultyButtons />
 			<button
 				className={styles.startBtn}
-				onClick={() => dispatch(startGame())}
+				onClick={onStartGame}
 			>
 				Начать игру
 			</button>
