@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import VirtualKeyboard from '../../VirtualKeyboard/VirtualKeyboard';
+import AnswerButton from '../../buttons/AnswerButton/AnswerButton';
 import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../../store/gameSlice';
-import DIFFICULTY_LEVELS from '../../../utils/constants';
-import type { DifficultyLevel } from '../../../types';
 import styles from './GamePage.module.scss';
 
 const GamePage: React.FC = (): React.JSX.Element => {
@@ -13,11 +12,10 @@ const GamePage: React.FC = (): React.JSX.Element => {
 		userAnswer,
 		score,
 		gameState,
-		difficulty,
-		results
+		results,
+		totalQuestions
 	} = useAppSelector((state) => state.game);
 	const progress = results.length + 1;
-	const currentDifficultyConfig: DifficultyLevel = DIFFICULTY_LEVELS[difficulty];
 
 	const handleKeyPress = useCallback((e: KeyboardEvent): void => {
 		if (gameState !== 'playing') return;
@@ -45,7 +43,7 @@ const GamePage: React.FC = (): React.JSX.Element => {
 	return (
 		<div className={styles.gameScreen}>
 			<div className={styles.progress}>
-				Вопрос {progress} из {currentDifficultyConfig.questions}
+				Вопрос {progress} из {totalQuestions}
 				<div className="score">Счет: {score}</div>
 			</div>
 
@@ -59,17 +57,11 @@ const GamePage: React.FC = (): React.JSX.Element => {
 					</div>
 
 					<VirtualKeyboard />
-					<button
-						className={styles.submitBtn}
-						onClick={() => dispatch(checkAnswer())}
-						disabled={!userAnswer}
-					>
-						Ответить
-					</button>
+					<AnswerButton />
 				</div>
 			</div>
 		</div>
-	)
+	);
 };
 
 export default GamePage;
