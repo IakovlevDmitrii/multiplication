@@ -63,11 +63,12 @@ const gameSlice = createSlice({
         state.score += 1;
       }
 
+      state.userAnswer = '';
+
       // Переход к следующему вопросу или завершение
       if (state.results.length >= state.totalQuestions) {
         state.gameState = 'finished';
       } else {
-        state.userAnswer = '';
         const maxNumber = DIFFICULTY_LEVELS[state.difficulty].maxNumber;
         state.currentQuestion = generateQuestion(maxNumber);
       }
@@ -80,6 +81,15 @@ const gameSlice = createSlice({
           state.gameState = 'finished';
         }
       }
+    },
+
+    goToMainMenu: (state) => {
+      state.gameState = 'idle';
+      state.userAnswer = '';
+      state.results = [];
+      state.score = 0;
+      state.timeLeft = 0;
+      state.currentQuestion = null;
     },
 
     resetGame: (state) => {
@@ -106,6 +116,7 @@ export const {
   setUserAnswer,
   checkAnswer,
   decrementTime,
+  goToMainMenu,
   resetGame,
   appendToAnswer,
   backspaceAnswer,
