@@ -82,7 +82,24 @@
 	font-style: italic;
 }
 
+.resultButtons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+	justify-content: center;
+	margin-top: 30px;
+	flex-wrap: wrap;
+
+	@include tablet-up {
+		flex-direction: row;
+		align-items: start;
+	}
+}
+
 .restartBtn {
+	width: 100%;
+	max-width: 250px;
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	color: white;
 	border: none;
@@ -101,5 +118,23 @@
 	&:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+	}
+}
+
+.menuBtn {
+	width: 100%;
+	max-width: 250px;
+	background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+	color: white;
+	border: none;
+	padding: 15px 30px;
+	font-size: 1.1em;
+	border-radius: 25px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
 	}
 }
