@@ -1,20 +1,38 @@
 import React from 'react';
-import { useAppSelector } from '../../hooks/redux';
 import Timer from '../Timer/Timer';
+import { useAppSelector } from '../../hooks/redux';
 import styles from './Header.module.scss';
 
-const Header: React.FC = (): React.JSX.Element => {
-	const { gameState, difficulty } = useAppSelector(state => state.game);
+interface HeaderProps {
+	onHomeClick?: () => void;
+	showHomeButton?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = (
+	{ onHomeClick, showHomeButton = false }
+): React.JSX.Element => {
+	const { gameState, difficulty } = useAppSelector((state) => state.game);
 
 	return (
 		<header className={styles.header}>
-			<h1>Умножение</h1>
+			<div className={styles.headerContent}>
+				{showHomeButton && (
+					<button
+						className={styles.homeButton}
+						onClick={onHomeClick}
+						title="В главное меню"
+					>
+						🏠
+					</button>
+				)}
+				<h1>Умножение</h1>
 
-			<div className={styles.gameInfo}>
-				<div className="difficulty">
-					Сложность: <span className={styles.diffBadge}>{difficulty}</span>
+				<div className={styles.gameInfo}>
+					<div className="difficulty">
+						Сложность: <span className={styles.diffBadge}>{difficulty}</span>
+					</div>
+					{gameState === 'playing' && <Timer />}
 				</div>
-				{gameState === 'playing' && <Timer />}
 			</div>
 		</header>
 	);
