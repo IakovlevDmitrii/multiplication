@@ -1,13 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
-import { goToMainMenu, startGame } from '../../../store/gameSlice';
-import type { GameResult } from '../../../types';
+import { useOutletContext } from 'react-router-dom';
+import { useAppSelector } from '../../../hooks/redux';
+import type { GameResult, OutletContext } from '../../../types';
 import styles from './ResultsPage.module.scss';
 
 const ResultsPage: React.FC = (): React.JSX.Element => {
-	const dispatch = useAppDispatch();
 	const { score, results } = useAppSelector((state) => state.game);
+	const { onStartGame, onGoToMainMenu } = useOutletContext<OutletContext>();
 
 	return (
 		<div className={styles.resultsScreen}>
@@ -34,13 +34,13 @@ const ResultsPage: React.FC = (): React.JSX.Element => {
 					>
 						<span className={styles.questionText}>{result.question}</span>
 						<span className={styles.answerText}>
-							Ваш ответ: {result.userAnswer}
+              Ваш ответ: {result.userAnswer}
 							{!result.isCorrect && (
 								<span className={styles.correctAnswer}>
-									Правильно: {result.correctAnswer}
-								</span>
+                  Правильно: {result.correctAnswer}
+                </span>
 							)}
-						</span>
+            </span>
 					</div>
 				))}
 			</div>
@@ -48,13 +48,13 @@ const ResultsPage: React.FC = (): React.JSX.Element => {
 			<div className={styles.resultButtons}>
 				<button
 					className={styles.restartBtn}
-					onClick={() => dispatch(startGame())}
+					onClick={onStartGame}
 				>
 					Играть снова
 				</button>
 				<button
 					className={styles.menuBtn}
-					onClick={() => dispatch(goToMainMenu())}
+					onClick={onGoToMainMenu}
 				>
 					Главное меню
 				</button>
