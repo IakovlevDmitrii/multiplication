@@ -38,3 +38,8 @@ export interface GameSliceState {
 	results: GameResult[];
 	totalQuestions: number;
 }
+
+export interface OutletContext {
+	onStartGame: () => void;
+	onGoToMainMenu: () => void;
+}
