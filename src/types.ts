@@ -26,6 +26,7 @@ export interface GameResult {
 }
 
 export type GameState = 'idle' | 'playing' | 'finished';
+export type KeyType = 'number' | 'clear' | 'backspace';
 
 // Redux state
 export interface GameSliceState {
