@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import BaseButton, { BaseButtonProps } from '../../BaseButton/BaseButton';
-import { GAME_BUTTON_TYPES, GameButtonType } from '../../../../utils/constants/gameButtonTypes';
+import BaseButton, { BaseButtonProps } from '../../BaseButton';
+import { GameButtonType } from './constants';
 import styles from './GameButton.module.scss';
 
 interface GameButtonProps extends Omit<BaseButtonProps, 'className'> {
@@ -18,5 +18,4 @@ const GameButton: React.FC<GameButtonProps> = (props): React.JSX.Element => {
   return <BaseButton {...props} className={className} />;
 };
 
-export { GAME_BUTTON_TYPES };
 export default GameButton;
