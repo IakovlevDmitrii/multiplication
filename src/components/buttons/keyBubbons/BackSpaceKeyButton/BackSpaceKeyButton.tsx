@@ -1,5 +1,5 @@
 import React from 'react';
-import KeyButton, { KEY_BUTTON_TYPES } from '../KeyButton/KeyButton';
+import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton';
 import { useAppDispatch } from '../../../../utils/hooks/redux';
 import { backspaceAnswer } from '../../../../store/gameSlice';
 
@@ -9,7 +9,7 @@ const BackSpaceKeyButton: React.FC = (): React.JSX.Element => {
 
   return (
     <KeyButton
-      keyType={KEY_BUTTON_TYPES.BACKSPACE}
+      keyType={KEY_BUTTON_VARIANTS.BACKSPACE}
       onClick={handleKeyPress}
     >
       ⌫

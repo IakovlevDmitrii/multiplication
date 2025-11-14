@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import KeyButton, { KEY_BUTTON_TYPES } from '../KeyButton/KeyButton';
+import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton';
 import { useAppDispatch } from '../../../../utils/hooks/redux';
 import { appendToAnswer } from '../../../../store/gameSlice';
 
@@ -18,7 +18,7 @@ const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({
 
   return (
     <KeyButton
-      keyType={KEY_BUTTON_TYPES.NUMBER}
+      keyType={KEY_BUTTON_VARIANTS.NUMBER}
       onClick={handleKeyPress}
     >
       {numberKey}

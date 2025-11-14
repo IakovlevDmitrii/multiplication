@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import BaseButton from '../../BaseButton/BaseButton';
-import type { BaseButtonProps } from '../../BaseButton/BaseButton';
-import { KEY_BUTTON_TYPES, KeyButtonType } from '../../../../utils/constants/keyButtonTypes';
+import BaseButton, { BaseButtonProps } from '../../BaseButton';
+import { KeyButtonType } from './constants';
 import styles from './KeyButton.module.scss';
 
 interface KeyButtonProps extends Omit<BaseButtonProps, 'className'> {
@@ -19,5 +18,4 @@ const KeyButton: React.FC<KeyButtonProps> = (props): React.JSX.Element => {
   return <BaseButton {...props} className={className} />;
 };
 
-export { KEY_BUTTON_TYPES };
 export default KeyButton;
