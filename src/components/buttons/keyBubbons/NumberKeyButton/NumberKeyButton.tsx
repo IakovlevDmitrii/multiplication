@@ -1,18 +1,26 @@
-import React from 'react';
-import KeyButton from '../KeyButton/KeyButton';
+import React, { useCallback } from 'react';
+import KeyButton, { KEY_BUTTON_TYPES } from '../KeyButton/KeyButton';
+import { useAppDispatch } from '../../../../utils/hooks/redux';
 import { appendToAnswer } from '../../../../store/gameSlice';
-import { useAppDispatch } from '../../../../hooks/redux';
-import type { KeyType } from '../../../../types';
 
-const NumberKeyButton: React.FC<{ numberKey: string }> = (
-  { numberKey }
-): React.JSX.Element => {
+interface NumberKeyButtonProps {
+  numberKey: string;
+}
+
+const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({
+  numberKey,
+}): React.JSX.Element => {
   const dispatch = useAppDispatch();
-  const keyType: KeyType = 'number';
-  const onKeyPress = () => dispatch(appendToAnswer(numberKey));
+
+  const handleKeyPress = useCallback(() => {
+    dispatch(appendToAnswer(numberKey));
+  }, [dispatch, numberKey]);
 
   return (
-    <KeyButton keyType={keyType} onClick={onKeyPress}>
+    <KeyButton
+      keyType={KEY_BUTTON_TYPES.NUMBER}
+      onClick={handleKeyPress}
+    >
       {numberKey}
     </KeyButton>
   );
