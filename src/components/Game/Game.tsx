@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
-import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { useAppSelector, useAppDispatch } from '../../utils/hooks/redux';
 import { startGame, goToMainMenu } from '../../store/gameSlice';
 import styles from './Game.module.scss';
 
@@ -33,10 +33,7 @@ const Game: React.FC = (): React.JSX.Element => {
 
   return (
     <div className={styles.game}>
-      <Header
-        onHomeClick={handleGoToMainMenu}
-        showHomeButton={location.pathname !== '/'}
-      />
+      <Header showHomeButton={location.pathname !== '/'} />
       <main className={styles.main}>
         <Outlet context={{ onStartGame: handleStartGame, onGoToMainMenu: handleGoToMainMenu }} />
       </main>
