@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+
+  @include tablet-up {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    padding: 15px;
+    border-radius: 10px;
+  }
+}

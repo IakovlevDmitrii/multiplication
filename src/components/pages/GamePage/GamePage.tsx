@@ -1,21 +1,18 @@
 import React, { useEffect, useCallback } from 'react';
+import ProgressBars from '../../ProgressBars/ProgressBars';
+import Example from '../../Example/Example';
 import VirtualKeyboard from '../../VirtualKeyboard/VirtualKeyboard';
-import AnswerButton from '../../buttons/AnswerButton/AnswerButton';
-import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
+import AnswerButton from '../../buttons/gameButtons/AnswerButton/AnswerButton';
+import { useAppSelector, useAppDispatch } from '../../../utils/hooks/redux';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../../store/gameSlice';
 import styles from './GamePage.module.scss';
 
 const GamePage: React.FC = (): React.JSX.Element => {
 	const dispatch = useAppDispatch();
 	const {
-		currentQuestion,
 		userAnswer,
-		score,
 		gameState,
-		results,
-		totalQuestions
-	} = useAppSelector((state) => state.game);
-	const progress = results.length + 1;
+	} = useAppSelector(state => state.game);
 
 	const handleKeyPress = useCallback((e: KeyboardEvent): void => {
 		if (gameState !== 'playing') return;
@@ -41,24 +38,12 @@ const GamePage: React.FC = (): React.JSX.Element => {
 	}, [handleKeyPress]);
 
 	return (
-		<div className={styles.gameScreen}>
-			<div className={styles.progress}>
-				Вопрос {progress} из {totalQuestions}
-				<div className="score">Счет: {score}</div>
-			</div>
-
-			<div className="question-section">
-				<div className={styles.question}>
-					{currentQuestion?.num1} × {currentQuestion?.num2} = ?
-				</div>
-				<div className={styles.answerInputSection}>
-					<div className={styles.answerDisplay}>
-						{userAnswer || '?'}
-					</div>
-
-					<VirtualKeyboard />
-					<AnswerButton />
-				</div>
+		<div className={styles.gamePage}>
+			<ProgressBars />
+			<div className={styles.questionSection}>
+				<Example />
+				<VirtualKeyboard />
+				<AnswerButton />
 			</div>
 		</div>
 	);
