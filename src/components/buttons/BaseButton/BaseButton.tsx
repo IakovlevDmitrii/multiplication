@@ -12,7 +12,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   onClick,
   className = '',
   disabled = false,
-}) => (
+}): React.JSX.Element => (
   <button
     className={className}
     onClick={onClick}
