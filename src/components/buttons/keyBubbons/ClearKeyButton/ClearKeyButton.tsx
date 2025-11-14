@@ -1,16 +1,17 @@
 import React from 'react';
-import KeyButton from '../KeyButton/KeyButton';
+import KeyButton, { KEY_BUTTON_TYPES } from '../KeyButton/KeyButton';
+import { useAppDispatch } from '../../../../utils/hooks/redux';
 import { clearAnswer } from '../../../../store/gameSlice';
-import { useAppDispatch } from '../../../../hooks/redux';
-import type { KeyType } from "../../../../types";
 
 const ClearKeyButton: React.FC = (): React.JSX.Element => {
   const dispatch = useAppDispatch();
-  const keyType: KeyType = 'clear';
-  const onKeyPress = () => dispatch(clearAnswer());
+  const handleKeyPress = () => dispatch(clearAnswer());
 
   return (
-    <KeyButton keyType={keyType} onClick={onKeyPress}>
+    <KeyButton
+      keyType={KEY_BUTTON_TYPES.CLEAR}
+      onClick={handleKeyPress}
+    >
       C
     </KeyButton>
   );
