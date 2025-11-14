@@ -1,16 +1,17 @@
 import React from 'react';
-import KeyButton from '../KeyButton/KeyButton';
+import KeyButton, { KEY_BUTTON_TYPES } from '../KeyButton/KeyButton';
+import { useAppDispatch } from '../../../../utils/hooks/redux';
 import { backspaceAnswer } from '../../../../store/gameSlice';
-import { useAppDispatch } from '../../../../hooks/redux';
-import type { KeyType } from '../../../../types';
 
 const BackSpaceKeyButton: React.FC = (): React.JSX.Element => {
   const dispatch = useAppDispatch();
-  const keyType: KeyType = 'backspace';
-  const onKeyPress = () => dispatch(backspaceAnswer());
+  const handleKeyPress = () => dispatch(backspaceAnswer());
 
   return (
-    <KeyButton keyType={keyType} onClick={onKeyPress}>
+    <KeyButton
+      keyType={KEY_BUTTON_TYPES.BACKSPACE}
+      onClick={handleKeyPress}
+    >
       ⌫
     </KeyButton>
   );
