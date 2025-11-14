@@ -1,27 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
-import PlayAgainButton from '../../buttons/PlayAgainButton/PlayAgainButton';
-import MainMenuButton from '../../buttons/MainMenuButton/MainMenuButton';
-import { useAppSelector } from '../../../hooks/redux';
+import GameSummary from '../../GameSummary/GameSummaty';
+import PlayAgainButton from '../../buttons/gameButtons/PlayAgainButton/PlayAgainButton';
+import MainMenuButton from '../../buttons/gameButtons/MainMenuButton/MainMenuButton';
+import { useAppSelector } from '../../../utils/hooks/redux';
 import type { GameResult } from '../../../types';
 import styles from './ResultsPage.module.scss';
 
 const ResultsPage: React.FC = (): React.JSX.Element => {
-	const { score, results } = useAppSelector((state) => state.game);
+	const { results } = useAppSelector(state => state.game);
 
 	return (
 		<div className={styles.resultsScreen}>
 			<h2>Игра завершена!</h2>
-			<div className={styles.finalScore}>
-				<span>Правильных ответов:</span>
-				<div>
-					{score} из {results.length}
-				</div>
-			</div>
-			<div className={styles.accuracy}>
-				Точность: {Math.round((score / results.length) * 100)}%
-			</div>
-
+			<GameSummary />
 			<div className={styles.resultsList}>
 				<h3>Результаты:</h3>
 				{results.map((result: GameResult, index): React.JSX.Element => (
