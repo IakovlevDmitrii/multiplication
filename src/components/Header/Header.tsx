@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeButton from '../buttons/HomeButton/HomeButton';
-import { useAppSelector } from '../../utils/hooks/redux';
+import DifficultyBar from '../DifficultyBar/DifficultyBar';
 import styles from './Header.module.scss';
 
 interface HeaderProps {
@@ -10,7 +10,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = (
 	{ showHomeButton = false }
 ): React.JSX.Element => {
-	const { difficulty } = useAppSelector(state => state.game);
 
 	return (
 		<header className={styles.header}>
@@ -18,9 +17,7 @@ const Header: React.FC<HeaderProps> = (
 				{showHomeButton && <HomeButton />}
 				<h1>Умножение</h1>
 				<div className={styles.gameInfo}>
-					<div className="difficulty">
-						Сложность: <span className={styles.diffBadge}>{difficulty}</span>
-					</div>
+					<DifficultyBar />
 				</div>
 			</div>
 		</header>
