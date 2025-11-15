@@ -14,11 +14,7 @@ const HomeButton: React.FC = (): React.JSX.Element => {
   };
 
   return (
-    <button
-      className={styles.homeButton}
-      onClick={handleGoToMainMenu}
-      title="В главное меню"
-    >
+    <button className={styles.homeButton} onClick={handleGoToMainMenu} title="В главное меню">
       🏠
     </button>
   );

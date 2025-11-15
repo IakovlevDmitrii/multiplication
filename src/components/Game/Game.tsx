@@ -9,7 +9,7 @@ const Game: React.FC = (): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const { gameState } = useAppSelector((state) => state.game);
+  const { gameState } = useAppSelector(state => state.game);
 
   useEffect(() => {
     if (gameState === 'playing' && location.pathname !== '/game') {

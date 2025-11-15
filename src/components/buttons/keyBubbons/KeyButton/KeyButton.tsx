@@ -9,11 +9,9 @@ interface KeyButtonProps extends Omit<BaseButtonProps, 'className'> {
 }
 
 const KeyButton: React.FC<KeyButtonProps> = (props): React.JSX.Element => {
-  const className = classNames(
-    styles.keyButton,
-    styles[props.keyType],
-    { [styles.disabled]: props.disabled }
-  );
+  const className = classNames(styles.keyButton, styles[props.keyType], {
+    [styles.disabled]: props.disabled,
+  });
 
   return <BaseButton {...props} className={className} />;
 };

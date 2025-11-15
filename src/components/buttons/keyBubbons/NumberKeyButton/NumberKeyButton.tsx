@@ -7,9 +7,7 @@ interface NumberKeyButtonProps {
   numberKey: string;
 }
 
-const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({
-  numberKey,
-}): React.JSX.Element => {
+const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({ numberKey }): React.JSX.Element => {
   const dispatch = useAppDispatch();
 
   const handleKeyPress = useCallback(() => {
@@ -17,10 +15,7 @@ const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({
   }, [dispatch, numberKey]);
 
   return (
-    <KeyButton
-      keyType={KEY_BUTTON_VARIANTS.NUMBER}
-      onClick={handleKeyPress}
-    >
+    <KeyButton keyType={KEY_BUTTON_VARIANTS.NUMBER} onClick={handleKeyPress}>
       {numberKey}
     </KeyButton>
   );

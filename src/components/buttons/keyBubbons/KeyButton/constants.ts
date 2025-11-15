@@ -4,4 +4,4 @@ export const KEY_BUTTON_VARIANTS = {
   CLEAR: 'clear',
 } as const;
 
-export type KeyButtonType = typeof KEY_BUTTON_VARIANTS[keyof typeof KEY_BUTTON_VARIANTS];
+export type KeyButtonType = (typeof KEY_BUTTON_VARIANTS)[keyof typeof KEY_BUTTON_VARIANTS];

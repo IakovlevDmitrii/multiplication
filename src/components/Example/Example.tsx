@@ -11,9 +11,7 @@ const Example: React.FC = () => {
         {currentQuestion?.num1} × {currentQuestion?.num2} =
       </div>
 
-      <div className={styles.answerDisplay}>
-        {userAnswer || '?'}
-      </div>
+      <div className={styles.answerDisplay}>{userAnswer || '?'}</div>
     </div>
   );
 };

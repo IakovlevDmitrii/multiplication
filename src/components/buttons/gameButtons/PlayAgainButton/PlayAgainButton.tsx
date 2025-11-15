@@ -7,10 +7,7 @@ const PlayAgainButton: React.FC = (): React.JSX.Element => {
   const { onStartGame } = useOutletContext<OutletContext>();
 
   return (
-    <GameButton
-      keyType={GAME_BUTTON_VARIANTS.PLAY_AGAIN}
-      onClick={onStartGame}
-    >
+    <GameButton keyType={GAME_BUTTON_VARIANTS.PLAY_AGAIN} onClick={onStartGame}>
       Играть снова
     </GameButton>
   );

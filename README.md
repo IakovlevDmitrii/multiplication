@@ -1,46 +1,147 @@
-# Getting Started with Create React App
+# Проверить код без исправлений
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npm run lint:check
+npm run format:check
 
-## Available Scripts
+# Автоматически исправить всё
 
-In the project directory, you can run:
+npm run code:fix
 
-### `npm start`
+# Проверить конкретный файл
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+npx eslint src/components/Button.tsx
+npx prettier --check src/components/Button.tsx
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Исправить конкретный файл
 
-### `npm test`
+npx eslint src/components/Button.tsx --fix
+npx prettier --write src/components/Button.tsx
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Cmd + Option + L (Mac) - форматировать файл
+Ctrl + Option + O (Mac) - оптимизировать импорты
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Сценарий 1: Ежедневная разработка
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Перед коммитом
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm run code:fix
 
-### `npm run eject`
+# Если есть ошибки, которые не фиксятся автоматически
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+npm run lint:check
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# → Смотрим ошибки, исправляем вручную
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# → Снова проверяем
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+npm run code:fix
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Сценарий 2: Рефакторинг компонента
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Отредактировали компонент
+
+npx prettier --write src/components/MyComponent.tsx
+npx eslint src/components/MyComponent.tsx --fix
+
+# Проверили что всё ок
+
+npm run lint:check
+
+---
+
+Сценарий 3: Проверка всего проекта
+
+# Перед PR или релизом
+
+npm run code:check
+
+---
+
+Что делать с ошибками которые не фиксятся
+
+1. Игнорирование конкретной строки
+   // eslint-disable-next-line no-console
+   console.log('Это действительно нужно для дебага');
+
+const unused = 'test'; // eslint-disable-line no-unused-vars
+
+2. Игнорирование файла
+   /_ eslint-disable _/
+   // Весь файл игнорируется
+
+3. Временное отключение правила
+   /_ eslint-disable no-console _/
+   console.log('debug');
+   console.log('more debug');
+   /_ eslint-enable no-console _/
+
+---
+
+Чек-лист перед коммитом
+
+# 1. Форматируем код
+
+npm run format
+
+# 2. Исправляем автоматически исправимые ошибки
+
+npm run lint
+
+# 3. Проверяем что не осталось ошибок
+
+npm run lint:check
+
+# 4. Если есть ошибки - исправляем вручную
+
+# 5. Коммитим
+
+git add .
+git commit -m "feat: add new component"
+
+---
+
+Husky + lint-staged (автоматизация)
+Ваш pre-commit хук уже настроен! При коммите:
+
+Автоматически форматируются измененные файлы
+
+Проверяется линтинг
+
+Если есть ошибки - коммит не создается
+
+---
+
+Итоговый workflow:
+Пишете код как обычно
+
+Сохраняете файл → Prettier форматирует автоматически
+
+Перед коммитом → npm run code:fix
+
+Если ошибки → исправляете вручную
+
+Коммитите → Husky проверяет код
+
+---
+
+Полный процесс коммита:
+
+1. Вы: git add . && git commit -m "message"
+2. Husky: Запускает pre-commit хук
+3. lint-staged: Берет файлы из staged
+4. Prettier: Форматирует файлы
+5. ESLint: Исправляет что может (--fix)
+6. lint-staged: Добавляет изменения обратно в staged
+7. Если есть НЕисправимые ошибки → ОСТАНОВКА
+8. Если всё ок → коммит создается
+
+---
+
+Если хотите пропустить проверки:
+git commit -m "message" --no-verify
+
+---

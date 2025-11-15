@@ -8,10 +8,7 @@ const BackSpaceKeyButton: React.FC = (): React.JSX.Element => {
   const handleKeyPress = () => dispatch(backspaceAnswer());
 
   return (
-    <KeyButton
-      keyType={KEY_BUTTON_VARIANTS.BACKSPACE}
-      onClick={handleKeyPress}
-    >
+    <KeyButton keyType={KEY_BUTTON_VARIANTS.BACKSPACE} onClick={handleKeyPress}>
       ⌫
     </KeyButton>
   );

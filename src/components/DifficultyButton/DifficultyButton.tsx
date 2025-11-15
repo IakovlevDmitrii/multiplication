@@ -2,18 +2,20 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './DifficultyButton.module.scss';
 
-const DifficultyButton: React.FC<{
+interface DifficultyButtonProps {
   level: string | number;
   numberOfQuestions: number;
   time: string;
   isActive: boolean;
   setDifficulty: (level: string | number) => void;
-}> = ({
+}
+
+const DifficultyButton: React.FC<DifficultyButtonProps> = ({
   level,
   numberOfQuestions,
   time,
   isActive,
-  setDifficulty
+  setDifficulty,
 }): React.JSX.Element => (
   <button
     className={classNames(styles.difficultyBtn, {

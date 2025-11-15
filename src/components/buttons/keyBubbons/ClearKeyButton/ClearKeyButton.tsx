@@ -8,10 +8,7 @@ const ClearKeyButton: React.FC = (): React.JSX.Element => {
   const handleKeyPress = () => dispatch(clearAnswer());
 
   return (
-    <KeyButton
-      keyType={KEY_BUTTON_VARIANTS.CLEAR}
-      onClick={handleKeyPress}
-    >
+    <KeyButton keyType={KEY_BUTTON_VARIANTS.CLEAR} onClick={handleKeyPress}>
       C
     </KeyButton>
   );

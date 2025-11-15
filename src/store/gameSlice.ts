@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GameSliceState, Difficulty, Question } from '../types';
-import DIFFICULTY_LEVELS from "../utils/constants";
+import { DIFFICULTY_LEVELS, Difficulty } from '../utils/constants/difficultyLevels';
+import type { GameSliceState, Question } from '../types';
 
 const initialState: GameSliceState = {
   currentQuestion: null,
@@ -10,7 +10,7 @@ const initialState: GameSliceState = {
   gameState: 'idle',
   difficulty: 'medium',
   results: [],
-  totalQuestions: 10
+  totalQuestions: 10,
 };
 
 const generateQuestion = (maxNumber: number): Question => {
@@ -19,7 +19,7 @@ const generateQuestion = (maxNumber: number): Question => {
   return {
     num1,
     num2,
-    correctAnswer: num1 * num2
+    correctAnswer: num1 * num2,
   };
 };
 
@@ -27,7 +27,7 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    startGame: (state) => {
+    startGame: state => {
       const { time, questions, maxNumber } = DIFFICULTY_LEVELS[state.difficulty];
       state.timeLeft = time;
       state.score = 0;
@@ -46,7 +46,7 @@ const gameSlice = createSlice({
       state.userAnswer = action.payload;
     },
 
-    checkAnswer: (state) => {
+    checkAnswer: state => {
       if (!state.userAnswer || !state.currentQuestion) return;
 
       const userAnswerNum = parseInt(state.userAnswer);
@@ -56,7 +56,7 @@ const gameSlice = createSlice({
         question: `${state.currentQuestion.num1} × ${state.currentQuestion.num2}`,
         userAnswer: userAnswerNum,
         correctAnswer: state.currentQuestion.correctAnswer,
-        isCorrect
+        isCorrect,
       });
 
       if (isCorrect) {
@@ -74,7 +74,7 @@ const gameSlice = createSlice({
       }
     },
 
-    decrementTime: (state) => {
+    decrementTime: state => {
       if (state.timeLeft > 0) {
         state.timeLeft -= 1;
         if (state.timeLeft === 0) {
@@ -83,7 +83,7 @@ const gameSlice = createSlice({
       }
     },
 
-    goToMainMenu: (state) => {
+    goToMainMenu: state => {
       state.gameState = 'idle';
       state.userAnswer = '';
       state.results = [];
@@ -92,7 +92,7 @@ const gameSlice = createSlice({
       state.currentQuestion = null;
     },
 
-    resetGame: (state) => {
+    resetGame: state => {
       Object.assign(state, initialState);
     },
 
@@ -100,14 +100,14 @@ const gameSlice = createSlice({
       state.userAnswer += action.payload;
     },
 
-    backspaceAnswer: (state) => {
+    backspaceAnswer: state => {
       state.userAnswer = state.userAnswer.slice(0, -1);
     },
 
-    clearAnswer: (state) => {
+    clearAnswer: state => {
       state.userAnswer = '';
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -120,7 +120,7 @@ export const {
   resetGame,
   appendToAnswer,
   backspaceAnswer,
-  clearAnswer
+  clearAnswer,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

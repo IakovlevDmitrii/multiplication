@@ -9,11 +9,9 @@ interface GameButtonProps extends Omit<BaseButtonProps, 'className'> {
 }
 
 const GameButton: React.FC<GameButtonProps> = (props): React.JSX.Element => {
-  const className = classNames(
-    styles.gameButton,
-    styles[props.keyType],
-    { [styles.disabled]: props.disabled },
-  );
+  const className = classNames(styles.gameButton, styles[props.keyType], {
+    [styles.disabled]: props.disabled,
+  });
 
   return <BaseButton {...props} className={className} />;
 };

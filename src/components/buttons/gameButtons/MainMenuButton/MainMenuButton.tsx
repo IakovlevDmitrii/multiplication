@@ -7,10 +7,7 @@ const MainMenuButton: React.FC = (): React.JSX.Element => {
   const { onGoToMainMenu } = useOutletContext<OutletContext>();
 
   return (
-    <GameButton
-      keyType={GAME_BUTTON_VARIANTS.HOME}
-      onClick={onGoToMainMenu}
-    >
+    <GameButton keyType={GAME_BUTTON_VARIANTS.HOME} onClick={onGoToMainMenu}>
       Главное меню
     </GameButton>
   );
