@@ -8,6 +8,14 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
+  //@include when-container(400px, 599px, difficultyButtons) {
+  //  background: red;
+  //}
+
+  @include container-breakpoint('sm', 'min', difficultyButtons) {
+    background: red;
+  }
+
   @include tablet-up {
     padding: 20px;
     border-radius: 10px;
