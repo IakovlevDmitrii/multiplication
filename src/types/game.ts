@@ -11,4 +11,10 @@ export interface GameResult {
   isCorrect: boolean;
 }
 
-export type GameState = 'idle' | 'playing' | 'finished';
+export const GAME_STATE_VARIANTS = {
+  IDLE: 'idle',
+  PLAYING: 'playing',
+  FINISHED: 'finished',
+} as const;
+
+export type GameStateType = (typeof GAME_STATE_VARIANTS)[keyof typeof GAME_STATE_VARIANTS];

@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import { useAppSelector, useAppDispatch } from '../../utils/hooks/redux';
 import { startGame, goToMainMenu } from '../../store/gameSlice';
+import { GAME_STATE_VARIANTS } from '../../types/game';
 import styles from './Game.module.scss';
 
 const Game: React.FC = (): React.JSX.Element => {
@@ -12,11 +13,11 @@ const Game: React.FC = (): React.JSX.Element => {
   const { gameState } = useAppSelector(state => state.game);
 
   useEffect(() => {
-    if (gameState === 'playing' && location.pathname !== '/game') {
+    if (gameState === GAME_STATE_VARIANTS.PLAYING && location.pathname !== '/game') {
       navigate('/game', { replace: true });
-    } else if (gameState === 'finished' && location.pathname !== '/results') {
+    } else if (gameState === GAME_STATE_VARIANTS.FINISHED && location.pathname !== '/results') {
       navigate('/results', { replace: true });
-    } else if (gameState === 'idle' && location.pathname !== '/') {
+    } else if (gameState === GAME_STATE_VARIANTS.IDLE && location.pathname !== '/') {
       navigate('/', { replace: true });
     }
   }, [gameState, location.pathname, navigate]);

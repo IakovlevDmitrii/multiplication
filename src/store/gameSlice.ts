@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DIFFICULTY_LEVELS, Difficulty } from '../utils/constants/difficultyLevels';
+import { GAME_STATE_VARIANTS } from '../types/game';
 import type { GameSliceState } from '../types/redux-state';
 import type { Question } from '../types/game';
 
@@ -8,7 +9,7 @@ const initialState: GameSliceState = {
   userAnswer: '',
   score: 0,
   timeLeft: 0,
-  gameState: 'idle',
+  gameState: GAME_STATE_VARIANTS.IDLE,
   difficulty: 'medium',
   results: [],
   totalQuestions: 10,
@@ -34,7 +35,7 @@ const gameSlice = createSlice({
       state.score = 0;
       state.results = [];
       state.userAnswer = '';
-      state.gameState = 'playing';
+      state.gameState = GAME_STATE_VARIANTS.PLAYING;
       state.totalQuestions = questions;
       state.currentQuestion = generateQuestion(maxNumber);
     },
@@ -68,7 +69,7 @@ const gameSlice = createSlice({
 
       // Переход к следующему вопросу или завершение
       if (state.results.length >= state.totalQuestions) {
-        state.gameState = 'finished';
+        state.gameState = GAME_STATE_VARIANTS.FINISHED;
       } else {
         const maxNumber = DIFFICULTY_LEVELS[state.difficulty].maxNumber;
         state.currentQuestion = generateQuestion(maxNumber);
@@ -79,13 +80,13 @@ const gameSlice = createSlice({
       if (state.timeLeft > 0) {
         state.timeLeft -= 1;
         if (state.timeLeft === 0) {
-          state.gameState = 'finished';
+          state.gameState = GAME_STATE_VARIANTS.FINISHED;
         }
       }
     },
 
     goToMainMenu: state => {
-      state.gameState = 'idle';
+      state.gameState = GAME_STATE_VARIANTS.IDLE;
       state.userAnswer = '';
       state.results = [];
       state.score = 0;
