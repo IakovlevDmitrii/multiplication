@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DIFFICULTY_LEVELS, Difficulty } from '../utils/constants/difficultyLevels';
-import type { GameSliceState, Question } from '../types';
+import type { GameSliceState } from '../types/redux-state';
+import type { Question } from '../types/game';
 
 const initialState: GameSliceState = {
   currentQuestion: null,
@@ -42,9 +43,9 @@ const gameSlice = createSlice({
       state.difficulty = action.payload;
     },
 
-    setUserAnswer: (state, action: PayloadAction<string>) => {
-      state.userAnswer = action.payload;
-    },
+    // setUserAnswer: (state, action: PayloadAction<string>) => {
+    //   state.userAnswer = action.payload;
+    // },
 
     checkAnswer: state => {
       if (!state.userAnswer || !state.currentQuestion) return;
@@ -92,9 +93,9 @@ const gameSlice = createSlice({
       state.currentQuestion = null;
     },
 
-    resetGame: state => {
-      Object.assign(state, initialState);
-    },
+    // resetGame: state => {
+    //   Object.assign(state, initialState);
+    // },
 
     appendToAnswer: (state, action: PayloadAction<string>) => {
       state.userAnswer += action.payload;
@@ -113,11 +114,11 @@ const gameSlice = createSlice({
 export const {
   startGame,
   setDifficulty,
-  setUserAnswer,
+  // setUserAnswer,
   checkAnswer,
   decrementTime,
   goToMainMenu,
-  resetGame,
+  // resetGame,
   appendToAnswer,
   backspaceAnswer,
   clearAnswer,

@@ -66,8 +66,7 @@ npm run code:check
 1. Игнорирование конкретной строки
    // eslint-disable-next-line no-console
    console.log('Это действительно нужно для дебага');
-
-const unused = 'test'; // eslint-disable-line no-unused-vars
+   const unused = 'test'; // eslint-disable-line no-unused-vars
 
 2. Игнорирование файла
    /_ eslint-disable _/

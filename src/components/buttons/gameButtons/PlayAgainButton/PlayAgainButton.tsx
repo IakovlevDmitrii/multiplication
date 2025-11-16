@@ -1,7 +1,7 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import GameButton, { GAME_BUTTON_VARIANTS } from '../GameButton';
-import type { OutletContext } from '../../../../types';
+import type { OutletContext } from '../../../../types/app';
 
 const PlayAgainButton: React.FC = (): React.JSX.Element => {
   const { onStartGame } = useOutletContext<OutletContext>();
