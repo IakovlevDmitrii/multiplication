@@ -11,8 +11,7 @@ const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.El
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        {showHomeButton && <HomeButton />}
-        <h1>Умножение</h1>
+        <div className={styles.homeButton}>{showHomeButton && <HomeButton />}</div>
         <div className={styles.gameInfo}>
           <DifficultyBar />
         </div>
