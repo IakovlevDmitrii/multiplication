@@ -1,5 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
-import CircleProgress from '../../CircleProgress/CircleProgress';
+import ProgressBar from '../../ProgressBar/ProgressBar';
+import Example from '../../Example/Example';
+import UserAnswer from '../../UserAnswer/UserAnswer';
 import VirtualKeyboard from '../../VirtualKeyboard/VirtualKeyboard';
 import AnswerButton from '../../buttons/gameButtons/AnswerButton/AnswerButton';
 import { useAppSelector, useAppDispatch } from '../../../utils/hooks';
@@ -39,7 +41,9 @@ const GamePage: React.FC = (): React.JSX.Element => {
   return (
     <div className={styles.gamePage}>
       <div className={styles.questionSection}>
-        <CircleProgress />
+        <ProgressBar />
+        <Example />
+        <UserAnswer />
         <VirtualKeyboard />
         <AnswerButton />
       </div>

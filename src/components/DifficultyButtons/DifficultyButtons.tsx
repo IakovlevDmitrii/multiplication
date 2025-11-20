@@ -1,9 +1,9 @@
 import React from 'react';
 import DifficultyButton from '../DifficultyButton/DifficultyButton';
-import { useAppSelector, useAppDispatch } from '../../utils/hooks/redux';
+import { useAppSelector, useAppDispatch } from '../../utils/hooks';
 import { setDifficulty } from '../../store/gameSlice';
 import { DIFFICULTY_LEVELS, Difficulty } from '../../utils/constants/difficultyLevels';
-import formatTime from '../../utils/helpers/time';
+import { formatTime } from '../../utils/helpers/time';
 import styles from './DifficultyButtons.module.scss';
 
 const DifficultyButtons: React.FC = (): React.JSX.Element => {

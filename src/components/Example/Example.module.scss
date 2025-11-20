@@ -1,4 +1,3 @@
-@import '../../styles/mixins';
 @import '../../styles/variables';
 
 .example {
@@ -10,8 +9,4 @@
 
 .question {
   color: $text-primary;
-}
-
-.answerDisplay {
-  color: $purple-primary;
 }
