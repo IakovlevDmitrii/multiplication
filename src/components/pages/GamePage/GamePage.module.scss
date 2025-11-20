@@ -1,9 +1,28 @@
 @import '../../../styles/mixins';
 
 .gamePage {
+  position: relative;
   text-align: center;
+  animation: slideIn 0.5s ease-out;
+  min-height: 100vh;
+  z-index: 1;
+  background: transparent;
 }
 
 .questionSection {
-  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+  border-radius: 1rem;
+  padding: 0 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,9 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
-import ProgressBars from '../../ProgressBars/ProgressBars';
-import Example from '../../Example/Example';
+import CircleProgress from '../../CircleProgress/CircleProgress';
 import VirtualKeyboard from '../../VirtualKeyboard/VirtualKeyboard';
 import AnswerButton from '../../buttons/gameButtons/AnswerButton/AnswerButton';
-import { useAppSelector, useAppDispatch } from '../../../utils/hooks/redux';
+import { useAppSelector, useAppDispatch } from '../../../utils/hooks';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../../store/gameSlice';
 import styles from './GamePage.module.scss';
 
@@ -39,9 +38,8 @@ const GamePage: React.FC = (): React.JSX.Element => {
 
   return (
     <div className={styles.gamePage}>
-      <ProgressBars />
       <div className={styles.questionSection}>
-        <Example />
+        <CircleProgress />
         <VirtualKeyboard />
         <AnswerButton />
       </div>
