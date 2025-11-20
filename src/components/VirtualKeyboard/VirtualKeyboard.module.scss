@@ -2,7 +2,7 @@
 
 .keyboard {
   max-width: 250px;
-  margin: 30px auto;
+  margin: 0.2rem auto;
 
   @include tablet-up {
     max-width: 300px;
@@ -12,10 +12,6 @@
 .row {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 10px;
-
-  @include tablet-up {
-    gap: 10px;
-  }
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
 }

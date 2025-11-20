@@ -1,6 +1,6 @@
 import React from 'react';
 import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton';
-import { useAppDispatch } from '../../../../utils/hooks/redux';
+import { useAppDispatch } from '../../../../utils/hooks';
 import { clearAnswer } from '../../../../store/gameSlice';
 
 const ClearKeyButton: React.FC = (): React.JSX.Element => {

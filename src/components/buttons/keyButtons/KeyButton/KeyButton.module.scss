@@ -1,0 +1,54 @@
+@import '../../../../styles/variables';
+
+.keyButton {
+  width: 45px;
+  height: 45px;
+  border: 1px solid $border-light;
+  color: $text-primary;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.number {
+  background: $keyboard-bg;
+
+  &:hover {
+    background: lighten($bg-secondary, 5%);
+  }
+
+  &:active {
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px);
+  }
+}
+
+.clear {
+  background: $delete-bg;
+
+  &:hover {
+    background: $delete-hover;
+  }
+}
+
+.backspace {
+  background: $backspace-bg;
+
+  &:hover {
+    background: $backspace-hover;
+  }
+}
