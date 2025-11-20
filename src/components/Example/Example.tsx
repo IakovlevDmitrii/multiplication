@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../utils/hooks/redux';
+import { useAppSelector } from '../../utils/hooks';
 import styles from './Example.module.scss';
 
 const Example: React.FC = () => {
@@ -10,7 +10,6 @@ const Example: React.FC = () => {
       <div className={styles.question}>
         {currentQuestion?.num1} × {currentQuestion?.num2} =
       </div>
-
       <div className={styles.answerDisplay}>{userAnswer || '?'}</div>
     </div>
   );
