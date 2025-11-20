@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+@import '../../styles/mixins/progress-ring';
+
+.circleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.circle {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $bg-primary;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 25%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      $border-light 30%,
+      $border-light 70%,
+      transparent 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+  }
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px dashed rgba(229, 229, 229, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.timeRing {
+  @include progress-ring(15rem, 4, var(--color, $text-primary));
+}
+
+.questionsRing {
+  @include progress-ring(13rem, 3, $purple-secondary);
+}
+
+.correctRing {
+  @include progress-ring(11rem, 2, $gold);
+}
+
+.answerCenter {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: $bg-primary;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(229, 229, 229, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  position: relative;
+}
+
+.answer {
+  font-size: 4rem;
+  color: var(--color, $gold);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,24 @@
+@mixin progress-ring($size, $z-index, $color) {
+  composes: ring;
+  width: $size;
+  height: $size;
+  z-index: $z-index;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 0.8rem solid $color;
+    border-radius: 50%;
+    mask: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      black calc(var(--progress) * 360deg),
+      transparent calc(var(--progress) * 360deg)
+    );
+    z-index: 2;
+  }
+}

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DIFFICULTY_LEVELS, Difficulty } from '../utils/constants/difficultyLevels';
-import { GAME_STATE_VARIANTS } from '../types/game';
+import { GAME_STATE_VARIANTS } from '../utils/constants';
 import type { GameSliceState } from '../types/redux-state';
 import type { Question } from '../types/game';
 
@@ -8,11 +8,11 @@ const initialState: GameSliceState = {
   currentQuestion: null,
   userAnswer: '',
   score: 0,
-  timeLeft: 0,
   gameState: GAME_STATE_VARIANTS.IDLE,
   difficulty: 'medium',
   results: [],
-  totalQuestions: 10,
+  totalQuestions: DIFFICULTY_LEVELS.medium.questions,
+  totalTime: DIFFICULTY_LEVELS.medium.time,
 };
 
 const generateQuestion = (maxNumber: number): Question => {
@@ -31,7 +31,7 @@ const gameSlice = createSlice({
   reducers: {
     startGame: state => {
       const { time, questions, maxNumber } = DIFFICULTY_LEVELS[state.difficulty];
-      state.timeLeft = time;
+      state.totalTime = time;
       state.score = 0;
       state.results = [];
       state.userAnswer = '';
@@ -42,11 +42,9 @@ const gameSlice = createSlice({
 
     setDifficulty: (state, action: PayloadAction<Difficulty>) => {
       state.difficulty = action.payload;
+      state.totalTime = DIFFICULTY_LEVELS[action.payload].time;
+      state.totalQuestions = DIFFICULTY_LEVELS[action.payload].questions;
     },
-
-    // setUserAnswer: (state, action: PayloadAction<string>) => {
-    //   state.userAnswer = action.payload;
-    // },
 
     checkAnswer: state => {
       if (!state.userAnswer || !state.currentQuestion) return;
@@ -76,13 +74,8 @@ const gameSlice = createSlice({
       }
     },
 
-    decrementTime: state => {
-      if (state.timeLeft > 0) {
-        state.timeLeft -= 1;
-        if (state.timeLeft === 0) {
-          state.gameState = GAME_STATE_VARIANTS.FINISHED;
-        }
-      }
+    setTimeOver: state => {
+      state.gameState = GAME_STATE_VARIANTS.FINISHED;
     },
 
     goToMainMenu: state => {
@@ -90,7 +83,6 @@ const gameSlice = createSlice({
       state.userAnswer = '';
       state.results = [];
       state.score = 0;
-      state.timeLeft = 0;
       state.currentQuestion = null;
     },
 
@@ -115,11 +107,9 @@ const gameSlice = createSlice({
 export const {
   startGame,
   setDifficulty,
-  // setUserAnswer,
   checkAnswer,
-  decrementTime,
+  setTimeOver,
   goToMainMenu,
-  // resetGame,
   appendToAnswer,
   backspaceAnswer,
   clearAnswer,

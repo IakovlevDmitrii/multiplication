@@ -5,9 +5,9 @@ export interface GameSliceState {
   currentQuestion: Question | null;
   userAnswer: string;
   score: number;
-  timeLeft: number;
   gameState: GameStateType;
   difficulty: Difficulty;
   results: GameResult[];
   totalQuestions: number;
+  totalTime: number;
 }
