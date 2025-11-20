@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../utils/hooks/redux';
+import { useAppSelector } from '../../utils/hooks';
 import styles from './DifficultyBar.module.scss';
 
 const DifficultyBar: React.FC = (): React.JSX.Element => {
@@ -7,7 +7,7 @@ const DifficultyBar: React.FC = (): React.JSX.Element => {
 
   return (
     <div className={styles.difficulty}>
-      Сложность: <span className={styles.difficultyBadge}>{difficulty}</span>
+      <div className={styles.difficultyBadge}>{difficulty}</div>
     </div>
   );
 };
