@@ -1,22 +1,17 @@
 @import '../../styles/mixins';
+@import '../../styles/variables';
 
 .header {
-  border: 1px solid #764ba2;
+  border: 1px solid $border-light;
   color: white;
   padding: 0.5rem;
   border-radius: 1rem;
-
-  @include tablet-up {
-  }
 }
 
 .headerContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.homeButton {
 }
 
 .gameInfo {
