@@ -1,35 +1,24 @@
-// Colors
-$primary-color: #667eea;
-$secondary-color: #764ba2;
-$success-color: #28a745;
-$error-color: #dc3545;
-$warning-color: #ffc107;
-$info-color: #17a2b8;
+$bg-primary: #1a1a1a;
+$bg-secondary: #2d2d2d;
+$keyboard-bg: #252525;
+$purple-primary: #6b46c1;
+$purple-secondary: #805ad5;
+$purple-muted: #553c9a;
+$gold: #c9a96e;
+$bronze: #b08d57;
 
-// Text
-$text-dark: #333;
-$text-light: #666;
-$text-muted: #999;
+$text-primary: #faf9f6;
+$text-secondary: #e8e8e8;
+$border-light: #e5e5e5;
+$cream-white: #f5f3f0;
 
-// Backgrounds
-$bg-light: #f8f9fa;
-$bg-white: #ffffff;
+$delete-bg: #4a1e6b;
+$delete-hover: #5d28a3;
 
-// Borders
-$border-color: #e0e0e0;
-$border-radius: 10px;
-$border-radius-sm: 5px;
-
-// Shadows
-$shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
-
-// Spacing
-$spacing-xs: 5px;
-$spacing-sm: 10px;
-$spacing-md: 15px;
-$spacing-lg: 20px;
-$spacing-xl: 30px;
+//$backspace-bg: #2d3748;
+//$backspace-hover: #4a5568;
+$backspace-bg: #4a1e6b;
+$backspace-hover: #5d28a3;
 
 // Breakpoints
 $mobile: 320px;
