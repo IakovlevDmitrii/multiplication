@@ -1,5 +1,5 @@
 import React from 'react';
-import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton';
+import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton/index';
 import { useAppDispatch } from '../../../../utils/hooks';
 import { backspaceAnswer } from '../../../../store/gameSlice';
 
