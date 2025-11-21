@@ -43,8 +43,9 @@
   transition: all 0.8s ease;
 
   &:hover {
+    background: $purple-primary;
     border-color: $purple-primary;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.4);
 
     .pointTooltip {
       opacity: 1;
@@ -60,7 +61,7 @@
   &.sliderPointActive {
     background: $purple-secondary;
     border-color: $text-primary;
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.3);
   }
 }
 
