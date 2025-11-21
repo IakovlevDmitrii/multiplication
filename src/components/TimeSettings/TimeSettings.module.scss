@@ -46,11 +46,6 @@
     background: $purple-primary;
     border-color: $purple-primary;
     transform: translate(-50%, -50%) scale(1.4);
-
-    .pointTooltip {
-      opacity: 1;
-      transform: translate(-50%, -100%) scale(1);
-    }
   }
 
   &.sliderPointSelected {
