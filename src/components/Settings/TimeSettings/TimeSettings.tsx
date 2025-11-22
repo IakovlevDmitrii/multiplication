@@ -18,7 +18,7 @@ const TimeSettings: React.FC = (): React.JSX.Element => {
 
   return (
     <SettingsPanel
-      title={'Время на ответ'}
+      title={'Время на ответы'}
       options={timeOptions}
       currentIndex={currentIndex}
       position={position}
