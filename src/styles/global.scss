@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import './variables.scss';
 
 *,
 *::before,
@@ -38,4 +39,18 @@ a {
 
 #root {
   min-height: 100vh;
+}
+
+:root {
+  --color-bg-primary: #2d2d2d;
+  --color-bg-secondary: #1a1a1a;
+  --color-keyboard-bg: #252525;
+  --color-purple-primary: #6b46c1;
+  --color-purple-secondary: #805ad5;
+  --color-purple-muted: #553c9a;
+  --color-gold: #c9a96e;
+  --color-bronze: #b08d57;
+  --color-text-primary: #c9a96e;
+  --color-text-secondary: #e8e8e8;
+  --color-border-light: #c9a96e;
 }

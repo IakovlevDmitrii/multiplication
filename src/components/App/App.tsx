@@ -6,6 +6,7 @@ import Game from '../Game/Game';
 import StartPage from '../pages/StartPage/StartPage';
 import GamePage from '../pages/GamePage/GamePage';
 import ResultsPage from '../pages/ResultsPage/ResultsPage';
+import '../../styles/global.scss';
 
 const App = (): React.JSX.Element => (
   <Provider store={store}>
