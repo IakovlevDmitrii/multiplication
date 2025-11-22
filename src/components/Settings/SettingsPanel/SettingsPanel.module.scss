@@ -1,0 +1,89 @@
+@import '../../../styles/variables';
+
+.settingsPanel {
+  background: $bg-primary;
+  border: 1px solid $border-light;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 100;
+  color: $text-primary;
+  text-align: center;
+}
+
+.track {
+  position: relative;
+  height: 2px;
+  background: $text-primary;
+  margin: 0 0.75rem 3rem;
+  border-radius: 2px;
+}
+
+.filledTrack {
+  position: absolute;
+  height: 100%;
+  background: $purple-primary;
+  transition: width 0.8s ease;
+}
+
+.sliderPoint {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: $text-primary;
+  border: 1px solid $text-primary;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: all 0.8s ease;
+
+  &:hover {
+    background: $purple-primary;
+    border-color: $purple-primary;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+
+  &.sliderPointSelected {
+    background: $purple-primary;
+    border-color: $purple-primary;
+  }
+
+  &.sliderPointActive {
+    background: $purple-secondary;
+    border-color: $text-primary;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -2rem;
+}
+
+.label {
+  font-size: 1rem;
+  color: $text-primary;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.8s ease;
+
+  &:hover {
+    color: $purple-primary;
+    transform: scale(1.1);
+  }
+
+  &.labelSelected {
+    color: $purple-primary;
+  }
+
+  &.labelActive {
+    color: $purple-secondary;
+    transform: scale(1.2);
+  }
+}
