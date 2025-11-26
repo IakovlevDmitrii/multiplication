@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './ModeOption.module.scss';
 
 interface ModeOptionProps {
@@ -8,14 +8,18 @@ interface ModeOptionProps {
   children?: React.ReactNode;
 }
 
-const ModeOption: React.FC<ModeOptionProps> = ({
-  isSelected,
-  onSelect,
-  label,
-  children,
-}): React.JSX.Element => {
+const ModeOption: React.FC<ModeOptionProps> = ({ isSelected, onSelect, label, children }) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [children]);
+
   return (
-    <div className={`${styles.option} ${isSelected ? styles.optionActive : ''}`}>
+    <div className={`${styles.option} ${isSelected ? styles.optionSelected : ''}`}>
       <div className={styles.radioOption}>
         <button
           type="button"
@@ -27,7 +31,16 @@ const ModeOption: React.FC<ModeOptionProps> = ({
         </button>
       </div>
 
-      {isSelected && children && <div className={styles.configPanel}>{children}</div>}
+      <div
+        ref={contentRef}
+        className={styles.configPanel}
+        style={{
+          maxHeight: isSelected ? `${contentHeight}px` : '0px',
+          opacity: isSelected ? 1 : 0,
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };

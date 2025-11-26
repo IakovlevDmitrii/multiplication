@@ -3,6 +3,7 @@
   border-radius: 10px;
   padding: 20px;
   transition: all 0.3s ease;
+  overflow: hidden;
 
   &:hover {
     border-color: var(--color-purple-primary);
@@ -14,19 +15,15 @@
     .optionLabel {
       color: var(--color-purple-primary);
     }
-
-    .configPanel {
-      border-top: 1px solid var(--color-purple-primary);
-    }
   }
 
-  &.optionActive {
+  &.optionSelected {
     border-color: var(--color-purple-primary);
   }
 }
 
 .radioOption {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .radioButton {
@@ -42,7 +39,18 @@
   transition: all 0.2s;
   width: 100%;
 
+  &:hover {
+    border-color: var(--color-purple-primary);
+
+    .optionLabel {
+      color: var(--color-purple-primary);
+    }
+  }
+
   &.radioButtonActive {
+    border-color: var(--color-purple-primary);
+    color: var(--color-purple-primary);
+
     .optionLabel {
       color: var(--color-purple-primary);
     }
@@ -66,10 +74,16 @@
   font-size: 1.2em;
   font-weight: bold;
   color: var(--color-text-primary);
+  transition: color 0.2s;
 }
 
 .configPanel {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid var(--color-text-primary);
+  border-top: 1px solid var(--color-border-light);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
 }
