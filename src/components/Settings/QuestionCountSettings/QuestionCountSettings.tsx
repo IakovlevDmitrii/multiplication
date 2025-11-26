@@ -1,6 +1,6 @@
 import React from 'react';
 import SettingsPanel from '../SettingsPanel/SettingsPanel';
-import { useAppSelector, useAppDispatch } from '../../../utils/hooks';
+import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { setQuestionCount } from '../../../store/gameSlice';
 
 const QuestionCountSettings: React.FC = (): React.JSX.Element => {

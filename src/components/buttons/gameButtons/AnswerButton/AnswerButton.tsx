@@ -1,6 +1,6 @@
 import React from 'react';
 import GameButton, { GAME_BUTTON_VARIANTS } from '../GameButton';
-import { useAppSelector, useAppDispatch } from '../../../../utils/hooks/redux';
+import { useAppSelector, useAppDispatch } from '../../../../hooks';
 import { checkAnswer } from '../../../../store/gameSlice';
 
 const AnswerButton: React.FC = (): React.JSX.Element => {

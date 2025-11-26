@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../utils/hooks/redux';
+import { useAppDispatch } from '../../../hooks';
 import { goToMainMenu } from '../../../store/gameSlice';
 import styles from './HomeButton.module.scss';
 

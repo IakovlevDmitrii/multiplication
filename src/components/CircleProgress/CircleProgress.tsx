@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector, useTimer } from '../../utils/hooks';
+import { useAppSelector, useTimer } from '../../hooks';
 import { colors } from '../../styles/colors';
 import styles from './CircleProgress.module.scss';
 

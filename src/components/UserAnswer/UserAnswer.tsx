@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector, useTimer } from '../../utils/hooks';
+import { useAppSelector, useTimer } from '../../hooks';
 import { getTimeColor } from '../../utils/helpers/time';
 import styles from './UserAnswer.module.scss';
 

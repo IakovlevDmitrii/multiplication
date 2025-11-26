@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../utils/hooks';
+import { useAppSelector } from '../../hooks';
 import styles from './Example.module.scss';
 
 const Example: React.FC = (): React.JSX.Element => {

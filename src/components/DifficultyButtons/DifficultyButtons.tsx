@@ -1,8 +1,8 @@
 import React from 'react';
 import DifficultyButton from '../DifficultyButton/DifficultyButton';
-import { useAppSelector, useAppDispatch } from '../../utils/hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import { setDifficulty } from '../../store/gameSlice';
-import { DIFFICULTY_LEVELS, Difficulty } from '../../utils/constants/difficultyLevels';
+import { DIFFICULTY_LEVELS, Difficulty } from '../../constants/difficultyLevels';
 import { formatTime } from '../../utils/helpers/time';
 import styles from './DifficultyButtons.module.scss';
 

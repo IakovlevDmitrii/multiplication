@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector, useTimer } from '../../utils/hooks';
+import { useAppSelector, useTimer } from '../../hooks';
 import styles from './SmoothCircleProgress.module.scss';
 
 const SmoothCircleProgress: React.FC = (): React.JSX.Element => {

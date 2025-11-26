@@ -1,6 +1,6 @@
 import React from 'react';
 import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton/index';
-import { useAppDispatch } from '../../../../utils/hooks';
+import { useAppDispatch } from '../../../../hooks';
 import { backspaceAnswer } from '../../../../store/gameSlice';
 
 const BackSpaceKeyButton: React.FC = (): React.JSX.Element => {

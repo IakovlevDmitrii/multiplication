@@ -1,11 +1,11 @@
 import React from 'react';
 import SettingsPanel from '../SettingsPanel/SettingsPanel';
-import { useAppSelector, useAppDispatch } from '../../../utils/hooks';
+import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { setTimePerQuestion } from '../../../store/gameSlice';
 
 const TimeSettings: React.FC = (): React.JSX.Element => {
   const dispatch = useAppDispatch();
-  const { timePerQuestion } = useAppSelector(state => state.game.settings);
+  const { timePerQuestions } = useAppSelector(state => state.game.settings);
 
   const timeOptions: number[] = [5, 10, 15, 20, 30, 0];
 
@@ -13,7 +13,7 @@ const TimeSettings: React.FC = (): React.JSX.Element => {
     dispatch(setTimePerQuestion(time));
   };
 
-  const currentIndex: number = timeOptions.indexOf(timePerQuestion);
+  const currentIndex: number = timeOptions.indexOf(timePerQuestions);
   const position: number = (currentIndex / (timeOptions.length - 1)) * 100;
 
   return (
@@ -22,7 +22,7 @@ const TimeSettings: React.FC = (): React.JSX.Element => {
       options={timeOptions}
       currentIndex={currentIndex}
       position={position}
-      currentSettings={timePerQuestion}
+      currentSettings={timePerQuestions}
       onSettingsChange={handleTimeChange}
     />
   );

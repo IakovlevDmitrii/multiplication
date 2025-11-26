@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../utils/hooks';
+import { useAppSelector } from '../../hooks';
 import styles from './DifficultyBar.module.scss';
 
 const DifficultyBar: React.FC = (): React.JSX.Element => {

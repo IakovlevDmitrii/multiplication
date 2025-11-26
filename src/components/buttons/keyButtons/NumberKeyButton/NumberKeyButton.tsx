@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton/index';
-import { useAppDispatch } from '../../../../utils/hooks';
+import { useAppDispatch } from '../../../../hooks';
 import { appendToAnswer } from '../../../../store/gameSlice';
 
 interface NumberKeyButtonProps {

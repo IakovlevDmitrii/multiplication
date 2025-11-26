@@ -4,7 +4,7 @@ import Example from '../../Example/Example';
 import UserAnswer from '../../UserAnswer/UserAnswer';
 import VirtualKeyboard from '../../VirtualKeyboard/VirtualKeyboard';
 import AnswerButton from '../../buttons/gameButtons/AnswerButton/AnswerButton';
-import { useAppSelector, useAppDispatch } from '../../../utils/hooks';
+import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../../store/gameSlice';
 import styles from './GamePage.module.scss';
 
