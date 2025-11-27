@@ -1,7 +1,7 @@
 import React from 'react';
 import ResultItem from '../ResultItem/ResultItem';
-import { useAppSelector } from '../../utils/hooks/redux';
-import type { GameResult } from '../../types/game';
+import { useAppSelector } from '../../hooks';
+import type { GameResult } from '../../types';
 import styles from './ResultsList.module.scss';
 
 const ResultsList: React.FC = (): React.JSX.Element => {

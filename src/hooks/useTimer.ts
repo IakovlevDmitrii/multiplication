@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from './redux';
-import { setTimeOver } from '../../store/gameSlice';
+import { useAppSelector } from './useAppSelector';
+import { useAppDispatch } from './useAppDispatch';
+import { setTimeOver } from '../store/gameSlice';
 import { GAME_STATE_VARIANTS } from '../constants';
 
 export const useTimer = (onTimeUpdate?: (timeLeft: number) => void) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../utils/hooks/redux';
+import { useAppSelector } from '../../hooks';
 import styles from './GameSummary.module.scss';
 
 const GameSummary: React.FC = (): React.JSX.Element => {
