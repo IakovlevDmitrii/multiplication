@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DIFFICULTY_LEVELS, Difficulty } from '../utils/constants/difficultyLevels';
-import { GAME_STATE_VARIANTS } from '../utils/constants';
-import type { GameSliceState } from '../types/redux-state';
-import type { Question } from '../types/game';
+import { DIFFICULTY_LEVELS, Difficulty } from '../constants/difficultyLevels';
+import { GAME_MODE_VARIANTS, GAME_STATE_VARIANTS } from '../constants';
+import type { GameConfig, GameSliceState, Question } from '../types';
 
 const initialState: GameSliceState = {
   currentQuestion: null,
@@ -13,6 +12,12 @@ const initialState: GameSliceState = {
   results: [],
   totalQuestions: DIFFICULTY_LEVELS.medium.questions,
   totalTime: DIFFICULTY_LEVELS.medium.time,
+  // gameMode: GAME_MODE_VARIANTS.TWO_NUMBERS,
+  gameConfig: { mode: GAME_MODE_VARIANTS.TWO_NUMBERS, minNumber: 2, maxNumber: 9 },
+  settings: {
+    timePerQuestions: 15,
+    questionCount: 10,
+  },
 };
 
 const generateQuestion = (maxNumber: number): Question => {
@@ -101,6 +106,22 @@ const gameSlice = createSlice({
     clearAnswer: state => {
       state.userAnswer = '';
     },
+
+    setGameConfig: (state, action: PayloadAction<GameConfig>) => {
+      state.gameConfig = action.payload; // Теперь принимает напрямую GameConfig
+    },
+
+    // setCurrentNumber: (state, action: PayloadAction<number>) => {
+    //   state.currentNumber = action.payload;
+    // },
+
+    setTimePerQuestion: (state, action: PayloadAction<number>) => {
+      state.settings.timePerQuestions = action.payload;
+    },
+
+    setQuestionCount: (state, action: PayloadAction<number>) => {
+      state.settings.questionCount = action.payload;
+    },
   },
 });
 
@@ -113,6 +134,10 @@ export const {
   appendToAnswer,
   backspaceAnswer,
   clearAnswer,
+  setGameConfig,
+  // setCurrentNumber,
+  setTimePerQuestion,
+  setQuestionCount,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;
