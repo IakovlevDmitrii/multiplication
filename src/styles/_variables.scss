@@ -1,5 +1,5 @@
-$bg-primary: #1a1a1a;
-$bg-secondary: #2d2d2d;
+$bg-primary: #2d2d2d;
+$bg-secondary: #1a1a1a;
 $keyboard-bg: #252525;
 $purple-primary: #6b46c1;
 $purple-secondary: #805ad5;
@@ -7,27 +7,22 @@ $purple-muted: #553c9a;
 $gold: #c9a96e;
 $bronze: #b08d57;
 
-$text-primary: #faf9f6;
+$text-primary: $gold;
 $text-secondary: #e8e8e8;
-$border-light: #e5e5e5;
+$border-light: $gold;
 $cream-white: #f5f3f0;
 
 $delete-bg: #4a1e6b;
 $delete-hover: #5d28a3;
-
-//$backspace-bg: #2d3748;
-//$backspace-hover: #4a5568;
 $backspace-bg: #4a1e6b;
 $backspace-hover: #5d28a3;
 
-// Breakpoints
 $mobile: 320px;
 $mobile-large: 480px;
 $tablet: 768px;
 $desktop: 992px;
 $large-desktop: 1200px;
 
-// Карта брейкпоинтов
 $container-breakpoints: (
   'xs': 320px,
   'sm': 480px,
