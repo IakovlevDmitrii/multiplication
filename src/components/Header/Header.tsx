@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HomeButton from '../buttons/HomeButton/HomeButton';
 import DifficultyBar from '../DifficultyBar/DifficultyBar';
+import SettingsButton from '../buttons/SettingsButton/SettingsButton';
+import Modal from '../Modal/Modal';
+import ModeSelector from '../ModeSelector/ModeSelector';
 import styles from './Header.module.scss';
 
 interface HeaderProps {
@@ -8,15 +11,26 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <header className={styles.header}>
-      <div className={styles.headerContent}>
-        <div className={styles.homeButton}>{showHomeButton && <HomeButton />}</div>
-        <div className={styles.gameInfo}>
-          <DifficultyBar />
+    <>
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <div className={styles.homeButton}>{showHomeButton && <HomeButton />}</div>
+          <div className={styles.gameInfo}>
+            <DifficultyBar />
+          </div>
+          <div className={styles.settingsButton}>
+            <SettingsButton onClick={() => setIsModalOpen(true)} />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <ModeSelector />
+      </Modal>
+    </>
   );
 };
 

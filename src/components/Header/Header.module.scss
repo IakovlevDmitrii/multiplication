@@ -2,16 +2,19 @@
 @import '../../styles/variables';
 
 .header {
-  border: 1px solid $border-light;
-  color: white;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-light);
   padding: 0.5rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .headerContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .gameInfo {
@@ -27,4 +30,22 @@
     margin-top: 15px;
     font-size: 1.1em;
   }
+}
+
+.homeButton {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.gameInfo {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.settingsButton {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
