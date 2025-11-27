@@ -1,5 +1,5 @@
 import React from 'react';
-import GameSummary from '../../GameSummary/GameSummaty';
+import GameSummary from '../../GameSummary/GameSummary';
 import ResultsList from '../../ResultsList/ResultsList';
 import PlayAgainButton from '../../buttons/gameButtons/PlayAgainButton/PlayAgainButton';
 import MainMenuButton from '../../buttons/gameButtons/MainMenuButton/MainMenuButton';
