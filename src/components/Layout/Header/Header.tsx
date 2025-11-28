@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import HomeButton from '../buttons/HomeButton/HomeButton';
-import DifficultyBar from '../DifficultyBar/DifficultyBar';
-import SettingsButton from '../buttons/SettingsButton/SettingsButton';
-import Modal from '../Modal/Modal';
-import ModeSelector from '../ModeSelector/ModeSelector';
+import HomeButton from '../../buttons/HomeButton/HomeButton';
+import SettingsButton from '../../buttons/SettingsButton/SettingsButton';
+import Modal from '../../Modal/Modal';
+import ModeSelector from '../../ModeSelector/ModeSelector';
 import styles from './Header.module.scss';
 
 interface HeaderProps {
   showHomeButton?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.Element => {
+export const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -18,9 +17,7 @@ const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.El
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.homeButton}>{showHomeButton && <HomeButton />}</div>
-          <div className={styles.gameInfo}>
-            <DifficultyBar />
-          </div>
+          <div className={styles.gameInfo}></div>
           <div className={styles.settingsButton}>
             <SettingsButton onClick={() => setIsModalOpen(true)} />
           </div>
@@ -33,5 +30,3 @@ const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.El
     </>
   );
 };
-
-export default Header;
