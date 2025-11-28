@@ -1,20 +1,38 @@
-@import '../../../styles/mixins';
+.resultsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  animation: slideIn 0.5s ease-out;
+}
 
-.resultsScreen {
+.title {
+  font-size: 2.2rem;
+  font-weight: 100;
+  color: var(--color-text-primary);
   text-align: center;
 }
 
+h3 {
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  text-align: center;
+}
 .resultButtons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
   justify-content: center;
-  margin-top: 30px;
   flex-wrap: wrap;
+  gap: 1rem;
+}
 
-  @include tablet-up {
-    flex-direction: row;
-    align-items: start;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
