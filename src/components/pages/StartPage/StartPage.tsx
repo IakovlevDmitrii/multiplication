@@ -1,12 +1,13 @@
 import React from 'react';
+import { StartPageLayout } from '../../Layout';
 import { TimeSettings, QuestionCountSettings } from '../../Settings';
 import StartGameButton from '../../buttons/gameButtons/StartGameButton/StartGameButton';
 import styles from './StartPage.module.scss';
 
-const StartPage: React.FC = (): React.JSX.Element => {
+export const StartPage = () => {
   return (
-    <div className={styles.startPage}>
-      <div className={styles.content}>
+    <StartPageLayout>
+      <div className={styles.startPage}>
         <h1 className={styles.title}>Умножение</h1>
 
         <div className={styles.settings}>
@@ -22,8 +23,6 @@ const StartPage: React.FC = (): React.JSX.Element => {
           <StartGameButton />
         </div>
       </div>
-    </div>
+    </StartPageLayout>
   );
 };
-
-export default StartPage;
