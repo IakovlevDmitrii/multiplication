@@ -3,12 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Provider } from 'react-redux';
 import { store } from '../../store';
 import Game from '../Game/Game';
-import StartPage from '../pages/StartPage/StartPage';
-import GamePage from '../pages/GamePage/GamePage';
-import ResultsPage from '../pages/ResultsPage/ResultsPage';
-import '../../styles/global.scss';
+import { GamePage, ResultsPage, StartPage } from '../pages';
+import '../../styles/index.scss';
 
-const App = (): React.JSX.Element => (
+export const App = () => (
   <Provider store={store}>
     <Router>
       <Routes>
@@ -22,5 +20,3 @@ const App = (): React.JSX.Element => (
     </Router>
   </Provider>
 );
-
-export default App;
