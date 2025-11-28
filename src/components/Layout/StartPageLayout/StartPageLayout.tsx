@@ -1,10 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../Layout';
+import type { PagesLayoutProps } from '../../../types';
 
-interface StartPageLayoutProps {
-  children: React.ReactNode;
-}
-
-export const StartPageLayout = ({ children }: StartPageLayoutProps) => {
+export const StartPageLayout = ({ children }: PagesLayoutProps) => {
   return <PageLayout maxWidth="400px">{children}</PageLayout>;
 };

@@ -1,4 +1,4 @@
-import { OutletContext } from './app.types';
+import { OutletContext, PagesLayoutProps } from './app.types';
 import {
   GameConfig,
   GameMode,
@@ -17,6 +17,7 @@ export type {
   GameSliceState,
   GameStateType,
   OutletContext,
+  PagesLayoutProps,
   SingleNumberConfig,
   TwoNumbersConfig,
   Question,
