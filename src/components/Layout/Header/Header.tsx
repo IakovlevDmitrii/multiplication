@@ -3,14 +3,16 @@ import HomeButton from '../../buttons/HomeButton/HomeButton';
 import SettingsButton from '../../buttons/SettingsButton/SettingsButton';
 import Modal from '../../Modal/Modal';
 import ModeSelector from '../../ModeSelector/ModeSelector';
+import { useAppSelector } from '../../../hooks';
+import { GAME_STATE_VARIANTS } from '../../../constants';
 import styles from './Header.module.scss';
 
-interface HeaderProps {
-  showHomeButton?: boolean;
-}
-
-export const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React.JSX.Element => {
+export const Header = () => {
+  const { gameState } = useAppSelector(state => state.game);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const showHomeButton =
+    gameState === GAME_STATE_VARIANTS.PLAYING || gameState === GAME_STATE_VARIANTS.FINISHED;
+  const showSettingsButton = gameState === GAME_STATE_VARIANTS.IDLE;
 
   return (
     <>
@@ -19,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ showHomeButton = false }): React
           <div className={styles.homeButton}>{showHomeButton && <HomeButton />}</div>
           <div className={styles.gameInfo}></div>
           <div className={styles.settingsButton}>
-            <SettingsButton onClick={() => setIsModalOpen(true)} />
+            {showSettingsButton && <SettingsButton onClick={() => setIsModalOpen(true)} />}
           </div>
         </div>
       </header>
