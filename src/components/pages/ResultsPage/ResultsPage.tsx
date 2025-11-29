@@ -3,7 +3,6 @@ import { ResultsPageLayout } from '../../Layout';
 import GameSummary from '../../GameSummary/GameSummary';
 import ResultsList from '../../ResultsList/ResultsList';
 import PlayAgainButton from '../../buttons/gameButtons/PlayAgainButton/PlayAgainButton';
-import MainMenuButton from '../../buttons/gameButtons/MainMenuButton/MainMenuButton';
 import styles from './ResultsPage.module.scss';
 
 export const ResultsPage = () => {
@@ -16,7 +15,6 @@ export const ResultsPage = () => {
         <ResultsList />
         <div className={styles.resultButtons}>
           <PlayAgainButton />
-          <MainMenuButton />
         </div>
       </div>
     </ResultsPageLayout>
