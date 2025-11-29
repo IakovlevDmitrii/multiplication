@@ -31,7 +31,7 @@ const SingleNumberSelector: React.FC<SingleNumberSelectorProps> = ({
       if (isSelected) {
         updateConfig({
           mode: SINGLE_NUMBER,
-          number: value,
+          currentNumber: value,
           minMultiplier,
           maxMultiplier,
         });
@@ -53,7 +53,7 @@ const SingleNumberSelector: React.FC<SingleNumberSelectorProps> = ({
       if (isSelected) {
         updateConfig({
           mode: SINGLE_NUMBER,
-          number: singleNumber,
+          currentNumber: singleNumber,
           ...updates,
         });
       }
@@ -65,7 +65,7 @@ const SingleNumberSelector: React.FC<SingleNumberSelectorProps> = ({
     if (!isSelected) {
       updateConfig({
         mode: SINGLE_NUMBER,
-        number: singleNumber,
+        currentNumber: singleNumber,
         minMultiplier,
         maxMultiplier,
       });

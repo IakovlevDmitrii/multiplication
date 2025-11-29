@@ -1,33 +1,37 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DIFFICULTY_LEVELS, Difficulty } from '../constants/difficultyLevels';
 import { GAME_MODE_VARIANTS, GAME_STATE_VARIANTS } from '../constants';
-import type { GameConfig, GameSliceState, Question } from '../types';
+import { generateQuestion } from '../helpers/generateQuestion';
+import type { GameConfig, GameSliceState } from '../types';
 
 const initialState: GameSliceState = {
   currentQuestion: null,
+  // questionHistory: {
+  //   lastQuestions: [],
+  //   allQuestions: []
+  // },
   userAnswer: '',
   score: 0,
   gameState: GAME_STATE_VARIANTS.IDLE,
-  difficulty: 'medium',
   results: [],
-  totalQuestions: DIFFICULTY_LEVELS.medium.questions,
-  totalTime: DIFFICULTY_LEVELS.medium.time,
-  // gameMode: GAME_MODE_VARIANTS.TWO_NUMBERS,
-  gameConfig: { mode: GAME_MODE_VARIANTS.TWO_NUMBERS, minNumber: 2, maxNumber: 9 },
+  gameConfig: {
+    mode: GAME_MODE_VARIANTS.TWO_NUMBERS,
+    minNumber: 2,
+    maxNumber: 9,
+  },
   settings: {
     timePerQuestions: 15,
     questionCount: 10,
   },
 };
 
-const generateQuestion = (maxNumber: number): Question => {
-  const num1 = Math.floor(Math.random() * maxNumber) + 2;
-  const num2 = Math.floor(Math.random() * maxNumber) + 2;
-  return {
-    num1,
-    num2,
-    correctAnswer: num1 * num2,
-  };
+export interface QuestionHistory {
+  questions: Set<string>;
+  lastQuestions: string[];
+}
+
+let questionHistory: QuestionHistory = {
+  questions: new Set(),
+  lastQuestions: [],
 };
 
 const gameSlice = createSlice({
@@ -35,20 +39,15 @@ const gameSlice = createSlice({
   initialState,
   reducers: {
     startGame: state => {
-      const { time, questions, maxNumber } = DIFFICULTY_LEVELS[state.difficulty];
-      state.totalTime = time;
       state.score = 0;
       state.results = [];
       state.userAnswer = '';
       state.gameState = GAME_STATE_VARIANTS.PLAYING;
-      state.totalQuestions = questions;
-      state.currentQuestion = generateQuestion(maxNumber);
-    },
-
-    setDifficulty: (state, action: PayloadAction<Difficulty>) => {
-      state.difficulty = action.payload;
-      state.totalTime = DIFFICULTY_LEVELS[action.payload].time;
-      state.totalQuestions = DIFFICULTY_LEVELS[action.payload].questions;
+      state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
+      questionHistory = {
+        questions: new Set(),
+        lastQuestions: [],
+      };
     },
 
     checkAnswer: state => {
@@ -71,11 +70,10 @@ const gameSlice = createSlice({
       state.userAnswer = '';
 
       // Переход к следующему вопросу или завершение
-      if (state.results.length >= state.totalQuestions) {
+      if (state.results.length >= state.settings.questionCount) {
         state.gameState = GAME_STATE_VARIANTS.FINISHED;
       } else {
-        const maxNumber = DIFFICULTY_LEVELS[state.difficulty].maxNumber;
-        state.currentQuestion = generateQuestion(maxNumber);
+        state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
       }
     },
 
@@ -91,10 +89,6 @@ const gameSlice = createSlice({
       state.currentQuestion = null;
     },
 
-    // resetGame: state => {
-    //   Object.assign(state, initialState);
-    // },
-
     appendToAnswer: (state, action: PayloadAction<string>) => {
       state.userAnswer += action.payload;
     },
@@ -108,13 +102,12 @@ const gameSlice = createSlice({
     },
 
     setGameConfig: (state, action: PayloadAction<GameConfig>) => {
-      state.gameConfig = action.payload; // Теперь принимает напрямую GameConfig
+      state.gameConfig = action.payload;
+      questionHistory = {
+        questions: new Set(),
+        lastQuestions: [],
+      };
     },
-
-    // setCurrentNumber: (state, action: PayloadAction<number>) => {
-    //   state.currentNumber = action.payload;
-    // },
-
     setTimePerQuestion: (state, action: PayloadAction<number>) => {
       state.settings.timePerQuestions = action.payload;
     },
@@ -127,7 +120,6 @@ const gameSlice = createSlice({
 
 export const {
   startGame,
-  setDifficulty,
   checkAnswer,
   setTimeOver,
   goToMainMenu,
@@ -135,7 +127,6 @@ export const {
   backspaceAnswer,
   clearAnswer,
   setGameConfig,
-  // setCurrentNumber,
   setTimePerQuestion,
   setQuestionCount,
 } = gameSlice.actions;

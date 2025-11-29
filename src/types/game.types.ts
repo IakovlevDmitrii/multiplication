@@ -1,11 +1,9 @@
 import { GAME_STATE_VARIANTS, GAME_MODE_VARIANTS } from '../constants';
-import type { Difficulty } from '../constants/difficultyLevels';
-
 export type GameMode = (typeof GAME_MODE_VARIANTS)[keyof typeof GAME_MODE_VARIANTS];
 
 export interface SingleNumberConfig {
   mode: typeof GAME_MODE_VARIANTS.SINGLE_NUMBER;
-  number: number;
+  currentNumber: number;
   minMultiplier: number;
   maxMultiplier: number;
 }
@@ -35,15 +33,15 @@ export type GameStateType = (typeof GAME_STATE_VARIANTS)[keyof typeof GAME_STATE
 
 export interface GameSliceState {
   currentQuestion: Question | null;
+  // questionHistory: {
+  //   lastQuestions: string[];
+  //   allQuestions: string[];
+  // };
   userAnswer: string;
   score: number;
   gameState: GameStateType;
-  difficulty: Difficulty;
   results: GameResult[];
-  totalQuestions: number;
-  totalTime: number;
   gameConfig: GameConfig;
-  currentNumber?: number;
   settings: {
     timePerQuestions: number;
     questionCount: number;
