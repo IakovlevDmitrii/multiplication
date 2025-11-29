@@ -5,13 +5,12 @@ import styles from './PageLayout.module.scss';
 interface PageLayoutProps {
   children: React.ReactNode;
   maxWidth: string;
-  showHomeButton?: boolean;
 }
 
-export const PageLayout = ({ children, maxWidth, showHomeButton = false }: PageLayoutProps) => {
+export const PageLayout = ({ children, maxWidth }: PageLayoutProps) => {
   return (
     <CenteredLayout maxWidth={maxWidth}>
-      <Header showHomeButton={showHomeButton} />
+      <Header />
       <main className={styles.main}>{children}</main>
       <footer></footer>
     </CenteredLayout>
