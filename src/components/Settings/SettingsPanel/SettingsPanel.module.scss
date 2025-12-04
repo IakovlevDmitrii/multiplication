@@ -1,15 +1,22 @@
-@import '../../../styles/variables';
+@import '../../../styles/mixins/breakpoints';
 
 .settingsPanel {
-  background: $bg-primary;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  background: var(--color-bg-primary);
   border: 1px solid var(--color-border-light);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 1.5rem;
+
+  @include tablet-up {
+    padding: 2rem;
+  }
 }
 
 .title {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.25rem;
+  margin: 0;
+  font-size: 1.6rem;
   font-weight: 100;
   color: var(--color-text-primary);
   text-align: center;
@@ -17,31 +24,29 @@
 
 .track {
   position: relative;
-  height: 4px;
+  height: 1px;
   background: var(--color-text-primary);
-  border-radius: 2px;
   cursor: pointer;
-  margin: 0 0.75rem 3rem;
+  margin: 0 1rem;
 }
 
 .filledTrack {
   position: absolute;
   height: 100%;
   background: var(--color-purple-primary);
-  transition: width 0.8s ease;
+  transition: width 0.2s ease;
 }
 
 .sliderPoint {
   position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: $text-primary;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--color-text-primary);
   border: 1px solid var(--color-border-light);
-  border-radius: 50%;
-  top: 50%;
+  border-radius: 32%;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  transition: all 0.8s ease;
+  transition: all 0.2s ease;
 
   &:hover {
     background: var(--color-purple-primary);
@@ -55,7 +60,7 @@
   }
 
   &.sliderPointActive {
-    background: $purple-secondary;
+    background: var(--color-purple-secondary);
     border-color: var(--color-border-light);
     transform: translate(-50%, -50%) scale(1.3);
   }
@@ -64,19 +69,22 @@
 .labels {
   display: flex;
   justify-content: space-between;
-  margin-top: -2rem;
 }
 
 .label {
-  font-size: 1rem;
   color: var(--color-text-primary);
   cursor: pointer;
-  padding: 0.5rem;
-  transition: all 0.8s ease;
+  transition: all 0.2s ease;
+  font-size: 1.25rem;
+  font-weight: 100;
+
+  @include tablet-up {
+    font-size: 1.4rem;
+  }
 
   &:hover {
     color: var(--color-purple-primary);
-    transform: scale(1.1);
+    transform: scale(1.3);
   }
 
   &.labelSelected {
@@ -84,7 +92,7 @@
   }
 
   &.labelActive {
-    color: $purple-secondary;
+    color: var(--color-purple-secondary);
     transform: scale(1.2);
   }
 }
