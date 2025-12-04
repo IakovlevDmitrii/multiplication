@@ -1,20 +1,18 @@
-import {
-  GAME_STATE,
-  GAME_MODE,
-  TIME_PER_QUESTION,
-  TIME_PER_QUESTION_LEVELS,
-  QUESTION_COUNTS,
-  QUESTION_COUNTS_LEVELS,
-} from '../constants';
+import { GAME_STATE, GAME_MODE, TIME_PER_QUESTION, QUESTION_COUNTS } from '../constants';
 
 export type GameState = (typeof GAME_STATE)[keyof typeof GAME_STATE];
 export type GameMode = (typeof GAME_MODE)[keyof typeof GAME_MODE]['MODE'];
-export type TimePerQuestion = (typeof TIME_PER_QUESTION)[keyof typeof TIME_PER_QUESTION];
-export type TimePerQuestionLevels =
-  (typeof TIME_PER_QUESTION_LEVELS)[keyof typeof TIME_PER_QUESTION_LEVELS]['label'];
-export type QuestionCount = (typeof QUESTION_COUNTS)[keyof typeof QUESTION_COUNTS];
-export type QuestionCountsLevel = keyof typeof QUESTION_COUNTS_LEVELS;
+
+export type TimePerQuestion = (typeof TIME_PER_QUESTION)[number]['value'];
+export type QuestionCount = (typeof QUESTION_COUNTS)[number]['value'];
 export type SettingValue = TimePerQuestion | QuestionCount;
+export type SettingsOption<T extends number = SettingValue> = {
+  value: T;
+  label: string;
+};
+
+export type TimePerQuestionOption = (typeof TIME_PER_QUESTION)[number];
+export type QuestionCountOption = (typeof QUESTION_COUNTS)[number];
 
 export type SingleNumberConfig = {
   mode: typeof GAME_MODE.SINGLE_NUMBER.MODE;
@@ -46,17 +44,12 @@ export type GameResult = {
 
 export type GameSliceState = {
   currentQuestion: Question | null;
-  // questionHistory: {
-  //   lastQuestions: string[];
-  //   allQuestions: string[];
-  // };
   userAnswer: string;
   score: number;
   gameState: GameState;
   results: GameResult[];
   gameConfig: GameConfig;
   settings: {
-    level: TimePerQuestionLevels;
     questionCount: QuestionCount;
     timePerQuestion: TimePerQuestion;
   };

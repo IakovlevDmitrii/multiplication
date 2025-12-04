@@ -1,24 +1,35 @@
 import { OutletContext, PagesLayoutProps } from './app.types';
 import {
-  GameConfig,
+  GameState,
   GameMode,
-  GameResult,
-  GameSliceState,
-  GameStateType,
+  TimePerQuestion,
+  QuestionCount,
   SingleNumberConfig,
   TwoNumbersConfig,
-  Question,
-} from './game.types';
-
-export type {
   GameConfig,
-  GameMode,
+  Question,
   GameResult,
   GameSliceState,
-  GameStateType,
+  SettingValue,
+  SettingsOption,
+  TimePerQuestionOption,
+  QuestionCountOption,
+} from './game.types';
+export type {
   OutletContext,
   PagesLayoutProps,
+  GameState,
+  GameMode,
+  TimePerQuestion,
+  QuestionCount,
   SingleNumberConfig,
   TwoNumbersConfig,
+  GameConfig,
   Question,
+  GameResult,
+  GameSliceState,
+  SettingValue,
+  SettingsOption,
+  TimePerQuestionOption,
+  QuestionCountOption,
 };

@@ -1,25 +1,29 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import type { SettingValue } from '../../../types';
 import styles from './SettingsPanel.module.scss';
 
-interface SettingsOption {
-  value: SettingValue;
+interface SettingsOption<T extends number> {
+  value: T;
   label: string;
 }
 
-interface SettingsPanelProps {
+interface SettingsPanelProps<T extends number> {
   title: string;
-  options: SettingsOption[];
-  currentValue: number;
-  onSettingsChange: (value: SettingValue) => void;
+  options: readonly SettingsOption<T>[];
+  currentValue: T;
+  onSettingsChange: (value: T) => void;
 }
 
-const SettingsPanel = ({ title, options, currentValue, onSettingsChange }: SettingsPanelProps) => {
+const SettingsPanel = <T extends number>({
+  title,
+  options,
+  currentValue,
+  onSettingsChange,
+}: SettingsPanelProps<T>) => {
   const currentIndex = options.findIndex(({ value }) => value === currentValue);
   const position = (currentIndex / (options.length - 1)) * 100;
   const handleOptionClick = useCallback(
-    (value: SettingValue) => {
+    (value: T) => {
       onSettingsChange(value);
     },
     [onSettingsChange]
