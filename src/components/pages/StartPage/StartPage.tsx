@@ -1,6 +1,7 @@
 import React from 'react';
 import { StartPageLayout } from '../../Layout';
-import { TimeSettings, QuestionCountSettings } from '../../Settings';
+import QuestionCountSettings from '../../Settings/QuestionCountSettings/QuestionCountSettings';
+import TimeSettings from '../../Settings/TimeSettings/TimeSettings';
 import StartGameButton from '../../buttons/gameButtons/StartGameButton/StartGameButton';
 import styles from './StartPage.module.scss';
 
