@@ -1,34 +1,4 @@
-@import './variables';
-
-@mixin mobile-up {
-  @media (min-width: #{$mobile}) {
-    @content;
-  }
-}
-
-@mixin mobile-large-up {
-  @media (min-width: #{$mobile-large}) {
-    @content;
-  }
-}
-
-@mixin tablet-up {
-  @media (min-width: #{$tablet}) {
-    @content;
-  }
-}
-
-@mixin desktop-up {
-  @media (min-width: #{$desktop}) {
-    @content;
-  }
-}
-
-@mixin large-desktop-up {
-  @media (min-width: #{$large-desktop}) {
-    @content;
-  }
-}
+@import '../variables';
 
 // Миксин для создания контейнера
 @mixin container($name: null, $type: inline-size) {

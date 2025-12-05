@@ -1,4 +1,4 @@
-import { colors } from '../../styles/colors';
+import { colors } from '../styles/colors';
 
 const formatTime: (seconds: number) => string = (seconds: number): string => {
   const minutes: number = Math.floor(seconds / 60);
