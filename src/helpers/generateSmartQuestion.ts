@@ -1,5 +1,5 @@
 import type { GameConfig, Question } from '../types';
-import { GAME_MODE_VARIANTS } from '../constants';
+import { GAME_MODE } from '../constants';
 
 interface QuestionHistory {
   questions: Set<string>;
@@ -40,7 +40,7 @@ export const generateSmartQuestion = (gameConfig: GameConfig): Question => {
 const generatePossibleQuestions = (gameConfig: GameConfig): QuestionWithWeight[] => {
   const questions: QuestionWithWeight[] = [];
 
-  if (gameConfig.mode === GAME_MODE_VARIANTS.SINGLE_NUMBER) {
+  if (gameConfig.mode === GAME_MODE.SINGLE_NUMBER.MODE) {
     // Для одного числа - все возможные комбинации
     for (let num2 = gameConfig.minMultiplier; num2 <= gameConfig.maxMultiplier; num2++) {
       const weight = calculateWeight(gameConfig.currentNumber, num2);

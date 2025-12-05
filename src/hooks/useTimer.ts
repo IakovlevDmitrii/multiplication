@@ -2,26 +2,28 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from './useAppSelector';
 import { useAppDispatch } from './useAppDispatch';
 import { setTimeOver } from '../store/gameSlice';
-import { GAME_STATE_VARIANTS } from '../constants';
+import { GAME_STATE } from '../constants';
 
 export const useTimer = (onTimeUpdate?: (timeLeft: number) => void) => {
   const dispatch = useAppDispatch();
-  const { gameState, difficulty, totalTime } = useAppSelector(state => state.game);
+  const { gameState } = useAppSelector(state => state.game);
+  const { questionCount, timePerQuestion } = useAppSelector(state => state.game.settings);
+  const timePerQuestions = questionCount * timePerQuestion;
   const [currentTime, setCurrentTime] = useState(0);
   useEffect(() => {
-    if (currentTime >= totalTime && gameState === GAME_STATE_VARIANTS.PLAYING) {
+    if (currentTime >= timePerQuestions && gameState === GAME_STATE.PLAYING) {
       dispatch(setTimeOver());
     }
-  }, [currentTime, totalTime, gameState, dispatch]);
+  }, [currentTime, timePerQuestions, gameState, dispatch]);
   useEffect(() => {
-    if (gameState === GAME_STATE_VARIANTS.PLAYING) {
+    if (gameState === GAME_STATE.PLAYING) {
       setCurrentTime(0);
     }
-  }, [gameState, difficulty, totalTime]);
+  }, [gameState, timePerQuestions]);
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
-    if (gameState === GAME_STATE_VARIANTS.PLAYING && currentTime < totalTime) {
+    if (gameState === GAME_STATE.PLAYING && currentTime < timePerQuestions) {
       timer = setInterval(() => {
         setCurrentTime(prev => {
           const newTime: number = prev + 1;
@@ -33,8 +35,8 @@ export const useTimer = (onTimeUpdate?: (timeLeft: number) => void) => {
       }, 1000);
     }
     return () => clearInterval(timer);
-  }, [gameState, currentTime, dispatch, totalTime, onTimeUpdate]);
-  const timeProgress: number = currentTime / totalTime;
+  }, [gameState, currentTime, dispatch, timePerQuestions, onTimeUpdate]);
+  const timeProgress: number = currentTime / timePerQuestions;
 
-  return { currentTime, timeProgress, timeLeft: totalTime - currentTime };
+  return { currentTime, timeProgress, timeLeft: timePerQuestions - currentTime };
 };

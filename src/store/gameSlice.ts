@@ -1,26 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GAME_MODE_VARIANTS, GAME_STATE_VARIANTS } from '../constants';
+import { GAME_STATE, GAME_MODE, QUESTION_COUNTS, TIME_PER_QUESTION } from '../constants';
 import { generateQuestion } from '../helpers/generateQuestion';
-import type { GameConfig, GameSliceState } from '../types';
+import { GameConfig, GameSliceState, QuestionCount, TimePerQuestion } from '../types';
 
 const initialState: GameSliceState = {
   currentQuestion: null,
-  // questionHistory: {
-  //   lastQuestions: [],
-  //   allQuestions: []
-  // },
   userAnswer: '',
   score: 0,
-  gameState: GAME_STATE_VARIANTS.IDLE,
+  gameState: GAME_STATE.IDLE,
   results: [],
   gameConfig: {
-    mode: GAME_MODE_VARIANTS.TWO_NUMBERS,
-    minNumber: 2,
-    maxNumber: 9,
+    mode: GAME_MODE.TWO_NUMBERS.MODE,
+    minNumber: GAME_MODE.TWO_NUMBERS.INITIAL_MIN_NUMBER,
+    maxNumber: GAME_MODE.TWO_NUMBERS.INITIAL_MAX_NUMBER,
   },
   settings: {
-    timePerQuestions: 15,
-    questionCount: 10,
+    questionCount: QUESTION_COUNTS[0].value,
+    timePerQuestion: TIME_PER_QUESTION[0].value,
   },
 };
 
@@ -42,7 +38,7 @@ const gameSlice = createSlice({
       state.score = 0;
       state.results = [];
       state.userAnswer = '';
-      state.gameState = GAME_STATE_VARIANTS.PLAYING;
+      state.gameState = GAME_STATE.PLAYING;
       state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
       questionHistory = {
         questions: new Set(),
@@ -69,20 +65,19 @@ const gameSlice = createSlice({
 
       state.userAnswer = '';
 
-      // Переход к следующему вопросу или завершение
       if (state.results.length >= state.settings.questionCount) {
-        state.gameState = GAME_STATE_VARIANTS.FINISHED;
+        state.gameState = GAME_STATE.FINISHED;
       } else {
         state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
       }
     },
 
     setTimeOver: state => {
-      state.gameState = GAME_STATE_VARIANTS.FINISHED;
+      state.gameState = GAME_STATE.FINISHED;
     },
 
     goToMainMenu: state => {
-      state.gameState = GAME_STATE_VARIANTS.IDLE;
+      state.gameState = GAME_STATE.IDLE;
       state.userAnswer = '';
       state.results = [];
       state.score = 0;
@@ -108,11 +103,11 @@ const gameSlice = createSlice({
         lastQuestions: [],
       };
     },
-    setTimePerQuestion: (state, action: PayloadAction<number>) => {
-      state.settings.timePerQuestions = action.payload;
+    setTimePerQuestion: (state, action: PayloadAction<TimePerQuestion>) => {
+      state.settings.timePerQuestion = action.payload;
     },
 
-    setQuestionCount: (state, action: PayloadAction<number>) => {
+    setQuestionCount: (state, action: PayloadAction<QuestionCount>) => {
       state.settings.questionCount = action.payload;
     },
   },

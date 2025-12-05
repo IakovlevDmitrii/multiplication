@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import ModeOption from '../ModeOption/ModeOption';
 import RangeGroup from '../RangeGroup/RangeGroup';
 import MultiplicationRangePreview from '../MultiplicationRangePreview/MultiplicationRangePreview';
 import { useGameConfig } from '../../../hooks';
-import { GAME_MODE_VARIANTS, TWO_NUMBERS_MODE, listOfMultipliers } from '../../../constants';
+import { GAME_MODE, MULTIPLIERS_RANGE } from '../../../constants';
 import type { GameMode } from '../../../types';
 
 interface TwoNumberSelectorProps {
@@ -11,17 +11,12 @@ interface TwoNumberSelectorProps {
   setSelectedMode: (mode: GameMode) => void;
 }
 
-const { TWO_NUMBERS } = GAME_MODE_VARIANTS;
-
-const TwoNumberSelector: React.FC<TwoNumberSelectorProps> = ({
-  selectedMode,
-  setSelectedMode,
-}): React.JSX.Element => {
-  const { INITIAL_MIN, INITIAL_MAX } = TWO_NUMBERS_MODE;
+const TwoNumberSelector = ({ selectedMode, setSelectedMode }: TwoNumberSelectorProps) => {
   const { updateConfig } = useGameConfig();
-  const [minNumber, setMinNumber] = useState(INITIAL_MIN);
-  const [maxNumber, setMaxNumber] = useState(INITIAL_MAX);
-  const isSelected = selectedMode === TWO_NUMBERS;
+  const { MODE, INITIAL_MIN_NUMBER, INITIAL_MAX_NUMBER } = useMemo(() => GAME_MODE.TWO_NUMBERS, []);
+  const [minNumber, setMinNumber] = useState<number>(INITIAL_MIN_NUMBER);
+  const [maxNumber, setMaxNumber] = useState<number>(INITIAL_MAX_NUMBER);
+  const isSelected = selectedMode === MODE;
 
   const handleNumberChange = useCallback(
     (type: 'min' | 'max', value: number) => {
@@ -35,36 +30,36 @@ const TwoNumberSelector: React.FC<TwoNumberSelectorProps> = ({
 
       if (isSelected) {
         updateConfig({
-          mode: TWO_NUMBERS,
+          mode: MODE,
           ...updates,
         });
       }
     },
-    [updateConfig, minNumber, maxNumber, isSelected]
+    [MODE, updateConfig, minNumber, maxNumber, isSelected]
   );
 
   const handleSelectMode = useCallback(() => {
     if (!isSelected) {
       updateConfig({
-        mode: TWO_NUMBERS,
+        mode: MODE,
         minNumber,
         maxNumber,
       });
-      setSelectedMode(TWO_NUMBERS);
+      setSelectedMode(MODE);
     }
-  }, [updateConfig, setSelectedMode, isSelected, minNumber, maxNumber]);
+  }, [MODE, updateConfig, setSelectedMode, isSelected, minNumber, maxNumber]);
 
   return (
     <ModeOption isSelected={isSelected} onSelect={handleSelectMode} label="Диапазон чисел">
       <RangeGroup
         label="Диапазон обоих множителей:"
-        numbers={listOfMultipliers}
+        numbers={MULTIPLIERS_RANGE}
         min={minNumber}
         max={maxNumber}
         setMin={(min: number) => handleNumberChange('min', min)}
         setMax={(max: number) => handleNumberChange('max', max)}
       />
-      <MultiplicationRangePreview mode={TWO_NUMBERS} minNumber={minNumber} maxNumber={maxNumber} />
+      <MultiplicationRangePreview mode={MODE} minNumber={minNumber} maxNumber={maxNumber} />
     </ModeOption>
   );
 };

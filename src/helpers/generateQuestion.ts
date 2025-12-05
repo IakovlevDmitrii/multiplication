@@ -1,6 +1,6 @@
 import type { GameConfig, Question } from '../types';
 import type { QuestionHistory } from '../store/gameSlice';
-import { GAME_MODE_VARIANTS } from '../constants';
+import { GAME_MODE } from '../constants';
 
 export const generateQuestion = (
   gameConfig: GameConfig,
@@ -11,7 +11,7 @@ export const generateQuestion = (
   const maxAttempts = 50;
 
   do {
-    if (gameConfig.mode === GAME_MODE_VARIANTS.SINGLE_NUMBER) {
+    if (gameConfig.mode === GAME_MODE.SINGLE_NUMBER.MODE) {
       num1 = gameConfig.currentNumber;
       num2 = getRandomNumber(gameConfig.minMultiplier, gameConfig.maxMultiplier);
     } else {

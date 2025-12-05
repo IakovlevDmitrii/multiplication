@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import ModeOption from '../ModeOption/ModeOption';
 import NumberGroup from '../NumberGroup/NumberGroup';
 import RangeGroup from '../RangeGroup/RangeGroup';
 import MultiplicationRangePreview from '../MultiplicationRangePreview/MultiplicationRangePreview';
 import { useGameConfig } from '../../../hooks';
-import { GAME_MODE_VARIANTS, SINGLE_NUMBER_MODE, listOfMultipliers } from '../../../constants';
+import { GAME_MODE, MULTIPLIERS_RANGE } from '../../../constants';
 import type { GameMode } from '../../../types';
 
 interface SingleNumberSelectorProps {
@@ -12,32 +12,30 @@ interface SingleNumberSelectorProps {
   setSelectedMode: (mode: GameMode) => void;
 }
 
-const { SINGLE_NUMBER } = GAME_MODE_VARIANTS;
-
-const SingleNumberSelector: React.FC<SingleNumberSelectorProps> = ({
-  selectedMode,
-  setSelectedMode,
-}): React.JSX.Element => {
+const SingleNumberSelector = ({ selectedMode, setSelectedMode }: SingleNumberSelectorProps) => {
   const { updateConfig } = useGameConfig();
-  const { INITIAL_NUMBER, INITIAL_MIN, INITIAL_MAX } = SINGLE_NUMBER_MODE;
-  const [singleNumber, setSingleNumber] = useState(INITIAL_NUMBER);
-  const [minMultiplier, setMinMultiplier] = useState(INITIAL_MIN);
-  const [maxMultiplier, setMaxMultiplier] = useState(INITIAL_MAX);
-  const isSelected = selectedMode === SINGLE_NUMBER;
+  const { MODE, INITIAL_SINGLE_NUMBER, INITIAL_MIN_MULTIPLIER, INITIAL_MAX_MULTIPLIER } = useMemo(
+    () => GAME_MODE.SINGLE_NUMBER,
+    []
+  );
+  const [singleNumber, setSingleNumber] = useState<number>(INITIAL_SINGLE_NUMBER);
+  const [minMultiplier, setMinMultiplier] = useState<number>(INITIAL_MIN_MULTIPLIER);
+  const [maxMultiplier, setMaxMultiplier] = useState<number>(INITIAL_MAX_MULTIPLIER);
+  const isSelected = selectedMode === MODE;
 
   const handleNumberChange = useCallback(
     (value: number) => {
       setSingleNumber(value);
       if (isSelected) {
         updateConfig({
-          mode: SINGLE_NUMBER,
+          mode: MODE,
           currentNumber: value,
           minMultiplier,
           maxMultiplier,
         });
       }
     },
-    [updateConfig, minMultiplier, maxMultiplier, isSelected]
+    [MODE, updateConfig, minMultiplier, maxMultiplier, isSelected]
   );
 
   const handleMultiplierChange = useCallback(
@@ -52,45 +50,45 @@ const SingleNumberSelector: React.FC<SingleNumberSelectorProps> = ({
 
       if (isSelected) {
         updateConfig({
-          mode: SINGLE_NUMBER,
+          mode: MODE,
           currentNumber: singleNumber,
           ...updates,
         });
       }
     },
-    [updateConfig, singleNumber, minMultiplier, maxMultiplier, isSelected]
+    [MODE, updateConfig, singleNumber, minMultiplier, maxMultiplier, isSelected]
   );
 
   const handleSelectMode = useCallback(() => {
     if (!isSelected) {
       updateConfig({
-        mode: SINGLE_NUMBER,
+        mode: MODE,
         currentNumber: singleNumber,
         minMultiplier,
         maxMultiplier,
       });
-      setSelectedMode(SINGLE_NUMBER);
+      setSelectedMode(MODE);
     }
-  }, [updateConfig, setSelectedMode, isSelected, singleNumber, minMultiplier, maxMultiplier]);
+  }, [MODE, updateConfig, setSelectedMode, isSelected, singleNumber, minMultiplier, maxMultiplier]);
 
   return (
     <ModeOption isSelected={isSelected} onSelect={handleSelectMode} label="Таблица одного числа">
       <NumberGroup
         label="Число для тренировки"
-        numbers={listOfMultipliers}
+        numbers={MULTIPLIERS_RANGE}
         selectedNumber={singleNumber}
         setSelectedNumber={handleNumberChange}
       />
       <RangeGroup
         label="Диапазон второго множителя"
-        numbers={listOfMultipliers}
+        numbers={MULTIPLIERS_RANGE}
         min={minMultiplier}
         max={maxMultiplier}
         setMin={(min: number) => handleMultiplierChange('min', min)}
         setMax={(max: number) => handleMultiplierChange('max', max)}
       />
       <MultiplicationRangePreview
-        mode={SINGLE_NUMBER}
+        mode={MODE}
         singleNumber={singleNumber}
         minMultiplier={minMultiplier}
         maxMultiplier={maxMultiplier}

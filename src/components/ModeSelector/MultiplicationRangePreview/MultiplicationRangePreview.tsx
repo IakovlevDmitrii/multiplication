@@ -1,6 +1,6 @@
 import React from 'react';
 import QuestionsPreview from '../../QuestionsPreview/QuestionsPreview';
-import { GAME_MODE_VARIANTS } from '../../../constants';
+import { GAME_MODE } from '../../../constants';
 import type { GameMode } from '../../../types';
 
 interface MultiplicationRangePreviewProps {
@@ -12,21 +12,21 @@ interface MultiplicationRangePreviewProps {
   maxNumber?: number;
 }
 
-const MultiplicationRangePreview: React.FC<MultiplicationRangePreviewProps> = ({
+const MultiplicationRangePreview = ({
   mode,
   singleNumber,
   minMultiplier,
   maxMultiplier,
   minNumber,
   maxNumber,
-}): React.JSX.Element => {
-  const { SINGLE_NUMBER, TWO_NUMBERS } = GAME_MODE_VARIANTS;
+}: MultiplicationRangePreviewProps) => {
+  const { SINGLE_NUMBER, TWO_NUMBERS } = GAME_MODE;
   const getPreviewText = () => {
-    if (mode === SINGLE_NUMBER && singleNumber && minMultiplier && maxMultiplier) {
+    if (mode === SINGLE_NUMBER.MODE && singleNumber && minMultiplier && maxMultiplier) {
       return `Будут вопросы: ${singleNumber} × ${minMultiplier} ... ${singleNumber} × ${maxMultiplier}`;
     }
 
-    if (mode === TWO_NUMBERS && minNumber && maxNumber) {
+    if (mode === TWO_NUMBERS.MODE && minNumber && maxNumber) {
       return `Будут вопросы от ${minNumber}×${minNumber} до ${maxNumber}×${maxNumber}`;
     }
 
