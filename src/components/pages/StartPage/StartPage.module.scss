@@ -2,25 +2,15 @@
   min-height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 2rem;
-  animation: slideIn 0.5s ease-out;
-}
-
-.title {
-  font-size: 2.2rem;
-  font-weight: 100;
-  color: var(--color-text-primary);
-  text-align: center;
+  padding: 2rem 0 0 0;
+  animation: slideIn 0.2s ease-out;
 }
 
 .settings {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-
-.settingGroup {
 }
 
 .startButton {
@@ -31,7 +21,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
   to {
     opacity: 1;
