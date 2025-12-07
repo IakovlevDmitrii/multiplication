@@ -1,51 +1,38 @@
-@import '../../../styles/mixins/breakpoints';
-
 .header {
   background: var(--color-bg-primary);
   border: 1px solid var(--color-border-light);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 1rem 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .headerContent {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 600px;
-  min-height: 2.4rem;
-  margin: 0 auto;
-  padding: 0 1rem;
 }
 
 .gameInfo {
   display: flex;
-  flex-direction: column;
-  font-size: 1em;
-
-  @include tablet-up {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-top: 15px;
-    font-size: 1.1em;
-  }
-}
-
-.homeButton {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.gameInfo {
   flex: 2;
-  display: flex;
-  justify-content: center;
 }
 
+.title {
+  font-size: 2.2rem;
+  font-weight: 100;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+}
+
+.homeButton,
 .settingsButton {
   flex: 1;
   display: flex;
+}
+
+.homeButton {
+  justify-content: flex-start;
+}
+
+.settingsButton {
   justify-content: flex-end;
 }

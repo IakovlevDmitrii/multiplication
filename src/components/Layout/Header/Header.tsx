@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import HomeButton from '../../buttons/HomeButton/HomeButton';
-import SettingsButton from '../../buttons/SettingsButton/SettingsButton';
+import HomeButton from './HomeButton/HomeButton';
+import SettingsButton from './SettingsButton/SettingsButton';
 import Modal from '../../Modal/Modal';
 import ModeSelector from '../../ModeSelector/ModeSelector';
 import { useAppSelector } from '../../../hooks';
@@ -18,7 +18,9 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.homeButton}>{showHomeButton && <HomeButton />}</div>
-          <div className={styles.gameInfo}></div>
+          <div className={styles.gameInfo}>
+            <h1 className={styles.title}>Умножение</h1>
+          </div>
           <div className={styles.settingsButton}>
             {showSettingsButton && <SettingsButton onClick={() => setIsModalOpen(true)} />}
           </div>
