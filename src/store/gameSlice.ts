@@ -65,11 +65,7 @@ const gameSlice = createSlice({
 
       state.userAnswer = '';
 
-      if (state.results.length >= state.settings.questionCount) {
-        state.gameState = GAME_STATE.FINISHED;
-      } else {
-        state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
-      }
+      state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
     },
 
     setTimeOver: state => {
