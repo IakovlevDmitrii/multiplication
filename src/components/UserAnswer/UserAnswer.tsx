@@ -1,25 +1,12 @@
 import React from 'react';
-import { useAppSelector, useTimer } from '../../hooks';
-import { getTimeColor } from '../../utils/helpers/time';
+import { useAppSelector } from '../../hooks';
 import styles from './UserAnswer.module.scss';
 
-interface UserAnswerProps {}
-
-const UserAnswer: React.FC<UserAnswerProps> = () => {
+const UserAnswer = () => {
   const { userAnswer } = useAppSelector(state => state.game);
-  const { timeProgress } = useTimer();
   return (
     <div className={styles.answerDisplay}>
-      <span
-        className={styles.answer}
-        style={
-          {
-            '--color': getTimeColor(timeProgress),
-          } as React.CSSProperties
-        }
-      >
-        {userAnswer || '?'}
-      </span>
+      <span className={styles.answer}>{userAnswer || '?'}</span>
     </div>
   );
 };
