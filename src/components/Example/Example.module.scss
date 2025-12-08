@@ -1,12 +1,9 @@
-@import '../../styles/variables';
-
 .example {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1.8rem;
+  height: 3rem;
+  font-size: 2.4rem;
+  font-weight: 600;
 }
 
 .question {
-  color: $text-primary;
+  color: var(--color-text-primary);
 }
