@@ -1,27 +1,20 @@
 import React from 'react';
 import { useAppSelector, useTimer } from '../../hooks';
-import { getTimeColor } from '../../utils/helpers/time';
 import styles from './ProgressBar.module.scss';
 
-const ProgressBar: React.FC = (): React.JSX.Element => {
-  const { results, totalQuestions } = useAppSelector(state => state.game);
+const ProgressBar = () => {
+  const { results } = useAppSelector(state => state.game);
+  const { questionCount } = useAppSelector(state => state.game.settings);
   const { timeProgress } = useTimer();
-  const questionsProgress: number = results.length / totalQuestions;
+  const questionsProgress = questionCount > 0 ? Math.min(results.length / questionCount, 1) : 0;
+
   return (
-    <div className={styles.progressContainer}>
-      <div className={styles.bars}>
-        <div className={styles.timeBarContainer}>
-          <div
-            className={styles.timeBar}
-            style={{
-              width: `${timeProgress * 100}%`,
-              background: getTimeColor(timeProgress),
-            }}
-          />
-        </div>
-        <div className={styles.questionsBarContainer}>
-          <div className={styles.questionsBar} style={{ width: `${questionsProgress * 100}%` }} />
-        </div>
+    <div className={styles.bars}>
+      <div className={styles.barContainer}>
+        <div className={styles.timeBar} style={{ width: `${timeProgress * 100}%` }} />
+      </div>
+      <div className={styles.barContainer}>
+        <div className={styles.questionsBar} style={{ width: `${questionsProgress * 100}%` }} />
       </div>
     </div>
   );

@@ -1,18 +1,5 @@
-@import '../../styles/variables';
-
-.progressContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  padding: 0 2rem;
-}
-
 .bars {
   width: 100%;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -20,61 +7,44 @@
 
 .barContainer {
   height: 1rem;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
   position: relative;
 }
 
-.bar {
+.timeBar,
+.questionsBar {
   height: 100%;
-  border-radius: 2px;
-  transition: all 0.3s ease-in-out;
+  width: 0;
   position: relative;
+  transition: width 0.3s ease-in-out;
+  overflow: visible;
 
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 80%,
-      transparent 100%
-    );
-    animation: shine 2s infinite;
+    background-size: 200% 100%;
+    animation: gradientFlow 3s ease infinite;
+    border-radius: 0.25rem 0.5rem 0.5rem 0.25rem;
   }
 }
 
-.timeBarContainer {
-  composes: barContainer;
+.timeBar::before {
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 50%, #4facfe 100%);
 }
 
-.timeBar {
-  composes: bar;
-  transition:
-    width 0.9s ease,
-    background-color 0.3s ease;
+.questionsBar::before {
+  background: linear-gradient(90deg, #805ad5 0%, #9f7aea 50%, #805ad5 100%);
 }
 
-.questionsBarContainer {
-  composes: barContainer;
-}
-
-.questionsBar {
-  composes: bar;
-  background: $purple-primary;
-  transition: width 0.7s ease-in-out;
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%);
-  }
+@keyframes gradientFlow {
+  0%,
   100% {
-    transform: translateX(100%);
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
