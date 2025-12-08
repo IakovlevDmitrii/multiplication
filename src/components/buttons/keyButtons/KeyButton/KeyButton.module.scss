@@ -1,12 +1,14 @@
 @import '../../../../styles/variables';
 
 .keyButton {
-  width: 45px;
-  height: 45px;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
   border: 1px solid $border-light;
   color: $text-primary;
   border-radius: 8px;
-  font-size: 1.3rem;
+  font-size: clamp(1.8rem, 2.5vw, 1.3rem);
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
