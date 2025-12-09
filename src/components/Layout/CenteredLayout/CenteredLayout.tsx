@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './CenteredLayout.module.scss';
 
-interface CenteredLayoutProps {
-  children: React.ReactNode;
-  maxWidth: string;
-}
+type Props = {
+  children: ReactNode;
+};
 
-export const CenteredLayout = ({ children, maxWidth }: CenteredLayoutProps) => {
+export const CenteredLayout = ({ children }: Props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.content} style={{ maxWidth }}>
-        {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { GamePageLayout } from '../../Layout';
+import { PageLayout } from '../../Layout';
 import ProgressBar from '../../ProgressBar/ProgressBar';
 import Example from '../../Example/Example';
 import UserAnswer from '../../UserAnswer/UserAnswer';
@@ -9,7 +9,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../../store/gameSlice';
 import styles from './GamePage.module.scss';
 
-export const GamePage: React.FC = () => {
+export const GamePage = () => {
   const dispatch = useAppDispatch();
   const { userAnswer, gameState } = useAppSelector(state => state.game);
 
@@ -40,16 +40,18 @@ export const GamePage: React.FC = () => {
   }, [handleKeyPress]);
 
   return (
-    <GamePageLayout>
-      <div className={styles.gamePage}>
+    <PageLayout>
+      <div className={styles.page}>
         <ProgressBar />
-        <Example />
-        <UserAnswer />
-        <VirtualKeyboard />
-        <div className={styles.answerButton}>
+        <div className={styles.exampleSection}>
+          <Example />
+          <UserAnswer />
+        </div>
+        <div className={styles.keyboardSection}>
+          <VirtualKeyboard />
           <AnswerButton />
         </div>
       </div>
-    </GamePageLayout>
+    </PageLayout>
   );
 };
