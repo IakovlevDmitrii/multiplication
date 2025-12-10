@@ -1,32 +1,29 @@
 .header {
-  background: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg-primary);
   border: 1px solid var(--color-border-light);
   padding: 1rem 0.5rem;
   border-radius: 0.25rem;
 }
 
-.headerContent {
+.title {
   display: flex;
   align-items: center;
-}
-
-.gameInfo {
-  display: flex;
-  flex: 2;
-}
-
-.title {
+  justify-content: center;
+  flex: 4;
   font-size: 2.2rem;
   font-weight: 100;
   color: var(--color-text-primary);
-  text-align: center;
   margin: 0;
 }
 
 .homeButton,
 .settingsButton {
-  flex: 1;
   display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .homeButton {

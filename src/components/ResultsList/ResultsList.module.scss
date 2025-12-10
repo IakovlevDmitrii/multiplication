@@ -1,13 +1,27 @@
 @import '../../styles/mixins/breakpoints';
 
-.resultsList {
-  max-height: 300px;
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   overflow-y: auto;
-  margin: 20px 0;
-  text-align: left;
+  max-height: 24rem;
 
   @include tablet-up {
-    max-height: 400px;
-    margin: 30px 0;
+    max-height: 30rem;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-bg-primary);
+    border-radius: 3px;
   }
 }

@@ -9,27 +9,19 @@ interface ResultItemProps {
   correctAnswer: number;
 }
 
-const ResultItem: React.FC<ResultItemProps> = ({
-  question,
-  answer,
-  isCorrect,
-  correctAnswer,
-}): React.JSX.Element => {
-  const className: string = classNames(styles.resultItem, {
+export const ResultItem = ({ question, answer, isCorrect, correctAnswer }: ResultItemProps) => {
+  const className = classNames(styles.item, {
     [styles.correct]: isCorrect,
     [styles.incorrect]: !isCorrect,
   });
   return (
     <div className={className}>
-      <span className={styles.question}>{question}</span>
-      <span className={styles.answer}>
-        Ваш ответ: {answer}
-        {!isCorrect && (
-          <span className={styles.correctAnswer}>Правильный ответ: {correctAnswer}</span>
-        )}
+      <span className={styles.question}>
+        {question} = {answer}
       </span>
+      {!isCorrect && (
+        <span className={styles.correctAnswer}>Правильный ответ: {correctAnswer}</span>
+      )}
     </div>
   );
 };
-
-export default ResultItem;

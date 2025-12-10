@@ -1,35 +1,34 @@
-.resultsPage {
+.page {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  animation: slideIn 0.5s ease-out;
-}
-
-.title {
-  font-size: 2.2rem;
-  font-weight: 100;
-  color: var(--color-text-primary);
-  text-align: center;
-}
-
-h3 {
-  font-size: 1.2rem;
-  color: var(--color-text-primary);
-  text-align: center;
-}
-.resultButtons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  align-items: center;
+  gap: 1.5rem;
+  animation: slideIn 0.5s ease-out;
+
+  h2 {
+    padding: 1rem 0.5rem;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 100;
+    color: var(--color-text-primary);
+    text-align: center;
+    width: 100%;
+  }
+
+  > *:nth-child(2) {
+    align-self: stretch;
+  }
+
+  > *:nth-child(3) {
+    align-self: stretch;
+  }
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(2rem);
   }
   to {
     opacity: 1;
