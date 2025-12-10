@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppSelector } from '../../hooks';
 import styles from './UserAnswer.module.scss';
 
-const UserAnswer = () => {
+export const UserAnswer = () => {
   const { userAnswer } = useAppSelector(state => state.game);
   return (
     <div className={styles.answerDisplay}>
@@ -10,5 +10,3 @@ const UserAnswer = () => {
     </div>
   );
 };
-
-export default UserAnswer;

@@ -1,16 +1,13 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
-import GameButton, { GAME_BUTTON_VARIANTS } from '../GameButton';
+import { GameButton, GAME_BUTTON_VARIANTS } from '../GameButton';
 import type { OutletContext } from '../../../../types';
 
-const StartGameButton: React.FC = (): React.JSX.Element => {
+export const StartGameButton = () => {
   const { onStartGame } = useOutletContext<OutletContext>();
-
   return (
     <GameButton keyType={GAME_BUTTON_VARIANTS.START} onClick={onStartGame}>
-      Начать игру
+      Начать
     </GameButton>
   );
 };
-
-export default StartGameButton;

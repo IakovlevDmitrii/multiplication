@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import ModeOption from '../ModeOption/ModeOption';
-import NumberGroup from '../NumberGroup/NumberGroup';
-import RangeGroup from '../RangeGroup/RangeGroup';
-import MultiplicationRangePreview from '../MultiplicationRangePreview/MultiplicationRangePreview';
+import { ModeOption } from '../ModeOption/ModeOption';
+import { NumberGroup } from '../NumberGroup/NumberGroup';
+import { RangeGroup } from '../RangeGroup/RangeGroup';
+import { MultiplicationRangePreview } from '../MultiplicationRangePreview/MultiplicationRangePreview';
 import { useGameConfig } from '../../../hooks';
 import { GAME_MODE, MULTIPLIERS_RANGE } from '../../../constants';
 import type { GameMode } from '../../../types';
@@ -12,7 +12,10 @@ interface SingleNumberSelectorProps {
   setSelectedMode: (mode: GameMode) => void;
 }
 
-const SingleNumberSelector = ({ selectedMode, setSelectedMode }: SingleNumberSelectorProps) => {
+export const SingleNumberSelector = ({
+  selectedMode,
+  setSelectedMode,
+}: SingleNumberSelectorProps) => {
   const { updateConfig } = useGameConfig();
   const { MODE, INITIAL_SINGLE_NUMBER, INITIAL_MIN_MULTIPLIER, INITIAL_MAX_MULTIPLIER } = useMemo(
     () => GAME_MODE.SINGLE_NUMBER,
@@ -96,5 +99,3 @@ const SingleNumberSelector = ({ selectedMode, setSelectedMode }: SingleNumberSel
     </ModeOption>
   );
 };
-
-export default SingleNumberSelector;

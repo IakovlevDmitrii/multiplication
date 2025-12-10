@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import KeyButton, { KEY_BUTTON_VARIANTS } from '../KeyButton/index';
+import { KeyButton, KEY_BUTTON_VARIANTS } from '../KeyButton';
 import { useAppDispatch } from '../../../../hooks';
 import { appendToAnswer } from '../../../../store/gameSlice';
 
@@ -7,9 +7,8 @@ interface NumberKeyButtonProps {
   numberKey: string;
 }
 
-const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({ numberKey }): React.JSX.Element => {
+export const NumberKeyButton = ({ numberKey }: NumberKeyButtonProps) => {
   const dispatch = useAppDispatch();
-
   const handleKeyPress = useCallback(() => {
     dispatch(appendToAnswer(numberKey));
   }, [dispatch, numberKey]);
@@ -20,5 +19,3 @@ const NumberKeyButton: React.FC<NumberKeyButtonProps> = ({ numberKey }): React.J
     </KeyButton>
   );
 };
-
-export default NumberKeyButton;

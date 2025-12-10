@@ -8,7 +8,7 @@ interface ModeOptionProps {
   children?: React.ReactNode;
 }
 
-const ModeOption: React.FC<ModeOptionProps> = ({ isSelected, onSelect, label, children }) => {
+export const ModeOption = ({ isSelected, onSelect, label, children }: ModeOptionProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
 
@@ -44,5 +44,3 @@ const ModeOption: React.FC<ModeOptionProps> = ({ isSelected, onSelect, label, ch
     </div>
   );
 };
-
-export default ModeOption;

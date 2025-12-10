@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import styles from './RangeGroup.module.scss';
 
 interface RangeGroupProps {
@@ -10,14 +10,7 @@ interface RangeGroupProps {
   setMax: (num: number) => void;
 }
 
-const RangeGroup: React.FC<RangeGroupProps> = ({
-  label,
-  numbers,
-  min,
-  max,
-  setMin,
-  setMax,
-}): React.JSX.Element => {
+export const RangeGroup = ({ label, numbers, min, max, setMin, setMax }: RangeGroupProps) => {
   const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -73,7 +66,7 @@ const RangeGroup: React.FC<RangeGroupProps> = ({
     setIsDragging(null);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
@@ -90,14 +83,12 @@ const RangeGroup: React.FC<RangeGroupProps> = ({
   return (
     <div className={styles.rangeGroup}>
       <label className={styles.label}>{label}</label>
-
       <div className={styles.compactRange}>
         <div className={styles.rangeValues}>
           <span className={styles.value}>{min}</span>
           <span className={styles.separator}>—</span>
           <span className={styles.value}>{max}</span>
         </div>
-
         <div ref={trackRef} className={styles.track} onClick={handleTrackClick}>
           <div
             className={styles.range}
@@ -119,7 +110,6 @@ const RangeGroup: React.FC<RangeGroupProps> = ({
             onMouseDown={handleThumbMouseDown('max')}
           />
         </div>
-
         <div className={styles.scale}>
           <span>{numbers[0]}</span>
           <span>{numbers[numbers.length - 1]}</span>
@@ -128,5 +118,3 @@ const RangeGroup: React.FC<RangeGroupProps> = ({
     </div>
   );
 };
-
-export default RangeGroup;

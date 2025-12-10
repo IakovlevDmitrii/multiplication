@@ -2,12 +2,11 @@ import React from 'react';
 import { useAppSelector, useTimer } from '../../hooks';
 import styles from './ProgressBar.module.scss';
 
-const ProgressBar = () => {
+export const ProgressBar = () => {
   const { results } = useAppSelector(state => state.game);
   const { questionCount } = useAppSelector(state => state.game.settings);
   const { timeProgress } = useTimer();
   const questionsProgress = questionCount > 0 ? Math.min(results.length / questionCount, 1) : 0;
-
   return (
     <div className={styles.bars}>
       <div className={styles.barContainer}>
@@ -19,5 +18,3 @@ const ProgressBar = () => {
     </div>
   );
 };
-
-export default ProgressBar;

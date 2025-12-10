@@ -8,12 +8,12 @@ interface NumberGroupProps {
   setSelectedNumber: (num: number) => void;
 }
 
-const NumberGroup: React.FC<NumberGroupProps> = ({
+export const NumberGroup = ({
   label,
   numbers,
   selectedNumber,
   setSelectedNumber,
-}): React.JSX.Element => {
+}: NumberGroupProps) => {
   const increment = () => {
     const currentIndex = numbers.indexOf(selectedNumber);
     if (currentIndex < numbers.length - 1) {
@@ -30,7 +30,6 @@ const NumberGroup: React.FC<NumberGroupProps> = ({
   return (
     <div className={styles.numberGroup}>
       <label className={styles.label}>{label}</label>
-
       <div className={styles.centeredSelector}>
         <div className={styles.numberControl}>
           <button
@@ -41,11 +40,9 @@ const NumberGroup: React.FC<NumberGroupProps> = ({
           >
             −
           </button>
-
           <div className={styles.numberDisplay}>
             <span className={styles.number}>{selectedNumber}</span>
           </div>
-
           <button
             type="button"
             className={styles.controlButton}
@@ -59,5 +56,3 @@ const NumberGroup: React.FC<NumberGroupProps> = ({
     </div>
   );
 };
-
-export default NumberGroup;

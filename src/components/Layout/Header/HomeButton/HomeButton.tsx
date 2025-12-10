@@ -4,15 +4,13 @@ import { useAppDispatch } from '../../../../hooks';
 import { goToMainMenu } from '../../../../store/gameSlice';
 import styles from '../HeaderButtons.module.scss';
 
-const HomeButton = () => {
+export const HomeButton = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
   const handleGoToMainMenu = () => {
     dispatch(goToMainMenu());
     navigate('/');
   };
-
   return (
     <button
       type="button"
@@ -27,5 +25,3 @@ const HomeButton = () => {
     </button>
   );
 };
-
-export default HomeButton;

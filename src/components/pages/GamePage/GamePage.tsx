@@ -1,10 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import { PageLayout } from '../../Layout';
-import ProgressBar from '../../ProgressBar/ProgressBar';
-import Example from '../../Example/Example';
-import UserAnswer from '../../UserAnswer/UserAnswer';
-import VirtualKeyboard from '../../VirtualKeyboard/VirtualKeyboard';
-import AnswerButton from '../../buttons/gameButtons/AnswerButton/AnswerButton';
+import { ProgressBar } from '../../ProgressBar/ProgressBar';
+import { Example } from '../../Example/Example';
+import { UserAnswer } from '../../UserAnswer/UserAnswer';
+import { VirtualKeyboard } from '../../VirtualKeyboard/VirtualKeyboard';
+import { AnswerButton } from '../../buttons/gameButtons';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../../store/gameSlice';
 import styles from './GamePage.module.scss';

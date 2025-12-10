@@ -6,7 +6,6 @@ export const GameSummary = () => {
   const { score } = useAppSelector(state => state.game);
   const { questionCount } = useAppSelector(state => state.game.settings);
   const accuracy = Math.round((score / questionCount) * 100);
-
   return (
     <div className={styles.summary}>
       <div className={styles.score}>

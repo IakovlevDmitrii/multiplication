@@ -1,19 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
-import BaseButton, { BaseButtonProps } from '../../BaseButton';
 import { GameButtonType } from './constants';
 import styles from './GameButton.module.scss';
 
-interface GameButtonProps extends Omit<BaseButtonProps, 'className'> {
+interface GameButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
   keyType: GameButtonType;
+  disabled?: boolean;
 }
 
-const GameButton: React.FC<GameButtonProps> = (props): React.JSX.Element => {
-  const className = classNames(styles.gameButton, styles[props.keyType], {
-    [styles.disabled]: props.disabled,
+export const GameButton = ({ children, onClick, keyType, disabled = false }: GameButtonProps) => {
+  const className = classNames(styles.gameButton, styles[keyType], {
+    [styles.disabled]: disabled,
   });
-
-  return <BaseButton {...props} className={className} />;
+  return (
+    <button className={className} onClick={onClick} disabled={disabled} type="button">
+      {children}
+    </button>
+  );
 };
-
-export default GameButton;

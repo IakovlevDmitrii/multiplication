@@ -5,7 +5,7 @@ interface SettingsButtonProps {
   onClick: () => void;
 }
 
-const SettingsButton = ({ onClick }: SettingsButtonProps) => {
+export const SettingsButton = ({ onClick }: SettingsButtonProps) => {
   return (
     <button
       type="button"
@@ -21,5 +21,3 @@ const SettingsButton = ({ onClick }: SettingsButtonProps) => {
     </button>
   );
 };
-
-export default SettingsButton;

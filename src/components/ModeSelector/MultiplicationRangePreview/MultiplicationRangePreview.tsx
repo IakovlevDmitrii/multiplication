@@ -1,5 +1,5 @@
 import React from 'react';
-import QuestionsPreview from '../../QuestionsPreview/QuestionsPreview';
+import { QuestionsPreview } from '../../QuestionsPreview/QuestionsPreview';
 import { GAME_MODE } from '../../../constants';
 import type { GameMode } from '../../../types';
 
@@ -12,7 +12,7 @@ interface MultiplicationRangePreviewProps {
   maxNumber?: number;
 }
 
-const MultiplicationRangePreview = ({
+export const MultiplicationRangePreview = ({
   mode,
   singleNumber,
   minMultiplier,
@@ -35,5 +35,3 @@ const MultiplicationRangePreview = ({
 
   return <QuestionsPreview>{getPreviewText()}</QuestionsPreview>;
 };
-
-export default MultiplicationRangePreview;

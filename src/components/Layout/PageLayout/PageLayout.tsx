@@ -1,15 +1,17 @@
 import React, { ReactNode } from 'react';
-import { CenteredLayout, Header } from '../../Layout';
+import { Header, Footer } from '../../Layout';
 import styles from './PageLayout.module.scss';
 
-type Props = {
+interface PageLayoutProps {
   children: ReactNode;
-};
+}
 
-export const PageLayout = ({ children }: Props) => (
-  <CenteredLayout>
-    <Header />
-    <main className={styles.main}>{children}</main>
-    <footer></footer>
-  </CenteredLayout>
-);
+export const PageLayout = ({ children }: PageLayoutProps) => {
+  return (
+    <div className={styles.pageLayout}>
+      <Header />
+      <main className={styles.main}>{children}</main>
+      <Footer />
+    </div>
+  );
+};

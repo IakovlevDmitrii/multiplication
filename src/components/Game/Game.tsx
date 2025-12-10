@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks';
 import { startGame, goToMainMenu } from '../../store/gameSlice';
 import { GAME_STATE } from '../../constants';
 
-const Game = () => {
+export const Game = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,5 +32,3 @@ const Game = () => {
 
   return <Outlet context={{ onStartGame: handleStartGame, onGoToMainMenu: handleGoToMainMenu }} />;
 };
-
-export default Game;

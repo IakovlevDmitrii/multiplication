@@ -12,7 +12,6 @@ export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showHomeButton = gameState === GAME_STATE.PLAYING || gameState === GAME_STATE.FINISHED;
   const showSettingsButton = gameState === GAME_STATE.IDLE;
-
   return (
     <>
       <header className={styles.header}>
@@ -22,7 +21,6 @@ export const Header = () => {
           {showSettingsButton && <SettingsButton onClick={() => setIsModalOpen(true)} />}
         </div>
       </header>
-
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <ModeSelector />
       </Modal>

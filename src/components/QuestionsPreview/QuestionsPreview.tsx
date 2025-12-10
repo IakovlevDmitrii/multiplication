@@ -5,8 +5,6 @@ interface QuestionsPreviewProps {
   children: React.ReactNode;
 }
 
-const QuestionsPreview: React.FC<QuestionsPreviewProps> = ({ children }): React.JSX.Element => {
+export const QuestionsPreview = ({ children }: QuestionsPreviewProps) => {
   return <div className={styles.preview}>{children}</div>;
 };
-
-export default QuestionsPreview;

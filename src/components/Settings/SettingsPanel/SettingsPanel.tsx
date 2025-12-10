@@ -14,7 +14,7 @@ interface SettingsPanelProps<T extends number> {
   onSettingsChange: (value: T) => void;
 }
 
-const SettingsPanel = <T extends number>({
+export const SettingsPanel = <T extends number>({
   title,
   options,
   currentValue,
@@ -32,7 +32,6 @@ const SettingsPanel = <T extends number>({
   return (
     <div className={styles.settingsPanel}>
       <h3 className={styles.title}>{title}</h3>
-
       <div className={styles.track}>
         <div className={styles.filledTrack} style={{ width: `${position}%` }} />
         {options.map(({ value }, index) => {
@@ -51,7 +50,6 @@ const SettingsPanel = <T extends number>({
           );
         })}
       </div>
-
       <div className={styles.labels}>
         {options.map(({ value, label }, index) => (
           <span
@@ -69,5 +67,3 @@ const SettingsPanel = <T extends number>({
     </div>
   );
 };
-
-export default SettingsPanel;

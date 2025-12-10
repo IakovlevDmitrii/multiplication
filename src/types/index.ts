@@ -1,5 +1,5 @@
-import { OutletContext, PagesLayoutProps } from './app.types';
-import {
+export type { OutletContext, PagesLayoutProps } from './app.types';
+export type {
   GameState,
   GameMode,
   TimePerQuestion,
@@ -15,21 +15,3 @@ import {
   TimePerQuestionOption,
   QuestionCountOption,
 } from './game.types';
-export type {
-  OutletContext,
-  PagesLayoutProps,
-  GameState,
-  GameMode,
-  TimePerQuestion,
-  QuestionCount,
-  SingleNumberConfig,
-  TwoNumbersConfig,
-  GameConfig,
-  Question,
-  GameResult,
-  GameSliceState,
-  SettingValue,
-  SettingsOption,
-  TimePerQuestionOption,
-  QuestionCountOption,
-};

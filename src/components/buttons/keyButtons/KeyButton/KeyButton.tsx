@@ -1,19 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
-import BaseButton, { BaseButtonProps } from '../../BaseButton';
 import { KeyButtonType } from './constants';
 import styles from './KeyButton.module.scss';
 
-interface KeyButtonProps extends Omit<BaseButtonProps, 'className'> {
+interface KeyButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
   keyType: KeyButtonType;
+  disabled?: boolean;
 }
 
-const KeyButton: React.FC<KeyButtonProps> = (props): React.JSX.Element => {
-  const className = classNames(styles.keyButton, styles[props.keyType], {
-    [styles.disabled]: props.disabled,
+export const KeyButton = ({ children, onClick, keyType, disabled = false }: KeyButtonProps) => {
+  const className = classNames(styles.keyButton, styles[keyType], {
+    [styles.disabled]: disabled,
   });
-
-  return <BaseButton {...props} className={className} />;
+  return (
+    <button className={className} onClick={onClick} disabled={disabled} type="button">
+      {children}
+    </button>
+  );
 };
-
-export default KeyButton;

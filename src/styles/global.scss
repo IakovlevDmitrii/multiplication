@@ -1,57 +1,156 @@
 @import 'normalize.css';
 @import './variables.scss';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+:root {
+  --font-family-primary: '';
+  --font-size-base: 16px;
+  --line-height-base: 1.2;
+  --color-purple-primary: #6b46c1;
+  --color-purple-secondary: #805ad5;
+  --color-purple-muted: #553c9a;
+  --color-gold: #c9a96e;
+  --color-bronze: #b08d57;
+  --color-green: #28a745;
+  --color-green-light: #d4edda;
+  --color-red: #dc3545;
+  --color-red-light: #f8d7da;
+
+  --color-bg-primary: #2d2d2d;
+  --color-bg-secondary: #1a1a1a;
+  --color-keyboard-bg: #252525;
+  --color-text-primary: #b08d57;
+  --color-text-secondary: #c9a96e;
+  --color-border-light: var(--color-purple-muted);
+  --color-correct: var(--color-green);
+  --color-correct-light: var(--color-green-light);
+  --color-incorrect: var(--color-red);
+  --color-incorrect-light: var(--color-red-light);
+}
+
 body {
+  /* Стандартное свойство (поддержка пока ограничена) */
+  //font-smooth: always;
+  //font-smoothing: antialiased;
+
+  /* Базовые улучшения читаемости */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  /* Предотвращение масштабирования текста на iOS */
+  -webkit-text-size-adjust: 100%;
+
+  /* Оптимизация для темных тем */
+  @media (prefers-color-scheme: dark) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+#root {
   min-height: 100vh;
+  min-width: 320px;
+
+  /* Изоляция контента */
+  isolation: isolate; /* Создает новый stacking context */
+
+  /* Оптимизация рендеринга */
+  contain: layout style; /* Оптимизация для браузера */
+
+  /* Для плавной анимации */
+  transform: translateZ(0); /* Аппаратное ускорение */
+  backface-visibility: hidden;
+
+  /* Предотвращение скачков контента */
+  overflow-anchor: auto;
+
+  /* Для accessibility */
+  position: relative;
+
+  /* Для мобильных устройств */
+  -webkit-tap-highlight-color: transparent;
+
+  /* Улучшение рендеринга шрифтов */
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+
+  font-family: var(--font-family-primary), serif;
+  font-size: var(--font-size-base, 16px);
+  line-height: var(--line-height-base, 1.2);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  /* Улучшение рендеринга */
+  text-rendering: optimizeSpeed;
+
+  /* Баланс текста (если поддерживается) */
+  text-wrap: balance;
+}
+
+/* Отключение анимаций для пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  #root {
+    scroll-behavior: auto;
+  }
+
+  #root *,
+  #root *::before,
+  #root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+div {
+  box-sizing: border-box;
 }
 
 button,
 input,
 select,
 textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-#root {
-  min-height: 100vh;
-}
-
-:root {
-  --color-bg-primary: #2d2d2d;
-  --color-bg-secondary: #1a1a1a;
-  --color-keyboard-bg: #252525;
-  --color-purple-primary: #6b46c1;
-  --color-purple-secondary: #805ad5;
-  --color-purple-muted: #553c9a;
-  --color-gold: #c9a96e;
-  --color-bronze: #b08d57;
-  --color-text-primary: #c9a96e;
-  --color-text-secondary: #e8e8e8;
-  --color-border-light: #c9a96e;
 }

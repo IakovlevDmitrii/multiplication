@@ -7,7 +7,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.JSX.Element | null => {
+export const Modal = ({ isOpen, onClose, children }: ModalProps): React.JSX.Element | null => {
   if (!isOpen) return null;
 
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -34,5 +34,3 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.JSX.E
     </div>
   );
 };
-
-export default Modal;

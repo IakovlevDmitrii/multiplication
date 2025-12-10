@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import ModeOption from '../ModeOption/ModeOption';
-import RangeGroup from '../RangeGroup/RangeGroup';
-import MultiplicationRangePreview from '../MultiplicationRangePreview/MultiplicationRangePreview';
+import { ModeOption } from '../ModeOption/ModeOption';
+import { RangeGroup } from '../RangeGroup/RangeGroup';
+import { MultiplicationRangePreview } from '../MultiplicationRangePreview/MultiplicationRangePreview';
 import { useGameConfig } from '../../../hooks';
 import { GAME_MODE, MULTIPLIERS_RANGE } from '../../../constants';
 import type { GameMode } from '../../../types';
@@ -11,7 +11,7 @@ interface TwoNumberSelectorProps {
   setSelectedMode: (mode: GameMode) => void;
 }
 
-const TwoNumberSelector = ({ selectedMode, setSelectedMode }: TwoNumberSelectorProps) => {
+export const TwoNumberSelector = ({ selectedMode, setSelectedMode }: TwoNumberSelectorProps) => {
   const { updateConfig } = useGameConfig();
   const { MODE, INITIAL_MIN_NUMBER, INITIAL_MAX_NUMBER } = useMemo(() => GAME_MODE.TWO_NUMBERS, []);
   const [minNumber, setMinNumber] = useState<number>(INITIAL_MIN_NUMBER);
@@ -63,5 +63,3 @@ const TwoNumberSelector = ({ selectedMode, setSelectedMode }: TwoNumberSelectorP
     </ModeOption>
   );
 };
-
-export default TwoNumberSelector;

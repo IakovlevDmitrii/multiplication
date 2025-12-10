@@ -1,17 +1,9 @@
-@import '../../../../styles/mixins/breakpoints';
-
 .gameButton {
-  padding: 15px 30px;
-  font-size: 1.1em;
-  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  @include tablet-up {
-    padding: 15px 40px;
-    font-size: 1.2em;
-    border-radius: 25px;
-  }
 
   &.active {
     transform: translateY(-2px);
