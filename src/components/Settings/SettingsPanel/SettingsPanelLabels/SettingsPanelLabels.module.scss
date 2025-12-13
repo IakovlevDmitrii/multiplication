@@ -22,7 +22,7 @@
   padding: 0.25rem;
   position: relative;
   min-width: auto;
-  @include transition-all();
+  @include transition-all($easing: var(--transition-easing-accelerate));
 
   &:hover {
     transform: translateY(-2px);
@@ -61,7 +61,7 @@
   font-family: var(--font-family-sans), sans-serif;
   display: block;
   text-align: center;
-  @include transition-colors(var(--transition-easing));
+  @include transition-colors($easing: var(--transition-easing-accelerate));
 
   @include tablet-up {
     font-size: var(--text-base);

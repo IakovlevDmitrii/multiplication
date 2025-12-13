@@ -34,7 +34,7 @@
   transform: translateY(-50%);
   box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
   z-index: 1;
-  @include transition-width();
+  @include transition-width($easing: var(--transition-easing-accelerate));
 }
 
 .sliderPoint {
@@ -45,7 +45,7 @@
   background-color: transparent;
   transform: translate(-50%, -50%);
   z-index: 2;
-  @include transition-all();
+  @include transition-all($easing: var(--transition-easing-accelerate));
 
   &:focus-visible {
     outline: 2px solid var(--color-primary-400);
@@ -100,7 +100,7 @@
   background-color: var(--color-surface-600);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  @include transition-all();
+  @include transition-all($easing: var(--transition-easing-accelerate));
 }
 
 .pointGlow {
