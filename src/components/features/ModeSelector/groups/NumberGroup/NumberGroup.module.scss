@@ -1,0 +1,84 @@
+@import '../../../../../styles/mixins/mixins';
+@import '../../../../../styles/mixins/breakpoints';
+@import '../../../../../styles/mixins/transitions';
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans), sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--color-surface-panel);
+  @include border-base;
+  border-radius: var(--radius-card);
+  padding: var(--option-padding);
+  overflow: hidden;
+  @include neon-line-on-top;
+}
+
+.controlButton {
+  --button-size: 2.5rem;
+
+  width: var(--button-size);
+  height: var(--button-size);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  position: relative;
+  overflow: hidden;
+  @include transition-all($duration: var(--transition-duration-fast));
+
+  &::before {
+    content: '';
+    @include full-cover;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    @include transition-opacity($duration: var(--transition-duration-fast));
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-surface-700);
+    color: var(--color-primary-400);
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 1px 0 rgba(255, 255, 255, 0.05);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+}

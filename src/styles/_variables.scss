@@ -1,0 +1,113 @@
+@import './mixins/breakpoints';
+@import './animations';
+
+:root {
+  // Primary palette
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #c084fc;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #9333ea;
+  --color-primary-700: #7e22ce;
+  --color-primary-800: #6b21a8;
+  --color-primary-900: #581c87;
+
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-300: #cbd5e1;
+  --color-surface-400: #94a3b8;
+  --color-surface-500: #64748b;
+  --color-surface-600: #475569;
+  --color-surface-700: #334155;
+  --color-surface-800: #1e293b;
+  --color-surface-900: #0f172a;
+  --color-surface-950: #020617;
+
+  // Semantic colors
+  --color-bg-primary: var(--color-surface-950);
+  --color-bg-secondary: var(--color-surface-900);
+  --color-surface-panel: var(--color-surface-800);
+  --color-keyboard-bg: var(--color-surface-panel);
+  --color-text-primary: var(--color-surface-100);
+  --color-text-secondary: var(--color-surface-400);
+  --color-border: var(--color-surface-700);
+
+  // Functional colors
+  --color-correct: #10b981;
+  --color-correct-light: #34d399;
+  --color-excellent: #8b5cf6;
+  --color-excellent-light: #a78bfa;
+  --color-good: #3b82f6;
+  --color-good-light: #60a5fa;
+  --color-average: #f59e0b;
+  --color-average-light: #fbbf24;
+  --color-incorrect: #ef4444;
+  --color-incorrect-light: rgba(239, 68, 68, 0.1);
+  --color-poor: #ef4444;
+  --color-poor-light: #f87171;
+
+  /* Base scale (8px grid) */
+  --radius-scale: 0.5rem;
+
+  /* Static radii */
+  --radius-0: 0;
+  --radius-1: calc(var(--radius-scale) * 0.5); /* 4px */
+  --radius-2: var(--radius-scale); /* 8px */
+  --radius-3: calc(var(--radius-scale) * 1.5); /* 12px */
+  --radius-4: calc(var(--radius-scale) * 2); /* 16px */
+  --radius-5: calc(var(--radius-scale) * 3); /* 24px */
+  --radius-6: calc(var(--radius-scale) * 4); /* 32px */
+  --radius-7: calc(var(--radius-scale) * 6); /* 48px */
+  --radius-8: calc(var(--radius-scale) * 8); /* 64px */
+
+  /* === Special === */
+  --radius-full: 9999px;
+
+  /* === Semantic === */
+  --radius-default: var(--radius-2);
+  --radius-card: var(--radius-3);
+  --radius-button: var(--radius-3);
+  --radius-tooltip: var(--radius-2);
+
+  --radius-input: var(--radius-2);
+  --radius-alert: var(--radius-3);
+  --radius-modal: var(--radius-5);
+
+  // Effects
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
+  --gradient-surface: linear-gradient(135deg, var(--color-surface-900), var(--color-surface-950));
+
+  // transition
+  --transition-duration: 200ms;
+  --transition-duration-fast: 100ms;
+  --transition-duration-slow: 400ms;
+
+  --transition-easing: ease-in-out;
+  //--transition-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  //--transition-easing-decelerate: cubic-bezier(0, 0, 0, 1);
+  --transition-easing-accelerate: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Settings panel
+  --panel-padding: 1.5rem;
+  --track-height: 0.5rem;
+  --point-size: 2rem;
+  --point-active-size: 2.5rem;
+
+  @include tablet-up {
+    --panel-padding: 2.5rem;
+    --track-height: 0.75rem;
+    --point-size: 2.25rem;
+    --point-active-size: 2.75rem;
+  }
+
+  --page-layout-animation: slideIn var(--transition-duration-slow) var(--transition-easing);
+}

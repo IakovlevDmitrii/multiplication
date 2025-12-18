@@ -1,67 +1,67 @@
-@import '../variables';
+@mixin full-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
 
-// Миксин для создания контейнера
-@mixin container($name: null, $type: inline-size) {
-  container-type: $type;
+@mixin neon-line-on-top {
+  position: relative;
 
-  @if $name {
-    container-name: $name;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-primary-500) 70%,
+      transparent 100%
+    );
   }
 }
 
-// Миксин для контейнерных запросов
-@mixin when-container($min-width: null, $max-width: null, $name: null) {
-  $query: '';
+@mixin border-line-on($side: top, $thickness: 1px, $color: null) {
+  position: relative;
 
-  @if $min-width and $max-width {
-    $query: '(min-width: #{$min-width}) and (max-width: #{$max-width})';
-  } @else if $min-width {
-    $query: '(min-width: #{$min-width})';
-  } @else if $max-width {
-    $query: '(max-width: #{$max-width})';
-  }
+  $pseudo: if($side == top, 'before', 'after');
 
-  @if $name {
-    $query: '#{$name} #{$query}';
-  }
+  &::#{$pseudo} {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: $thickness;
+    #{$side}: 0;
+    margin: 0 1.5rem;
 
-  @container #{$query} {
-    @content;
-  }
-}
-
-// Миксин для брейкпоинтов
-@mixin container-breakpoint($breakpoint, $direction: 'min', $name: null) {
-  $value: map-get($container-breakpoints, $breakpoint);
-
-  @if not $value {
-    @error "Breakpoint #{$breakpoint} not found in $container-breakpoints";
-  }
-
-  $query: '';
-
-  @if $direction == 'min' {
-    $query: '(min-width: #{$value})';
-  } @else if $direction == 'max' {
-    $query: '(max-width: #{$value - 1})';
-  } @else if $direction == 'only' {
-    $next-breakpoint: map-get($container-breakpoints, $breakpoint);
-    $next-index: index(map-keys($container-breakpoints), $breakpoint) + 1;
-
-    @if $next-index <= length($container-breakpoints) {
-      $next-key: nth(map-keys($container-breakpoints), $next-index);
-      $next-value: map-get($container-breakpoints, $next-key);
-      $query: '(min-width: #{$value}) and (max-width: #{$next-value - 1})';
+    @if $color {
+      background: $color;
     } @else {
-      $query: '(min-width: #{$value})';
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
     }
   }
+}
 
-  @if $name {
-    $query: '#{$name} #{$query}';
-  }
+@mixin focus-visible {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 2px;
+}
 
-  @container #{$query} {
-    @content;
-  }
+@mixin border-base {
+  border: 1px solid var(--color-border);
+}
+
+@mixin panel {
+  @include border-base;
+  background-color: var(--color-surface-panel);
+}
+
+@mixin page-layout-animation {
+  animation: slideIn var(--transition-duration-slow) var(--transition-easing);
 }

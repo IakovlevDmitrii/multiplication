@@ -1,0 +1,19 @@
+@import '../../../../../styles/mixins/mixins';
+
+.preview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-surface-panel);
+  @include border-base;
+  border-radius: var(--radius-card);
+  padding: var(--option-padding);
+}
+
+.previewText {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  font-family: var(--font-family-sans), sans-serif;
+}

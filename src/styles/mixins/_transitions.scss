@@ -1,0 +1,42 @@
+@import '../variables';
+
+@mixin transition($properties: all, $duration: null, $easing: null, $delay: null) {
+  $duration-value: if($duration, $duration, var(--transition-duration));
+  $easing-value: if($easing, $easing, var(--transition-easing));
+  $delay-value: if($delay, $delay, 0s);
+
+  transition: $properties $duration-value $easing-value $delay-value;
+}
+
+@mixin transition-all($duration: var(--transition-duration), $easing: var(--transition-easing)) {
+  @include transition(all, $duration, $easing);
+}
+
+@mixin transition-all-accelerate(
+  $duration: var(--transition-duration),
+  $easing: var(--transition-easing-accelerate)
+) {
+  @include transition(all, $duration, $easing);
+}
+
+@mixin transition-transform(
+  $duration: var(--transition-duration),
+  $easing: var(--transition-easing)
+) {
+  @include transition(transform, $duration, $easing);
+}
+
+@mixin transition-opacity(
+  $duration: var(--transition-duration),
+  $easing: var(--transition-easing)
+) {
+  @include transition(opacity, $duration, $easing);
+}
+
+@mixin transition-colors($duration: var(--transition-duration), $easing: var(--transition-easing)) {
+  @include transition(color background-color border-color fill stroke, $duration, $easing);
+}
+
+@mixin transition-width($duration: var(--transition-duration), $easing: var(--transition-easing)) {
+  @include transition(width, $duration, $easing);
+}

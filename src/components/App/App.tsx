@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
-import { Game } from '../Game/Game';
-import { GamePage, ResultsPage, StartPage } from '../pages';
+import { Game } from '../Game';
+import { GamePage, ResultsPage, StartPage } from '../../pages';
 import '../../styles/index.scss';
 
 export const App = () => {
