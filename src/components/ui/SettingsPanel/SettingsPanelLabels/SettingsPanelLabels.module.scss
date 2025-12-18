@@ -1,0 +1,81 @@
+@import '../../../../styles/animations';
+@import '../../../../styles/mixins/breakpoints';
+@import '../../../../styles/mixins/transitions';
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+
+  @include tablet-up {
+    padding: 0 0.5rem;
+
+    .labelButton {
+      min-width: 60px;
+      padding: 0.5rem;
+    }
+  }
+}
+
+.labelButton {
+  background: transparent;
+  padding: 0.25rem;
+  position: relative;
+  min-width: auto;
+  @include transition-all-accelerate();
+
+  &:hover {
+    transform: translateY(-2px);
+
+    .labelText {
+      color: var(--color-text-primary);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    .labelText {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &.labelPast {
+    .labelText {
+      color: var(--color-primary-500);
+    }
+  }
+
+  &.labelSelected {
+    .labelText {
+      color: var(--color-primary-400);
+      font-weight: 100;
+    }
+  }
+}
+
+.labelText {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-sans), sans-serif;
+  display: block;
+  text-align: center;
+  @include transition-colors($easing: var(--transition-easing-accelerate));
+
+  @include tablet-up {
+    font-size: var(--text-base);
+  }
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary-400);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: indicatorPulse 2s var(--transition-easing) infinite;
+}

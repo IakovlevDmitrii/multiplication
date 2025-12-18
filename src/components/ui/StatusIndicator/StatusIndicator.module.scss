@@ -1,0 +1,38 @@
+@import '../../../styles/mixins/breakpoints';
+
+.statusIndicator {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+
+  &.correct {
+    background-color: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  &.incorrect {
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  @include mobile-large-up {
+    display: flex;
+  }
+}
+
+.statusIcon {
+  font-size: 1rem;
+  font-weight: 700;
+
+  .correct & {
+    color: var(--color-correct);
+  }
+
+  .incorrect & {
+    color: var(--color-incorrect);
+  }
+}

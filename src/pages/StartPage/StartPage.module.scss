@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+@import '../../styles/mixins/mixins';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  @include page-layout-animation;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.start {
+  display: flex;
+  justify-content: center;
+}

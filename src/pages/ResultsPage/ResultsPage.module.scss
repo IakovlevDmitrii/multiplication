@@ -1,0 +1,29 @@
+@import '../../styles/mixins/mixins';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  @include page-layout-animation;
+
+  > *:nth-child(2) {
+    align-self: stretch;
+  }
+
+  > *:nth-child(3) {
+    align-self: stretch;
+  }
+}
+
+.title {
+  padding: 1rem 1.5rem 0;
+  margin: 0;
+  font-size: var(--text-3xl);
+  font-weight: 100;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  text-align: center;
+  width: 100%;
+}

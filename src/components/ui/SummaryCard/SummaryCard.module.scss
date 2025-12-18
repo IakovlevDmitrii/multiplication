@@ -1,0 +1,52 @@
+@import '../../../styles/mixins/mixins';
+@import '../../../styles/mixins/breakpoints';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
+  @include border-base;
+  border-radius: var(--radius-card);
+  padding: 1rem;
+  overflow: hidden;
+  @include neon-line-on-top;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-sans), sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.body {
+}

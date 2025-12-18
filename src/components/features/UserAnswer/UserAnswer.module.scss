@@ -1,0 +1,194 @@
+@import '../../../styles/mixins/mixins';
+@import '../../../styles/mixins/breakpoints';
+
+.answerDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6rem;
+  min-width: 200px;
+  padding: 1.5rem 3rem;
+  background-image: linear-gradient(135deg, var(--color-surface-panel), var(--color-bg-secondary));
+  @include border-base;
+  border-radius: var(--radius-card);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: '';
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    @include full-cover;
+    z-index: 1;
+  }
+
+  &.hasAnswer {
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.3),
+      0 0 0 2px var(--color-primary-500),
+      0 0 20px rgba(168, 85, 247, 0.4),
+      inset 0 0 20px rgba(168, 85, 247, 0.1);
+    animation: answerGlow 2s ease-in-out infinite;
+    transform: translateY(-2px);
+  }
+}
+
+.answer {
+  font-size: var(--text-4xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono), sans-serif;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.empty {
+    color: var(--color-text-secondary);
+    opacity: 0.4;
+    animation: placeholderPulse 3s ease-in-out infinite;
+  }
+
+  .hasAnswer & {
+    color: var(--color-primary-400);
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+  }
+}
+
+.answerDigit {
+  display: inline-block;
+  animation: digitAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+
+  .hasAnswer & {
+    animation: digitGlow 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--i, 1) * 0.1s);
+  }
+}
+
+@keyframes digitAppear {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes placeholderPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes answerGlow {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.3),
+      0 0 0 2px var(--color-primary-500),
+      0 0 20px rgba(168, 85, 247, 0.4),
+      inset 0 0 20px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.3),
+      0 0 0 3px var(--color-primary-400),
+      0 0 30px rgba(168, 85, 247, 0.6),
+      inset 0 0 30px rgba(168, 85, 247, 0.2);
+  }
+}
+
+@keyframes digitGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(168, 85, 247, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.typing .answerDigit {
+  animation: typewriter 0.1s ease forwards;
+}
+
+@include tablet-up {
+  .answerDisplay {
+    min-height: 7rem;
+    min-width: 300px;
+    padding: 2rem 4rem;
+
+    &.hasAnswer {
+      box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        0 0 0 3px var(--color-primary-500),
+        0 0 30px rgba(168, 85, 247, 0.5),
+        inset 0 0 25px rgba(168, 85, 247, 0.15);
+    }
+  }
+
+  .answer {
+    font-size: var(--text-5xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .answerDisplay {
+    min-height: 5rem;
+    min-width: auto;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 16px;
+
+    &.hasAnswer {
+      box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        0 0 0 2px var(--color-primary-500),
+        0 0 15px rgba(168, 85, 247, 0.4),
+        inset 0 0 15px rgba(168, 85, 247, 0.1);
+    }
+  }
+
+  .answer {
+    font-size: var(--text-3xl);
+  }
+}

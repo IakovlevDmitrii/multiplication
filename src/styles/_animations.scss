@@ -131,3 +131,25 @@
     transform: translateX(-50%) scale(2);
   }
 }
+
+//.answerDigit {
+//  display: inline-block;
+//  animation: digitAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+//
+//  @for $i from 1 through 10 {
+//    &:nth-child(#{$i}) {
+//      animation-delay: #{$i * 0.05}s;
+//    }
+//  }
+//}
+
+@keyframes digitAppear {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

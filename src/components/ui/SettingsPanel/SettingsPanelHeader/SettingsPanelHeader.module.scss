@@ -1,0 +1,47 @@
+@import '../../../../styles/mixins/breakpoints';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 100;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans), sans-serif;
+  letter-spacing: -0.01em;
+
+  @include tablet-up {
+    font-size: var(--text-lg);
+  }
+}
+
+.valueIndicator {
+  background-color: var(--color-surface-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--button-radius);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  align-self: stretch;
+}
+
+.valueLabel {
+  font-size: var(--text-xl);
+  font-weight: 100;
+  color: var(--color-primary-400);
+  font-family: var(--font-family-mono), sans-serif;
+
+  @include tablet-up {
+    font-size: var(--text-lg);
+  }
+}
