@@ -1,3 +1,11 @@
+@import '../styles/mixins/mixins';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -8,13 +16,24 @@ body {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+body {
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-sans), sans-serif;
+  font-size: var(--text-base, 1rem);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt', 'cv11', 'ss01';
+  font-variation-settings: 'opsz' 32;
+  line-height: var(--line-height-tight, 1.2);
+  background-color: var(--color-bg-secondary);
+  text-rendering: optimizeLegibility;
+  text-wrap: balance;
 }
 
 #root {
@@ -24,40 +43,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* Изоляция контента */
-  isolation: isolate; /* Создает новый stacking context */
-
-  /* Для плавной анимации */
-  backface-visibility: hidden;
-
-  /* Предотвращение скачков контента */
-  overflow-anchor: auto;
-
-  /* Для accessibility */
   position: relative;
-
-  /* Для мобильных устройств */
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Отключение анимаций для пользователей с prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  #root {
-    scroll-behavior: auto;
-  }
-
-  #root *,
-  #root *::before,
-  #root *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-div {
-  box-sizing: border-box;
+  overflow-x: hidden;
+  isolation: isolate;
 }
 
 button {
@@ -68,6 +56,7 @@ button {
   font: inherit;
   color: inherit;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 svg {
@@ -79,4 +68,55 @@ svg {
 a {
   color: inherit;
   text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+:focus-visible {
+  @include focus-visible;
+}
+
+::selection {
+  background-color: var(--color-primary-600);
+  color: var(--color-bg-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
