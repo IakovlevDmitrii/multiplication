@@ -1,3 +1,4 @@
+export { Game } from './Game';
 export { ResultsList } from './GameResults';
 export { Summary } from './GameResults';
 export { QuestionCountSettings } from './GameSettings';

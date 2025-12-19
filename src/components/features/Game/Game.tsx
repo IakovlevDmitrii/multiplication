@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { startGame, goToMainMenu } from '../../store/gameSlice';
-import { GAME_STATE } from '../../constants';
+import { useAppSelector, useAppDispatch } from '../../../hooks';
+import { startGame, goToMainMenu } from '../../../store/gameSlice';
+import { GAME_STATE } from '../../../constants';
 
 export const Game = () => {
   const dispatch = useAppDispatch();
