@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useAppSelector } from '../../../hooks';
+import { useAppSelector } from '../../../../hooks';
 import styles from './UserAnswer.module.scss';
 
 export const UserAnswer = () => {

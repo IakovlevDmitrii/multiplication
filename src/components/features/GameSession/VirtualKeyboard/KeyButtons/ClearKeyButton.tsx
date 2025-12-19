@@ -1,8 +1,8 @@
 import React from 'react';
-import { ClearIcon } from '../../../../icons';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../ui/KeyButton';
-import { useAppDispatch } from '../../../../hooks';
-import { clearAnswer } from '../../../../store/gameSlice';
+import { ClearIcon } from '../../../../../icons';
+import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../../ui/KeyButton';
+import { useAppDispatch } from '../../../../../hooks';
+import { clearAnswer } from '../../../../../store/gameSlice';
 
 export const ClearKeyButton = () => {
   const dispatch = useAppDispatch();

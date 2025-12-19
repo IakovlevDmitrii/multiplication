@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../ui/KeyButton';
-import { useAppDispatch } from '../../../../hooks';
-import { appendToAnswer } from '../../../../store/gameSlice';
+import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../../ui/KeyButton';
+import { useAppDispatch } from '../../../../../hooks';
+import { appendToAnswer } from '../../../../../store/gameSlice';
 
 interface NumberKeyButtonProps {
   numberKey: string;

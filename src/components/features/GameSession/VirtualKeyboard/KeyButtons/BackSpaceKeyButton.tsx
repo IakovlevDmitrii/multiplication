@@ -1,8 +1,8 @@
 import React from 'react';
-import { BackspaceIcon } from '../../../../icons';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../ui/KeyButton';
-import { useAppDispatch } from '../../../../hooks';
-import { backspaceAnswer } from '../../../../store/gameSlice';
+import { BackspaceIcon } from '../../../../../icons';
+import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../../ui/KeyButton';
+import { useAppDispatch } from '../../../../../hooks';
+import { backspaceAnswer } from '../../../../../store/gameSlice';
 
 export const BackSpaceKeyButton = () => {
   const dispatch = useAppDispatch();
