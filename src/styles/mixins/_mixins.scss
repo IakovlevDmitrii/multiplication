@@ -1,3 +1,13 @@
+@mixin page-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem 0;
+  @include page-layout-animation;
+}
+
 @mixin full-cover {
   position: absolute;
   top: 0;
@@ -59,7 +69,30 @@
 
 @mixin panel {
   @include border-base;
+  background-color: var(--color-bg-secondary);
+}
+
+@mixin panel-light {
+  @include border-base;
   background-color: var(--color-surface-panel);
+}
+
+@mixin card-base {
+  //width: 100%;
+  @include border-base;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+@mixin card {
+  @include card-base;
+  background-color: var(--color-bg-secondary);
+}
+
+@mixin card-dark {
+  @include card-base;
+  background-color: var(--color-bg-primary);
+  background-image: var(--gradient-primary);
 }
 
 @mixin page-layout-animation {

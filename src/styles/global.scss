@@ -1,4 +1,5 @@
 @import '../styles/mixins/mixins';
+@import '../styles/mixins/breakpoints';
 
 *,
 *::before,
@@ -34,6 +35,11 @@ body {
   background-color: var(--color-bg-secondary);
   text-rendering: optimizeLegibility;
   text-wrap: balance;
+
+  @include mobile-large-up {
+    background-color: var(--color-surface-panel);
+    background-image: var(--gradient-secondary);
+  }
 }
 
 #root {

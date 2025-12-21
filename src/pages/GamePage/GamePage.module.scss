@@ -3,41 +3,11 @@
 @import '../../styles/mixins/breakpoints';
 
 .layout {
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 0;
-  @include page-layout-animation;
-
-  @include tablet-up {
-    padding: 1rem 0 2rem;
-  }
+  @include page-layout;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-
-  @include tablet-up {
-    gap: 2rem;
-  }
-}
-
-.header {
-  position: sticky;
-  top: 0.5rem;
-  z-index: 10;
+.progressAside {
   backdrop-filter: blur(10px);
-  border-radius: var(--radius-card);
-  padding: 0.25rem 1.5rem;
-  background-color: var(--color-bg-secondary);
-  @include border-base;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .content {
@@ -46,19 +16,14 @@
   gap: 1.5rem;
 }
 
-.questionSection {
+.questionSection,
+.controlsSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: var(--color-bg-secondary);
-  @include border-base;
-  border-radius: var(--radius-card);
-  padding: 1.5rem 1.5rem 1.5rem;
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  overflow: hidden;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  @include card-dark;
   @include neon-line-on-top;
 }
 
@@ -69,18 +34,4 @@
   font-weight: 400;
   letter-spacing: 0.02em;
   opacity: 0.8;
-}
-
-.controlsSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-card);
-  background-color: var(--color-bg-secondary);
-  @include border-base;
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }

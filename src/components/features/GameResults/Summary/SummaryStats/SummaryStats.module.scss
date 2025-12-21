@@ -31,7 +31,7 @@
   height: 1.5rem;
   border-radius: var(--radius-tooltip);
   overflow: hidden;
-  @include panel;
+  @include panel-light;
 }
 
 .progressBar {
@@ -88,7 +88,7 @@
   position: relative;
   height: 3rem;
   border-radius: var(--radius-tooltip);
-  @include panel;
+  @include panel-light;
   overflow: hidden;
 }
 

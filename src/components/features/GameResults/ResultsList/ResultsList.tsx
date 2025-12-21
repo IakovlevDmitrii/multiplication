@@ -24,7 +24,6 @@ export const ResultsList = (): React.JSX.Element | null => {
   if (!results || !results.length) {
     return (
       <div className={styles.emptyList}>
-        <div className={styles.emptyIcon}>📋</div>
         <div className={styles.emptyText}>Результаты появятся здесь после игры</div>
       </div>
     );

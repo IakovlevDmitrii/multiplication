@@ -39,25 +39,23 @@ export const GamePage = () => {
   return (
     <PageLayout>
       <div className={styles.layout}>
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <ProgressBar />
+        <aside className={styles.progressAside}>
+          <ProgressBar />
+        </aside>
+
+        <section className={styles.content}>
+          <div className={styles.questionSection}>
+            <Example />
+            <UserAnswer />
           </div>
 
-          <div className={styles.content}>
-            <div className={styles.questionSection}>
-              <Example />
-              <UserAnswer />
-            </div>
-
-            <div className={styles.controlsSection}>
-              <VirtualKeyboard />
-              <GameButton onClick={onAnswerClick} disabled={!userAnswer}>
-                Ответить
-              </GameButton>
-            </div>
+          <div className={styles.controlsSection}>
+            <VirtualKeyboard />
+            <GameButton onClick={onAnswerClick} disabled={!userAnswer}>
+              Ответить
+            </GameButton>
           </div>
-        </div>
+        </section>
       </div>
     </PageLayout>
   );

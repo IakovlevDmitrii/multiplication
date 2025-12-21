@@ -7,7 +7,7 @@
   gap: 0.375rem;
   height: var(--result-box-height);
   padding: 0 0.5rem;
-  @include panel;
+  @include panel-light;
   border-radius: var(--radius-tooltip);
 }
 

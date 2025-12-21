@@ -15,9 +15,7 @@ export const StartPage = () => {
           <QuestionCountSettings />
           <TimeSettings />
         </div>
-        <div className={styles.start}>
-          <GameButton onClick={onStartGame}>Начать</GameButton>
-        </div>
+        <GameButton onClick={onStartGame}>Начать</GameButton>
       </div>
     </PageLayout>
   );
