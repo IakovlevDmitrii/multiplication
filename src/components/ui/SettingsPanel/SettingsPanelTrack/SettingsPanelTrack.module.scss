@@ -5,12 +5,12 @@
 
 .trackContainer {
   position: relative;
-  padding: 1.5rem 0.5rem;
+  padding: var(--gap-base) 0.5rem;
 }
 
 .track {
   position: relative;
-  height: var(--track-height);
+  height: var(--spacing-2);
   background-color: transparent;
 }
 
@@ -41,8 +41,8 @@
 .sliderPoint {
   position: absolute;
   top: 50%;
-  width: var(--point-size);
-  height: var(--point-size);
+  width: 2rem;
+  height: 2rem;
   background-color: transparent;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -64,7 +64,7 @@
   &.sliderPointPast {
     .pointInner {
       background-color: var(--color-primary-500);
-      box-shadow: 0 0 0 2px var(--color-surface-900);
+      box-shadow: 0 0 0 2px var(--color-bg-secondary);
     }
   }
 
@@ -72,19 +72,19 @@
     .pointInner {
       background-color: var(--color-primary-500);
       box-shadow:
-        0 0 0 2px var(--color-surface-900),
+        0 0 0 2px var(--color-bg-secondary),
         0 4px 12px rgba(168, 85, 247, 0.4);
     }
   }
 
   &.sliderPointActive {
-    width: var(--point-active-size);
-    height: var(--point-active-size);
+    width: 2.5rem;
+    height: 2.5rem;
 
     .pointInner {
       background-color: var(--color-primary-400);
       box-shadow:
-        0 0 0 4px var(--color-surface-900),
+        0 0 0 4px var(--color-bg-secondary),
         0 6px 20px rgba(168, 85, 247, 0.5);
       animation: pointPulse 2s var(--transition-easing) infinite;
     }

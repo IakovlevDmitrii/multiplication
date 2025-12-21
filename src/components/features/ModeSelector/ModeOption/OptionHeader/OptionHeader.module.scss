@@ -33,7 +33,7 @@
   }
 
   &.radioButtonActive {
-    @include border-line-on(bottom);
+    @include line-on(bottom);
 
     .optionLabel {
       color: var(--color-primary-400);

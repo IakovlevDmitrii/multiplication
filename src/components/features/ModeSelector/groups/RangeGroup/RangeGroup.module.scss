@@ -24,7 +24,7 @@
   flex-direction: column;
   gap: 1rem;
   background-color: var(--color-surface-panel);
-  @include border-base;
+  border: var(--border-base);
   border-radius: var(--radius-card);
   padding: var(--option-padding) 1.5rem;
   overflow: hidden;

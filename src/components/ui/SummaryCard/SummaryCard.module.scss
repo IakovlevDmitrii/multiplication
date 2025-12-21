@@ -6,12 +6,15 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  @include card;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: var(--border-base);
+  background-color: var(--color-bg-secondary);
 }
 
 .header {
   display: flex;
-  gap: 1rem;
+  gap: var(--gap-base);
 }
 
 .icon {
@@ -41,7 +44,4 @@
   color: var(--color-text-primary);
   font-family: var(--font-family-sans), sans-serif;
   letter-spacing: -0.01em;
-}
-
-.body {
 }

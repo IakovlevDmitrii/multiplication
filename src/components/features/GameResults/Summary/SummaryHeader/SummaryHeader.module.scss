@@ -4,9 +4,9 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--gap-base);
   padding: 0 0 1rem 0;
-  @include border-line-on(bottom);
+  @include line-on(bottom);
 
   @include tablet-up {
     flex-direction: row;

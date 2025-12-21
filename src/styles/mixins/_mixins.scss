@@ -2,41 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 1.5rem;
+  gap: var(--gap-base);
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 1rem 0 var(--padding-base) 0;
   @include page-layout-animation;
 }
 
 @mixin full-cover {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   pointer-events: none;
 }
 
-@mixin neon-line-on-top {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--color-primary-500) 70%,
-      transparent 100%
-    );
-  }
-}
-
-@mixin border-line-on($side: top, $thickness: 1px, $color: null) {
+@mixin line-on($side: top, $color: null) {
   position: relative;
 
   $pseudo: if($side == top, 'before', 'after');
@@ -46,9 +24,9 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: $thickness;
+    height: 1px;
     #{$side}: 0;
-    margin: 0 1.5rem;
+    margin-inline: 1.5rem;
 
     @if $color {
       background: $color;
@@ -58,41 +36,13 @@
   }
 }
 
+@mixin neon-line-on-top {
+  @include line-on(top, var(--gradient-neon-line));
+}
+
 @mixin focus-visible {
   outline: 2px solid var(--color-primary-400);
   outline-offset: 2px;
-}
-
-@mixin border-base {
-  border: 1px solid var(--color-border);
-}
-
-@mixin panel {
-  @include border-base;
-  background-color: var(--color-bg-secondary);
-}
-
-@mixin panel-light {
-  @include border-base;
-  background-color: var(--color-surface-panel);
-}
-
-@mixin card-base {
-  //width: 100%;
-  @include border-base;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-@mixin card {
-  @include card-base;
-  background-color: var(--color-bg-secondary);
-}
-
-@mixin card-dark {
-  @include card-base;
-  background-color: var(--color-bg-primary);
-  background-image: var(--gradient-primary);
 }
 
 @mixin page-layout-animation {

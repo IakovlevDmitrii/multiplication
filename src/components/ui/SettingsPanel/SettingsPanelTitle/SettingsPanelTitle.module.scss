@@ -1,11 +1,11 @@
 @import '../../../../styles/mixins/breakpoints';
 
-.header {
+.title {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--gap-base);
 
   @include tablet-up {
     flex-direction: row;
@@ -13,7 +13,7 @@
   }
 }
 
-.title {
+.titleText {
   margin: 0;
   font-size: var(--text-xl);
   font-weight: 100;
@@ -28,8 +28,8 @@
 
 .valueIndicator {
   background-color: var(--color-surface-panel);
-  border: 1px solid var(--color-border);
-  border-radius: var(--button-radius);
+  border: var(--border-base);
+  border-radius: var(--radius-card-small);
   padding: 0.5rem 1rem;
   text-align: center;
   align-self: stretch;

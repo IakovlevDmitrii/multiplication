@@ -10,7 +10,7 @@
   background-color: rgba(15, 23, 42, 0.5);
   border-bottom-left-radius: var(--radius-card);
   border-bottom-right-radius: var(--radius-card);
-  @include border-line-on(top);
+  @include line-on(top);
 
   @include tablet-up {
     flex-direction: row;

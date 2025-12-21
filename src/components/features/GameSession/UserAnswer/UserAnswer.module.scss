@@ -9,7 +9,7 @@
   min-width: 200px;
   padding: 1.5rem 3rem;
   background-image: linear-gradient(135deg, var(--color-surface-panel), var(--color-bg-secondary));
-  @include border-base;
+  border: var(--border-base);
   border-radius: var(--radius-card);
   position: relative;
   overflow: hidden;

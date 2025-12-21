@@ -11,7 +11,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0.25rem 0.25rem 0.25rem;
-  border-radius: var(--radius-tooltip);
+  border-radius: var(--radius-card-small);
   @include transition-all-accelerate();
   position: relative;
   min-width: 0;
@@ -42,8 +42,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-tooltip);
-  @include panel-light;
+  border-radius: var(--radius-card-small);
+  border: var(--border-base);
+  background-color: var(--color-surface-panel);
 }
 
 .indexNumber {

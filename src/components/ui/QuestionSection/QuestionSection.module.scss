@@ -13,8 +13,9 @@
   align-items: center;
   padding: 0 0.5rem;
   height: var(--result-box-height);
-  border-radius: var(--radius-tooltip);
-  @include panel-light;
+  border-radius: var(--radius-card-small);
+  border: var(--border-base);
+  background-color: var(--color-surface-panel);
 }
 
 .numbers {

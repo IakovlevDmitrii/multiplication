@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-bg-secondary);
-  padding: 1rem 0.5rem;
-  @include border-line-on(bottom);
+  padding: 0 0 1rem 0;
+  @include line-on(bottom);
 }
 
 .title {

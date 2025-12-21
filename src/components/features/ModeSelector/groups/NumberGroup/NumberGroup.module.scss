@@ -23,7 +23,7 @@
   justify-content: center;
   gap: 1rem;
   background-color: var(--color-surface-panel);
-  @include border-base;
+  border: var(--border-base);
   border-radius: var(--radius-card);
   padding: var(--option-padding);
   overflow: hidden;

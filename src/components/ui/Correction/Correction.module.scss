@@ -7,8 +7,9 @@
   gap: 0.375rem;
   height: var(--result-box-height);
   padding: 0 0.5rem;
-  @include panel-light;
-  border-radius: var(--radius-tooltip);
+  border: var(--border-base);
+  background-color: var(--color-surface-panel);
+  border-radius: var(--radius-card-small);
 }
 
 .correctionIcon {

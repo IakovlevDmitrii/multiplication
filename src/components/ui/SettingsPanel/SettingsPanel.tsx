@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { SettingsPanelHeader } from './SettingsPanelHeader';
+import { SettingsPanelTitle } from './SettingsPanelTitle';
 import { SettingsPanelTrack } from './SettingsPanelTrack';
 import { SettingsPanelLabels } from './SettingsPanelLabels';
 import styles from './SettingsPanel.module.scss';
@@ -34,7 +34,7 @@ export const SettingsPanel = <T extends number>({
 
   return (
     <article className={styles.settingsPanel}>
-      <SettingsPanelHeader title={title} label={options[currentIndex]?.label} />
+      <SettingsPanelTitle title={title} label={options[currentIndex]?.label} />
 
       <SettingsPanelTrack
         options={options}
