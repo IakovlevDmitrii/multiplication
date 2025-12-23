@@ -1,194 +1,198 @@
 @import '../../../../styles/mixins/mixins';
 @import '../../../../styles/mixins/breakpoints';
 
-.answerDisplay {
+.display {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 6rem;
-  min-width: 200px;
-  padding: 1.5rem 3rem;
-  background-image: linear-gradient(135deg, var(--color-surface-panel), var(--color-bg-secondary));
-  border: var(--border-base);
+  justify-content: flex-end;
+  min-height: 5rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(145deg, var(--color-surface-panel), var(--color-bg-secondary));
+  border: 1px solid rgba(168, 85, 247, 0.08);
   border-radius: var(--radius-card);
   position: relative;
   overflow: hidden;
   box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.2),
-    0 8px 24px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   &::before {
     content: '';
-    background-image: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.03) 0%,
-      transparent 50%,
-      rgba(255, 255, 255, 0.01) 100%
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(168, 85, 247, 0.15) 20%,
+      rgba(168, 85, 247, 0.15) 50%,
+      transparent
     );
-    @include full-cover;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
     z-index: 1;
+    pointer-events: none;
   }
 
   &.hasAnswer {
+    border-color: rgba(168, 85, 247, 0.2);
     box-shadow:
       inset 0 2px 4px rgba(0, 0, 0, 0.2),
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      0 0 0 2px var(--color-primary-500),
-      0 0 20px rgba(168, 85, 247, 0.4),
-      inset 0 0 20px rgba(168, 85, 247, 0.1);
-    animation: answerGlow 2s ease-in-out infinite;
-    transform: translateY(-2px);
+      0 0 0 1px var(--color-primary-700),
+      0 0 24px rgba(168, 85, 247, 0.4);
+
+    .answer {
+      color: var(--color-primary-400);
+    }
   }
 }
 
-.answer {
-  font-size: var(--text-4xl);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  font-family: var(--font-family-mono), sans-serif;
-  letter-spacing: 0.05em;
+.answerWrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
   position: relative;
   z-index: 2;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.answer {
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono), sans-serif;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: right;
+  position: relative;
 
   &.empty {
-    color: var(--color-text-secondary);
-    opacity: 0.4;
-    animation: placeholderPulse 3s ease-in-out infinite;
+    color: var(--color-text-tertiary);
+    font-weight: 400;
+    opacity: 0.7;
+
+    &::before {
+      content: 'Введите ответ';
+      position: absolute;
+      font-size: var(--text-sm);
+      font-weight: 300;
+      letter-spacing: 0;
+      color: var(--color-text-tertiary);
+      opacity: 0.5;
+      bottom: -1.5rem;
+      right: 0;
+      font-family: var(--font-family-base), sans-serif;
+      white-space: nowrap;
+    }
   }
 
   .hasAnswer & {
-    color: var(--color-primary-400);
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    text-shadow: 0 2px 8px rgba(168, 85, 247, 0.15);
   }
 }
 
 .answerDigit {
   display: inline-block;
-  animation: digitAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out;
 
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
-      animation-delay: #{$i * 0.05}s;
+      transition-delay: #{$i * 0.02}s;
     }
   }
+}
 
-  .hasAnswer & {
-    animation: digitGlow 1.5s ease-in-out infinite;
-    animation-delay: calc(var(--i, 1) * 0.1s);
+.lastDigitAnimating {
+  animation: slideIn 0.3s ease-out forwards;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: 2px;
+    animation: glowPulse 0.3s ease-out forwards;
   }
 }
 
-@keyframes digitAppear {
-  0% {
-    transform: translateY(10px);
-    opacity: 0;
+@include mobile-large-up {
+  .display {
+    min-height: 6rem;
+    padding: 1.5rem 3rem;
   }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
-@keyframes placeholderPulse {
-  0%,
-  100% {
-    opacity: 0.4;
+  .answer {
+    font-size: var(--text-4xl);
   }
-  50% {
-    opacity: 0.6;
-  }
-}
 
-@keyframes answerGlow {
-  0%,
-  100% {
-    box-shadow:
-      inset 0 2px 4px rgba(0, 0, 0, 0.2),
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      0 0 0 2px var(--color-primary-500),
-      0 0 20px rgba(168, 85, 247, 0.4),
-      inset 0 0 20px rgba(168, 85, 247, 0.1);
+  .answer.empty::before {
+    bottom: -1.8rem;
+    font-size: var(--text-base);
   }
-  50% {
-    box-shadow:
-      inset 0 2px 4px rgba(0, 0, 0, 0.2),
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      0 0 0 3px var(--color-primary-400),
-      0 0 30px rgba(168, 85, 247, 0.6),
-      inset 0 0 30px rgba(168, 85, 247, 0.2);
-  }
-}
-
-@keyframes digitGlow {
-  0%,
-  100% {
-    text-shadow: 0 0 5px rgba(168, 85, 247, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-    transform: scale(1.05);
-  }
-}
-
-@keyframes typewriter {
-  from {
-    opacity: 0;
-    transform: translateX(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.typing .answerDigit {
-  animation: typewriter 0.1s ease forwards;
 }
 
 @include tablet-up {
-  .answerDisplay {
+  .display {
     min-height: 7rem;
-    min-width: 300px;
     padding: 2rem 4rem;
-
-    &.hasAnswer {
-      box-shadow:
-        inset 0 2px 4px rgba(0, 0, 0, 0.2),
-        0 8px 24px rgba(0, 0, 0, 0.3),
-        0 0 0 3px var(--color-primary-500),
-        0 0 30px rgba(168, 85, 247, 0.5),
-        inset 0 0 25px rgba(168, 85, 247, 0.15);
-    }
   }
 
   .answer {
     font-size: var(--text-5xl);
+    letter-spacing: -0.03em;
+  }
+
+  .answer.empty::before {
+    bottom: -2rem;
   }
 }
 
-@media (max-width: 640px) {
-  .answerDisplay {
-    min-height: 5rem;
-    min-width: auto;
-    width: 100%;
-    padding: 1rem 2rem;
-    border-radius: 16px;
-
-    &.hasAnswer {
-      box-shadow:
-        inset 0 2px 4px rgba(0, 0, 0, 0.2),
-        0 8px 24px rgba(0, 0, 0, 0.3),
-        0 0 0 2px var(--color-primary-500),
-        0 0 15px rgba(168, 85, 247, 0.4),
-        inset 0 0 15px rgba(168, 85, 247, 0.1);
-    }
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(8px);
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
   }
+  60% {
+    opacity: 0.8;
+    transform: translateX(2px);
+    text-shadow: 0 0 6px rgba(168, 85, 247, 0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    text-shadow: 0 2px 8px rgba(168, 85, 247, 0.15);
+  }
+}
 
-  .answer {
-    font-size: var(--text-3xl);
+@keyframes glowPulse {
+  0% {
+    opacity: 0.2;
+    transform: scale(1.05);
+  }
+  70% {
+    opacity: 0.1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
   }
 }
