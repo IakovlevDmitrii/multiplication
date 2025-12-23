@@ -6,7 +6,7 @@
   --option-padding: 1rem;
 
   background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
+  border: var(--border-base);
   border-radius: var(--radius-card);
   overflow: hidden;
   @include transition-all-accelerate();
@@ -24,6 +24,8 @@
       0 12px 35px rgba(168, 85, 247, 0.15),
       0 0 0 1px rgba(168, 85, 247, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background-color: var(--color-bg-primary);
+    background-image: var(--gradient-primary);
     @include neon-line-on-top;
   }
 
