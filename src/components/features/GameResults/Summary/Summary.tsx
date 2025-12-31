@@ -1,6 +1,7 @@
 import React from 'react';
 import { SummaryHeader } from './SummaryHeader';
-import { SummaryStats } from './SummaryStats';
+import { CorrectAnswerMeter } from './CorrectAnswerMeter';
+import { AccuracyMeter } from './AccuracyMeter';
 import { SummaryFooter } from './SummaryFooter';
 import { useAppSelector } from '../../../../hooks';
 import styles from './Summary.module.scss';
@@ -15,12 +16,10 @@ export const Summary = () => {
   return (
     <article className={styles.summary}>
       <SummaryHeader percentage={percentage} />
-      <SummaryStats
-        score={score}
-        questionCount={questionCount}
-        percentage={percentage}
-        accuracy={accuracy}
-      />
+      <div className={styles.stats}>
+        <CorrectAnswerMeter score={score} questionCount={questionCount} percentage={percentage} />
+        <AccuracyMeter accuracy={accuracy} />
+      </div>
       <SummaryFooter results={results} percentage={percentage} />
     </article>
   );

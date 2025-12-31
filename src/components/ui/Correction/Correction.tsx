@@ -1,20 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
+import { Number } from '../Number';
 import styles from './Correction.module.scss';
 
 interface CorrectionProps {
   correctAnswer: number;
+  className?: string;
 }
 
-export const Correction = ({ correctAnswer }: CorrectionProps) => {
+export const Correction = ({ correctAnswer, className }: CorrectionProps) => {
   return (
-    <div className={styles.correction}>
-      <span className={styles.correctionIcon}>↳</span>
-      <span className={styles.correctionFullText}>
-        Правильно: <strong className={styles.correctValue}>{correctAnswer}</strong>
-      </span>
-      <span className={styles.correctionCompactText}>
-        <strong className={styles.correctValue}>{correctAnswer}</strong>
-      </span>
+    <div className={classNames(styles.correction, className)}>
+      <strong>
+        <Number className={styles.correctValue}>{correctAnswer}</Number>
+      </strong>
     </div>
   );
 };

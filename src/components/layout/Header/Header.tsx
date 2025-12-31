@@ -14,10 +14,17 @@ export const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.home}>{showHomeButton && <HomeButton />}</div>
+        <div className={styles.home}>
+          {showHomeButton && <HomeButton className={styles.homeButton} />}
+        </div>
         <h1 className={styles.title}>Умножение</h1>
         <div className={styles.settings}>
-          {showSettingsButton && <SettingsButton onClick={() => setIsModalOpen(true)} />}
+          {showSettingsButton && (
+            <SettingsButton
+              className={styles.settingsButton}
+              onClick={() => setIsModalOpen(true)}
+            />
+          )}
         </div>
       </header>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

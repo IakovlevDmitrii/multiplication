@@ -4,7 +4,7 @@
 .keyboard {
   display: flex;
   flex-direction: column;
-  gap: var(--radius-1);
+  gap: var(--spacing-1);
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -14,16 +14,12 @@
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   background-color: var(--color-bg-secondary);
-
-  @include tablet-up {
-    padding: 2rem;
-  }
 }
 
 .keyboardGrid,
 .bottomRow {
   display: grid;
-  gap: var(--radius-1);
+  gap: var(--spacing-1);
   width: 100%;
 }
 
@@ -33,4 +29,21 @@
 
 .bottomRow {
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+@include mobile-large-up {
+  .keyboard {
+    gap: var(--spacing-3);
+    padding: 1rem var(--spacing-8);
+  }
+
+  .keyboardGrid,
+  .bottomRow {
+    gap: var(--spacing-3);
+  }
+}
+
+@include tablet-up {
+  .keyboard {
+  }
 }

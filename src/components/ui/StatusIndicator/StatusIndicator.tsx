@@ -4,16 +4,17 @@ import styles from './StatusIndicator.module.scss';
 
 interface StatusIndicatorProps {
   isCorrect: boolean;
+  className?: string;
 }
 
-export const StatusIndicator = ({ isCorrect }: StatusIndicatorProps) => {
-  const className = classNames(styles.statusIndicator, {
+export const StatusIndicator = ({ isCorrect, className }: StatusIndicatorProps) => {
+  const statusClassName = classNames(styles.statusIndicator, className, {
     [styles.correct]: isCorrect,
     [styles.incorrect]: !isCorrect,
   });
 
   return (
-    <div className={className}>
+    <div className={statusClassName}>
       <span className={styles.statusIcon}>{isCorrect ? '✓' : '✗'}</span>
     </div>
   );

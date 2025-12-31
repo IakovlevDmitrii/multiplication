@@ -17,3 +17,26 @@
   animation: slideIn 0.5s ease-out;
   @include neon-line-on-top;
 }
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-base);
+}
+
+@include mobile-large-up {
+  .stats {
+    gap: var(--spacing-5);
+  }
+
+  .stats > * {
+    flex: 1;
+  }
+}
+
+@include tablet-up {
+  .stats {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}

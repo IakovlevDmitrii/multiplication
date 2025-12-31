@@ -19,6 +19,7 @@
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
+
   --color-primary-50: #faf5ff;
   --color-primary-100: #f3e8ff;
   --color-primary-200: #e9d5ff;
@@ -130,4 +131,8 @@
   --padding-base: var(--spacing-6);
   --gap-base: var(--spacing-4);
   --border-base: 1px solid var(--color-border);
+
+  @include tablet-up {
+    --gap-base: var(--spacing-6);
+  }
 }

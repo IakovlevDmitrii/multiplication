@@ -22,13 +22,20 @@
   flex-direction: column;
   align-items: center;
   gap: var(--gap-base);
-  padding: 1rem var(--padding-base);
   border: var(--border-base);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   background-color: var(--color-bg-primary);
   background-image: var(--gradient-primary);
   @include neon-line-on-top;
+}
+
+.questionSection {
+  padding: 1rem var(--spacing-10);
+}
+
+.controlsSection {
+  padding: 1rem var(--padding-base);
 }
 
 .hintText {
@@ -38,4 +45,20 @@
   font-weight: 400;
   letter-spacing: 0.02em;
   opacity: 0.8;
+}
+
+@include mobile-large-up {
+  .layout {
+    gap: var(--spacing-5);
+    padding: var(--spacing-5) 0 var(--padding-base) 0;
+  }
+
+  .content {
+    gap: var(--spacing-5);
+  }
+
+  .questionSection,
+  .controlsSection  {
+    padding: 1.5rem var(--spacing-5);
+  }
 }

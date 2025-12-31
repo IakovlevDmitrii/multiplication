@@ -15,6 +15,8 @@
   @include transition-all-accelerate();
   position: relative;
   min-width: 0;
+  width: 100%;
+  overflow: hidden;
 
   &:hover {
     transform: translateX(3px);
@@ -31,7 +33,14 @@
     border-left: 1px solid var(--color-incorrect);
   }
 
+  & > :nth-child(2) {
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+  }
+
   & > :nth-child(3) {
+    flex-shrink: 0;
     margin-left: auto;
   }
 }
@@ -45,13 +54,47 @@
   border-radius: var(--radius-card-small);
   border: var(--border-base);
   background-color: var(--color-surface-panel);
+  flex-shrink: 0;
 }
 
 .indexNumber {
   font-size: var(--result-font-size-small);
   font-weight: 500;
   color: var(--color-text-secondary);
-  font-family: var(--font-family-mono), sans-serif;
+}
+
+.statusIndicator {
+  display: none;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.correction {
+  width: fit-content;
+  min-width: 3rem;
+  height: var(--result-box-height);
+  padding: 0 0.5rem;
+}
+
+@include mobile-large-up {
+  .statusIndicator {
+    display: flex;
+  }
+}
+
+@include tablet-up {
+  .correctionIcon {
+    display: inline;
+  }
+
+  .correctionFullText {
+    display: inline;
+  }
+
+  .correctionCompactText {
+    display: none;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

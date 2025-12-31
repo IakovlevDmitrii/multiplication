@@ -7,7 +7,7 @@ interface OptionNumberProps {
 
 export const OptionNumber = ({ number }: OptionNumberProps) => {
   return (
-    <div className={styles.numberDisplay}>
+    <div className={styles.display}>
       <span className={styles.number}>{number}</span>
     </div>
   );

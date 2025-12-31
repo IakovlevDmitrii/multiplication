@@ -40,3 +40,11 @@
   flex: 1 1;
   @include transition-all();
 }
+
+.homeButton {
+  justify-content: flex-start;
+}
+
+.settingsButton {
+  justify-content: flex-end;
+}

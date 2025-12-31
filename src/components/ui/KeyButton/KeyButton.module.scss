@@ -8,6 +8,7 @@
   aspect-ratio: 1 / 1;
   height: auto;
   min-height: 3rem;
+  padding: 3px;
   border-radius: var(--radius-button);
   user-select: none;
   display: flex;
@@ -53,10 +54,6 @@
       0 6px 20px rgba(0, 0, 0, 0.4),
       0 2px 4px rgba(0, 0, 0, 0.3);
     transform: translateY(-1px);
-  }
-
-  @include tablet-up {
-    font-size: var(--text-2xl);
   }
 }
 
@@ -127,4 +124,22 @@
 .keyButton:active .buttonGlow {
   opacity: 1;
   animation: buttonRipple 0.3s var(--transition-easing);
+}
+
+@include mobile-large-up {
+  .keyButton {
+    font-size: var(--text-3xl);
+  }
+
+  .hasIcon {
+    .iconWrapper {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+@include tablet-up {
+  .keyButton {
+  }
 }

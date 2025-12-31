@@ -8,5 +8,16 @@
 .settings {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
+  gap: var(--gap-base);
+}
+
+@include mobile-large-up {
+  .layout {
+    gap: var(--spacing-5);
+    padding: var(--spacing-5) 0 var(--padding-base) 0;
+  }
+
+  .settings {
+    gap: var(--spacing-5);
+  }
 }

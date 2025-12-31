@@ -6,15 +6,6 @@
   display: flex;
   justify-content: space-between;
   padding: 0;
-
-  @include tablet-up {
-    padding: 0 0.5rem;
-
-    .labelButton {
-      min-width: 60px;
-      padding: 0.5rem;
-    }
-  }
 }
 
 .labelButton {
@@ -62,10 +53,6 @@
   display: block;
   text-align: center;
   @include transition-colors($easing: var(--transition-easing-accelerate));
-
-  @include tablet-up {
-    font-size: var(--text-base);
-  }
 }
 
 .activeIndicator {
@@ -78,4 +65,23 @@
   border-radius: 50%;
   transform: translateX(-50%);
   animation: indicatorPulse 2s var(--transition-easing) infinite;
+}
+
+@include mobile-large-up {
+  .labels {
+  }
+
+  .labelText {
+    font-size: var(--text-xl);
+  }
+}
+
+@include tablet-up {
+  .labels {
+    .labelButton {
+    }
+  }
+
+  .labelText {
+  }
 }

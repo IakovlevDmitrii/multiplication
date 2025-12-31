@@ -1,4 +1,5 @@
 @import '../../styles/mixins/mixins';
+@import '../../styles/mixins/breakpoints';
 
 .layout {
   @include page-layout;
@@ -12,4 +13,10 @@
   color: var(--color-text-primary);
   text-align: center;
   width: 100%;
+}
+
+@include mobile-large-up {
+  .layout {
+    gap: var(--spacing-5);
+  }
 }

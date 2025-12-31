@@ -1,21 +1,16 @@
 import React from 'react';
+import { HeaderButton } from '../HeaderButton';
 import { SettingsIcon } from '../../../../icons';
-import styles from './HeaderButtons.module.scss';
 
 interface SettingsButtonProps {
+  className?: string;
   onClick: () => void;
 }
 
-export const SettingsButton = ({ onClick }: SettingsButtonProps) => {
+export const SettingsButton = ({ className, onClick }: SettingsButtonProps) => {
   return (
-    <button
-      type="button"
-      className={styles.button}
-      onClick={onClick}
-      title="Настройки"
-      aria-label="Настройки"
-    >
+    <HeaderButton title="Настройки" ariaLabel="Настройки" className={className} onClick={onClick}>
       <SettingsIcon />
-    </button>
+    </HeaderButton>
   );
 };

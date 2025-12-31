@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Correction, QuestionSection, StatusIndicator } from '../../../../ui';
+import { Correction, Number, QuestionSection, StatusIndicator } from '../../../../ui';
 import styles from './ResultItem.module.scss';
 
 interface ResultItemProps {
@@ -26,11 +26,11 @@ export const ResultItem = ({
   return (
     <div className={className}>
       <div className={styles.itemIndex}>
-        <span className={styles.indexNumber}>{index + 1}</span>
+        <Number className={styles.indexNumber}>{index + 1}</Number>
       </div>
       <QuestionSection isCorrect={isCorrect} question={question} answer={answer} />
-      {!isCorrect && <Correction correctAnswer={correctAnswer} />}
-      <StatusIndicator isCorrect={isCorrect} />
+      {!isCorrect && <Correction correctAnswer={correctAnswer} className={styles.correction} />}
+      <StatusIndicator isCorrect={isCorrect} className={styles.statusIndicator} />
     </div>
   );
 };

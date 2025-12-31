@@ -71,3 +71,13 @@
   line-height: 1.4;
   max-width: 20rem;
 }
+
+@include mobile-large-up {
+  .listContainer {
+    padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+  }
+
+  .list {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}

@@ -1,11 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HeaderButton } from '../HeaderButton';
 import { HomeIcon } from '../../../../icons';
 import { useAppDispatch } from '../../../../hooks';
 import { goToMainMenu } from '../../../../store/gameSlice';
-import styles from './HeaderButtons.module.scss';
 
-export const HomeButton = () => {
+interface HomeButtonProps {
+  className?: string;
+}
+
+export const HomeButton = ({ className }: HomeButtonProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleGoToMainMenu = () => {
@@ -13,14 +17,13 @@ export const HomeButton = () => {
     navigate('/');
   };
   return (
-    <button
-      type="button"
-      className={styles.button}
-      onClick={handleGoToMainMenu}
+    <HeaderButton
       title="В главное меню"
-      aria-label="Главная"
+      ariaLabel="Главная"
+      className={className}
+      onClick={handleGoToMainMenu}
     >
       <HomeIcon />
-    </button>
+    </HeaderButton>
   );
 };

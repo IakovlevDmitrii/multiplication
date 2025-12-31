@@ -6,11 +6,6 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--gap-base);
-
-  @include tablet-up {
-    flex-direction: row;
-    align-items: center;
-  }
 }
 
 .titleText {
@@ -20,10 +15,6 @@
   color: var(--color-text-primary);
   font-family: var(--font-family-sans), sans-serif;
   letter-spacing: -0.01em;
-
-  @include tablet-up {
-    font-size: var(--text-lg);
-  }
 }
 
 .valueIndicator {
@@ -40,8 +31,29 @@
   font-weight: 100;
   color: var(--color-primary-400);
   font-family: var(--font-family-mono), sans-serif;
+}
 
-  @include tablet-up {
-    font-size: var(--text-lg);
+@include mobile-large-up {
+  .title {
+  }
+
+  .titleText {
+  }
+
+  .valueLabel {
+    font-size: var(--text-2xl);
+  }
+}
+
+@include tablet-up {
+  .title {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .titleText {
+  }
+
+  .valueLabel {
   }
 }

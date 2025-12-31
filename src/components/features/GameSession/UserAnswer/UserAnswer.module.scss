@@ -5,10 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-height: 5rem;
-  width: 100%;
-  max-width: 100%;
-  padding: 1rem 2rem;
+  min-height: 4rem;
+  max-width: 12rem;
+  padding: 0 2rem;
   background: linear-gradient(145deg, var(--color-surface-panel), var(--color-bg-secondary));
   border: 1px solid rgba(168, 85, 247, 0.08);
   border-radius: var(--radius-card);
@@ -134,8 +133,8 @@
 
 @include mobile-large-up {
   .display {
-    min-height: 6rem;
-    padding: 1.5rem 3rem;
+    min-height: 5rem;
+    padding: 0 2.5rem;
   }
 
   .answer {
@@ -150,12 +149,9 @@
 
 @include tablet-up {
   .display {
-    min-height: 7rem;
-    padding: 2rem 4rem;
   }
 
   .answer {
-    font-size: var(--text-5xl);
     letter-spacing: -0.03em;
   }
 

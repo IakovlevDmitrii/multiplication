@@ -1,65 +1,4 @@
-@import '../../../../../styles/mixins/mixins';
 @import '../../../../../styles/mixins/breakpoints';
-
-.stats {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-base);
-}
-
-.value {
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-}
-
-.scoreNumber {
-  font-size: var(--text-2xl);
-  font-weight: 400;
-  color: var(--color-correct);
-}
-
-.scoreTotal {
-  font-size: var(--text-base);
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  opacity: 0.8;
-}
-
-.progressContainer {
-  position: relative;
-  height: 1.5rem;
-  border-radius: var(--radius-card-small);
-  overflow: hidden;
-  border: var(--border-base);
-  background-color: var(--color-surface-panel);
-}
-
-.progressBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-correct), var(--color-correct-light));
-  border-radius: var(--radius-card-small);
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
-}
-
-.progressLabel {
-  position: absolute;
-  top: 0;
-  right: 0.75rem;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: var(--text-sm);
-  font-weight: 200;
-  color: var(--color-text-primary);
-  font-family: var(--font-family-mono), sans-serif;
-  z-index: 2;
-  pointer-events: none;
-}
 
 .accuracyValue {
   font-size: var(--text-2xl);
@@ -215,19 +154,6 @@
 }
 
 @include mobile-large-up {
-  .stats {
-    flex-direction: row;
-    gap: 1.5rem;
-  }
-
-  .stats > * {
-    flex: 1;
-  }
-
-  .progressLabel {
-    right: 1rem;
-  }
-
   .meterMarkers {
     margin: 0 2px;
   }
@@ -250,19 +176,6 @@
 }
 
 @include tablet-up {
-  .stats {
-    gap: 2rem;
-  }
-
-  .progressContainer {
-    height: 1.75rem;
-    border-radius: 0.875rem;
-  }
-
-  .progressBar {
-    border-radius: 0.875rem;
-  }
-
   .meterMarkers {
     margin: 0 3px;
   }

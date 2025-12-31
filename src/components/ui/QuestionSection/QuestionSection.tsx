@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Number } from '../Number';
 import styles from './QuestionSection.module.scss';
 
 interface QuestionSectionProps {
@@ -18,15 +19,15 @@ export const QuestionSection = ({ isCorrect, question, answer }: QuestionSection
   return (
     <div className={className}>
       <div className={styles.numbers}>
-        <span className={styles.number}>{num1}</span>
+        <Number className={styles.number}>{num1}</Number>
         <span className={styles.multiply}>×</span>
-        <span className={styles.number}>{num2}</span>
+        <Number className={styles.number}>{num2}</Number>
       </div>
       <div className={styles.equals}>
         <span className={styles.equalsIcon}>=</span>
       </div>
       <div className={styles.equation}>
-        <span className={styles.number}>{answer}</span>
+        <Number className={styles.number}>{answer}</Number>
       </div>
     </div>
   );
