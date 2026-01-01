@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { HomeButton, SettingsButton } from './HeaderButtons';
+import { HomeButton } from './HomeButton';
+import { SettingsButton } from './SettingsButton';
 import { Modal } from '../../ui';
 import { ModeSelector } from '../../features';
 import { useAppSelector } from '../../../hooks';

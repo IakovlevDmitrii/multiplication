@@ -1,5 +1,4 @@
 export { Correction } from './Correction';
-export { Example } from './Example';
 export { GameButton } from './GameButton';
 export { KeyButton } from './KeyButton';
 export { Modal } from './Modal';

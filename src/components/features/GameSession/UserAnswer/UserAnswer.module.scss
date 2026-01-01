@@ -5,50 +5,16 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-height: 4rem;
-  max-width: 12rem;
-  padding: 0 2rem;
-  background: linear-gradient(145deg, var(--color-surface-panel), var(--color-bg-secondary));
+  background-color: var(--color-surface-panel);
+  background-image: var(--gradient-secondary);
   border: 1px solid rgba(168, 85, 247, 0.08);
   border-radius: var(--radius-card);
   position: relative;
   overflow: hidden;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(168, 85, 247, 0.15) 20%,
-      rgba(168, 85, 247, 0.15) 50%,
-      transparent
-    );
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
-    z-index: 1;
-    pointer-events: none;
-  }
 
   &.hasAnswer {
     border-color: rgba(168, 85, 247, 0.2);
-    box-shadow:
-      inset 0 2px 4px rgba(0, 0, 0, 0.2),
-      0 0 0 1px var(--color-primary-700),
-      0 0 24px rgba(168, 85, 247, 0.4);
 
     .answer {
       color: var(--color-primary-400);
@@ -56,44 +22,15 @@
   }
 }
 
-.answerWrapper {
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  z-index: 2;
-}
-
 .answer {
-  font-size: var(--text-3xl);
-  font-weight: 300;
   color: var(--color-text-primary);
   font-family: var(--font-family-mono), sans-serif;
-  letter-spacing: -0.02em;
   white-space: nowrap;
-  display: inline-block;
-  text-align: right;
   position: relative;
 
   &.empty {
-    color: var(--color-text-tertiary);
-    font-weight: 400;
-    opacity: 0.7;
-
-    &::before {
-      content: 'Введите ответ';
-      position: absolute;
-      font-size: var(--text-sm);
-      font-weight: 300;
-      letter-spacing: 0;
-      color: var(--color-text-tertiary);
-      opacity: 0.5;
-      bottom: -1.5rem;
-      right: 0;
-      font-family: var(--font-family-base), sans-serif;
-      white-space: nowrap;
-    }
+    color: var(--color-text-secondary);
+    opacity: 0.5;
   }
 
   .hasAnswer & {
@@ -103,92 +40,34 @@
 
 .answerDigit {
   display: inline-block;
-  opacity: 1;
-  transform: translateX(0);
-  transition:
-    opacity 0.15s ease-out,
-    transform 0.15s ease-out;
+  min-width: 0.6em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  transition: opacity 0.2s ease;
 
-  @for $i from 1 through 10 {
-    &:nth-child(#{$i}) {
-      transition-delay: #{$i * 0.02}s;
-    }
+  &:not(:last-child) {
+    margin-right: 0.05em;
   }
 }
 
 .lastDigitAnimating {
-  animation: slideIn 0.3s ease-out forwards;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
-    z-index: -1;
-    border-radius: 2px;
-    animation: glowPulse 0.3s ease-out forwards;
-  }
+  animation: neonPulse 0.4s ease-out;
 }
 
-@include mobile-large-up {
-  .display {
-    min-height: 5rem;
-    padding: 0 2.5rem;
-  }
-
-  .answer {
-    font-size: var(--text-4xl);
-  }
-
-  .answer.empty::before {
-    bottom: -1.8rem;
-    font-size: var(--text-base);
-  }
-}
-
-@include tablet-up {
-  .display {
-  }
-
-  .answer {
-    letter-spacing: -0.03em;
-  }
-
-  .answer.empty::before {
-    bottom: -2rem;
-  }
-}
-
-@keyframes slideIn {
+@keyframes neonPulse {
   0% {
-    opacity: 0;
-    transform: translateX(8px);
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    color: var(--color-primary-300);
+    text-shadow: 0 0 0 transparent;
   }
-  60% {
-    opacity: 0.8;
-    transform: translateX(2px);
-    text-shadow: 0 0 6px rgba(168, 85, 247, 0.2);
+  50% {
+    color: var(--color-primary-100);
+    text-shadow:
+      0 0 10px rgba(168, 85, 247, 0.6),
+      0 0 20px rgba(168, 85, 247, 0.3);
   }
   100% {
-    opacity: 1;
-    transform: translateX(0);
+    color: var(--color-primary-400);
     text-shadow: 0 2px 8px rgba(168, 85, 247, 0.15);
-  }
-}
-
-@keyframes glowPulse {
-  0% {
-    opacity: 0.2;
-    transform: scale(1.05);
-  }
-  70% {
-    opacity: 0.1;
-    transform: scale(1.02);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
   }
 }

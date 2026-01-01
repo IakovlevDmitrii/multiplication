@@ -3,95 +3,57 @@ import classNames from 'classnames';
 import { useAppSelector } from '../../../../hooks';
 import styles from './UserAnswer.module.scss';
 
-export const UserAnswer = () => {
+interface UserAnswerProps {
+  className?: string;
+}
+
+export const UserAnswer = ({ className }: UserAnswerProps) => {
   const { userAnswer } = useAppSelector(state => state.game);
-  const [displayAnswer, setDisplayAnswer] = useState('');
-  const [lastDigit, setLastDigit] = useState('');
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
   const prevAnswerRef = useRef('');
 
   const isEmpty = !userAnswer || userAnswer.length === 0;
 
   useEffect(() => {
-    if (!userAnswer) {
-      setDisplayAnswer('');
-      setLastDigit('');
-      return;
+    if (userAnswer && userAnswer.length > prevAnswerRef.current.length) {
+      setShouldAnimate(true);
+      const timer = setTimeout(() => setShouldAnimate(false), 300);
+      return () => clearTimeout(timer);
     }
-
-    if (userAnswer !== prevAnswerRef.current) {
-      const prevLength = prevAnswerRef.current.length;
-      const newLength = userAnswer.length;
-
-      if (newLength > prevLength) {
-        const newDigit = userAnswer[newLength - 1];
-
-        setDisplayAnswer(userAnswer);
-        setLastDigit(newDigit);
-        setIsAnimating(true);
-
-        const timer = setTimeout(() => {
-          setIsAnimating(false);
-        }, 300);
-
-        return () => clearTimeout(timer);
-      } else if (newLength < prevLength) {
-        setDisplayAnswer(userAnswer);
-        setLastDigit('');
-        setIsAnimating(false);
-      } else {
-        setDisplayAnswer(userAnswer);
-        setLastDigit('');
-        setIsAnimating(false);
-      }
-    }
-
-    prevAnswerRef.current = userAnswer;
+    prevAnswerRef.current = userAnswer || '';
   }, [userAnswer]);
 
   const renderAnswer = () => {
     if (isEmpty) return '?';
 
-    const regularDigits = displayAnswer
-      .slice(0, -1)
-      .split('')
-      .map((digit, index) => (
-        <span key={index} className={styles.answerDigit}>
-          {digit}
-        </span>
-      ));
+    return userAnswer.split('').map((digit, index) => {
+      const isLast = index === userAnswer.length - 1;
 
-    if (displayAnswer.length > 0) {
-      const lastChar = displayAnswer[displayAnswer.length - 1];
-      regularDigits.push(
+      return (
         <span
-          key="last"
+          key={index}
           className={classNames(styles.answerDigit, {
-            [styles.lastDigitAnimating]: isAnimating && lastDigit,
+            [styles.lastDigitAnimating]: isLast && shouldAnimate,
           })}
         >
-          {lastChar}
+          {digit}
         </span>
       );
-    }
-
-    return regularDigits;
+    });
   };
 
   return (
     <div
-      className={classNames(styles.display, {
+      className={classNames(styles.display, className, {
         [styles.hasAnswer]: !isEmpty,
       })}
     >
-      <div className={styles.answerWrapper}>
-        <span
-          className={classNames(styles.answer, {
-            [styles.empty]: isEmpty,
-          })}
-        >
-          {renderAnswer()}
-        </span>
+      <div
+        className={classNames(styles.answer, {
+          [styles.empty]: isEmpty,
+        })}
+      >
+        {renderAnswer()}
       </div>
     </div>
   );

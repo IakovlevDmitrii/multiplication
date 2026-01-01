@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--gap-base);
+  gap: 1rem;
   width: 100%;
-  padding: 1rem 0 var(--padding-base) 0;
+  padding: var(--padding-base) 0 var(--padding-base) 0;
   @include page-layout-animation;
 }
 

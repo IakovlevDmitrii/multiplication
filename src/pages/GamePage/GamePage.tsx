@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { PageLayout } from '../../components/layout';
-import { ProgressBar, UserAnswer, VirtualKeyboard } from '../../components/features';
-import { Example, GameButton } from '../../components/ui';
+import { ProgressBar, UserAnswer, VirtualKeyboard, Question } from '../../components/features';
+import { GameButton } from '../../components/ui';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { appendToAnswer, backspaceAnswer, checkAnswer } from '../../store/gameSlice';
 import styles from './GamePage.module.scss';
@@ -45,8 +45,8 @@ export const GamePage = () => {
 
         <section className={styles.content}>
           <div className={styles.questionSection}>
-            <Example />
-            <UserAnswer />
+            <Question className={styles.example} />
+            <UserAnswer className={styles.answer} />
           </div>
 
           <div className={styles.controlsSection}>

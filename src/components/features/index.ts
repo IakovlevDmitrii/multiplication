@@ -1,9 +1,5 @@
 export { Game } from './Game';
-export { ResultsList } from './GameResults';
-export { Summary } from './GameResults';
-export { QuestionCountSettings } from './GameSettings';
-export { TimeSettings } from './GameSettings';
+export { ResultsList, Summary } from './GameResults';
+export { TimeSettings, QuestionCountSettings } from './GameSettings';
 export { ModeSelector } from './ModeSelector';
-export { ProgressBar } from './GameSession/ProgressBar';
-export { UserAnswer } from './GameSession/UserAnswer';
-export { VirtualKeyboard } from './GameSession/VirtualKeyboard';
+export { ProgressBar, Question, VirtualKeyboard, UserAnswer } from './GameSession';

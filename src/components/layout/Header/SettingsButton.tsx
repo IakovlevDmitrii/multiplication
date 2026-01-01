@@ -1,6 +1,6 @@
 import React from 'react';
-import { HeaderButton } from '../HeaderButton';
-import { SettingsIcon } from '../../../../icons';
+import { HeaderButton } from './HeaderButton';
+import { SettingsIcon } from '../../../icons';
 
 interface SettingsButtonProps {
   className?: string;

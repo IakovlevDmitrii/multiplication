@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-bg-secondary);
-  padding: 0 0 1rem 0;
+  padding: 0 0 0.5rem 0;
   @include line-on(bottom);
 }
 
@@ -36,15 +36,14 @@
 .settings {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex: 1 1;
   @include transition-all();
 }
 
-.homeButton {
+.home {
   justify-content: flex-start;
 }
 
-.settingsButton {
+.settings {
   justify-content: flex-end;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HeaderButton } from '../HeaderButton';
-import { HomeIcon } from '../../../../icons';
-import { useAppDispatch } from '../../../../hooks';
-import { goToMainMenu } from '../../../../store/gameSlice';
+import { HeaderButton } from './HeaderButton';
+import { HomeIcon } from '../../../icons';
+import { useAppDispatch } from '../../../hooks';
+import { goToMainMenu } from '../../../store/gameSlice';
 
 interface HomeButtonProps {
   className?: string;

@@ -8,7 +8,7 @@
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  padding: 1rem var(--padding-base);
+  padding: 1rem 1.5rem;
   overflow: hidden;
   border: var(--border-base);
   border-radius: var(--radius-card);
@@ -40,10 +40,5 @@
   .keyboardGrid,
   .bottomRow {
     gap: var(--spacing-3);
-  }
-}
-
-@include tablet-up {
-  .keyboard {
   }
 }

@@ -13,15 +13,15 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-base);
+  gap: 1rem;
 }
 
 .questionSection,
 .controlsSection {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--gap-base);
+  gap: 0.5rem;
+  padding: 0.75rem var(--padding-base);
   border: var(--border-base);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
@@ -30,21 +30,27 @@
   @include neon-line-on-top;
 }
 
-.questionSection {
-  padding: 1rem var(--spacing-10);
+.example {
+  flex: 0 0 50%;
+  min-width: max-content;
+  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  font-size: var(--text-3xl);
+  font-weight: 100;
+  letter-spacing: 0.5rem;
+}
+
+.answer {
+  flex: 1 0 0;
+  min-width: 0;
+  max-width: none;
+  padding: 0.25rem 1rem 0.25rem 0;
+  font-size: var(--text-3xl);
+  font-weight: 100;
+  letter-spacing: -0.02em;
 }
 
 .controlsSection {
-  padding: 1rem var(--padding-base);
-}
-
-.hintText {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-sans), sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  opacity: 0.8;
+  flex-direction: column;
 }
 
 @include mobile-large-up {
@@ -58,7 +64,7 @@
   }
 
   .questionSection,
-  .controlsSection  {
+  .controlsSection {
     padding: 1.5rem var(--spacing-5);
   }
 }

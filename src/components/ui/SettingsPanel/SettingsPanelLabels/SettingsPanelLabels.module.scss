@@ -10,7 +10,7 @@
 
 .labelButton {
   background: transparent;
-  padding: 0.25rem;
+  padding: 0 0.25rem 0.25rem;
   position: relative;
   min-width: auto;
   @include transition-all-accelerate();
@@ -68,20 +68,7 @@
 }
 
 @include mobile-large-up {
-  .labels {
-  }
-
   .labelText {
     font-size: var(--text-xl);
-  }
-}
-
-@include tablet-up {
-  .labels {
-    .labelButton {
-    }
-  }
-
-  .labelText {
   }
 }
