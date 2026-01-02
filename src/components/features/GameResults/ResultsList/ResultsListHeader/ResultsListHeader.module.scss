@@ -35,12 +35,17 @@
   border: var(--border-base);
   background-color: var(--color-surface-panel);
   border-radius: var(--radius-card);
-  min-height: 2.5rem;
 }
 
 .statIcon {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.icon {
+  border-radius: 0.3rem;
   font-size: 1rem;
-  opacity: 0.9;
+  font-weight: 700;
 }
 
 .statNumber {

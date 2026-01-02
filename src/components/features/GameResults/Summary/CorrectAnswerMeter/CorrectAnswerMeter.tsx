@@ -1,5 +1,6 @@
 import React from 'react';
-import { SummaryCard } from '../../../../ui';
+import { SummaryCard } from '../SummaryCard';
+import { StatusIndicator } from '../../../../ui';
 import styles from './CorrectAnswerMeter.module.scss';
 
 interface CorrectAnswerMeterProps {
@@ -15,7 +16,7 @@ export const CorrectAnswerMeter = ({
 }: CorrectAnswerMeterProps) => {
   return (
     <SummaryCard
-      icon="✅"
+      icon={<StatusIndicator isCorrect className={styles.icon} />}
       label="Правильные ответы"
       value={
         <div className={styles.value}>

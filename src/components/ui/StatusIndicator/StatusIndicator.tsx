@@ -8,14 +8,14 @@ interface StatusIndicatorProps {
 }
 
 export const StatusIndicator = ({ isCorrect, className }: StatusIndicatorProps) => {
-  const statusClassName = classNames(styles.statusIndicator, className, {
+  const indicatorClassName = classNames(styles.indicator, className, {
     [styles.correct]: isCorrect,
     [styles.incorrect]: !isCorrect,
   });
 
   return (
-    <div className={statusClassName}>
-      <span className={styles.statusIcon}>{isCorrect ? '✓' : '✗'}</span>
+    <div className={indicatorClassName}>
+      <span>{isCorrect ? '✓' : '✗'}</span>
     </div>
   );
 };

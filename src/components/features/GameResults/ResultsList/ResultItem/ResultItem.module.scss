@@ -62,11 +62,17 @@
   color: var(--color-text-secondary);
 }
 
-.statusIndicator {
+.indicator {
   display: none;
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
+}
+
+.statusIndicator {
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .correction {
@@ -77,8 +83,8 @@
 }
 
 @include mobile-large-up {
-  .statusIndicator {
-    display: flex;
+  .indicator {
+    display: block;
   }
 }
 

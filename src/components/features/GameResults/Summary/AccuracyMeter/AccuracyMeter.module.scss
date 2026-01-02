@@ -1,5 +1,9 @@
 @import '../../../../../styles/mixins/breakpoints';
 
+.icon {
+  border-radius: 0.5rem;
+}
+
 .accuracyValue {
   font-size: var(--text-2xl);
   font-weight: 400;
@@ -19,9 +23,6 @@
 
 .accuracyPoor {
   color: var(--color-poor);
-}
-
-.accuracyMeter {
 }
 
 .meterTrack {

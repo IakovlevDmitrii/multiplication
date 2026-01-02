@@ -1,3 +1,4 @@
+export { AccuracyLabel } from './AccuracyLabel';
 export { Correction } from './Correction';
 export { GameButton } from './GameButton';
 export { Modal } from './Modal';
@@ -6,4 +7,3 @@ export { OptionNumber } from './OptionNumber';
 export { QuestionSection } from './QuestionSection';
 export { SettingsPanel } from './SettingsPanel';
 export { StatusIndicator } from './StatusIndicator';
-export { SummaryCard } from './SummaryCard';

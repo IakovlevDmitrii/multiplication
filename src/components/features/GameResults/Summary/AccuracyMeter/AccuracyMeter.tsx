@@ -1,5 +1,6 @@
 import React from 'react';
-import { SummaryCard } from '../../../../ui';
+import { SummaryCard } from '../SummaryCard';
+import { AccuracyLabel } from '../../../../ui';
 import styles from './AccuracyMeter.module.scss';
 
 interface AccuracyMeterProps {
@@ -18,7 +19,7 @@ export const AccuracyMeter = ({ accuracy }: AccuracyMeterProps) => {
 
   return (
     <SummaryCard
-      icon="🎯"
+      icon={<AccuracyLabel className={styles.icon} />}
       label="Точность"
       value={<span className={`${styles.accuracyValue} ${accuracyColorClass}`}>{accuracy}%</span>}
     >

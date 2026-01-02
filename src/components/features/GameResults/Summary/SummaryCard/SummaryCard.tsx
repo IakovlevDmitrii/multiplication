@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SummaryCard.module.scss';
 
 interface SummaryCardProps {
-  icon: string;
+  icon: string | React.ReactNode;
   label: string;
   value: React.ReactNode;
   children: React.ReactNode;

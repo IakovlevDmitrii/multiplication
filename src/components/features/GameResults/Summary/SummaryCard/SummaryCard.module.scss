@@ -1,5 +1,5 @@
-@import '../../../styles/mixins/mixins';
-@import '../../../styles/mixins/breakpoints';
+@import '../../../../../styles/mixins/mixins';
+@import '../../../../../styles/mixins/breakpoints';
 
 .card {
   display: flex;
@@ -18,8 +18,10 @@
 }
 
 .icon {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
 }
 
 .content {

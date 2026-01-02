@@ -30,7 +30,9 @@ export const ResultItem = ({
       </div>
       <QuestionSection isCorrect={isCorrect} question={question} answer={answer} />
       {!isCorrect && <Correction correctAnswer={correctAnswer} className={styles.correction} />}
-      <StatusIndicator isCorrect={isCorrect} className={styles.statusIndicator} />
+      <div className={styles.indicator}>
+        <StatusIndicator isCorrect={isCorrect} className={styles.statusIndicator} />
+      </div>
     </div>
   );
 };
