@@ -15,8 +15,6 @@
 }
 
 @mixin line-on($side: top, $color: null) {
-  position: relative;
-
   $pseudo: if($side == top, 'before', 'after');
 
   &::#{$pseudo} {

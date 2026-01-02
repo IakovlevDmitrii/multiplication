@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: var(--option-padding) var(--option-padding) 1rem;
+  padding: 0.75rem var(--option-padding) 0.75rem;
   background-color: transparent;
   width: 100%;
   text-align: left;
@@ -33,6 +33,7 @@
   }
 
   &.radioButtonActive {
+    position: relative;
     @include line-on(bottom);
 
     .optionLabel {

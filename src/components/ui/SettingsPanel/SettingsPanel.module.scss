@@ -10,5 +10,6 @@
   box-shadow: var(--shadow-card);
   background-color: var(--color-bg-primary);
   background-image: var(--gradient-primary);
+  position: relative;
   @include neon-line-on-top;
 }
