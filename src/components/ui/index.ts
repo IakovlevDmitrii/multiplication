@@ -1,6 +1,5 @@
 export { Correction } from './Correction';
 export { GameButton } from './GameButton';
-export { KeyButton } from './KeyButton';
 export { Modal } from './Modal';
 export { Number } from './Number';
 export { OptionNumber } from './OptionNumber';

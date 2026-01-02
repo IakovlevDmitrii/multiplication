@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClearIcon } from '../../../../../icons';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../../ui/KeyButton';
+import { KeyButton, KEY_BUTTON_VARIANTS } from '../KeyButton';
 import { useAppDispatch } from '../../../../../hooks';
 import { clearAnswer } from '../../../../../store/gameSlice';
 

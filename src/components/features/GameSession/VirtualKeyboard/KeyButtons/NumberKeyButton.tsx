@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../../../../ui/KeyButton';
+import { KeyButton, KEY_BUTTON_VARIANTS } from '../KeyButton';
 import { useAppDispatch } from '../../../../../hooks';
 import { appendToAnswer } from '../../../../../store/gameSlice';
 
