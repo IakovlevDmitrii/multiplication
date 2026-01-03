@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { CorrectIcon, IncorrectIcon } from '../../../icons';
 import styles from './StatusIndicator.module.scss';
 
 interface StatusIndicatorProps {
@@ -15,7 +16,7 @@ export const StatusIndicator = ({ isCorrect, className }: StatusIndicatorProps) 
 
   return (
     <div className={indicatorClassName}>
-      <span>{isCorrect ? '✓' : '✗'}</span>
+      {isCorrect ? <CorrectIcon animated /> : <IncorrectIcon animated />}
     </div>
   );
 };

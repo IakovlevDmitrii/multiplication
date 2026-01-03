@@ -10,7 +10,7 @@ interface AccuracyLabelProps {
 export const AccuracyLabel = ({ className }: AccuracyLabelProps) => {
   return (
     <div className={classNames(styles.accuracy, className)}>
-      <AccuracyIcon />
+      <AccuracyIcon animated />
     </div>
   );
 };

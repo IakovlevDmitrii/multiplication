@@ -1,0 +1,17 @@
+.icon {
+  overflow: visible;
+
+  .centerCircle {
+    stroke-width: 0.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: 0.9;
+  }
+
+  .gearPath {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: 0.8;
+  }
+}

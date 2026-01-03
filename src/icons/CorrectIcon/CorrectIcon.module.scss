@@ -1,0 +1,49 @@
+.icon {
+  overflow: visible;
+
+  .checkPart1,
+  .checkPart2 {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: 0.9;
+  }
+
+  &:not(.animated) {
+    .checkPart1,
+    .checkPart2 {
+      stroke-width: 1.2;
+      stroke-opacity: 0.9;
+    }
+  }
+
+  &.animated {
+    .checkPart1 {
+      animation: correctPulse 6s ease-in-out infinite;
+    }
+
+    .checkPart2 {
+      animation: correctPulse 6s ease-in-out infinite;
+      animation-delay: 0.25s;
+    }
+  }
+}
+
+@keyframes correctPulse {
+  0%,
+  100% {
+    stroke-opacity: 0.1;
+  }
+  2%,
+  60% {
+    stroke-opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon.animated .checkPart1,
+  .icon.animated .checkPart2 {
+    animation: none;
+    stroke-opacity: 0.9;
+  }
+}

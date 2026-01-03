@@ -1,0 +1,60 @@
+.icon {
+  overflow: visible;
+
+  .bgCircle {
+    stroke-width: 0.5;
+    stroke-opacity: 0.3;
+  }
+
+  .progressCircle {
+    stroke-width: 0.8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    stroke-dasharray: 62.8;
+    stroke-dashoffset: 20;
+  }
+
+  .clockHands {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: 0.9;
+  }
+
+  &:not(.animated) {
+    .progressCircle {
+      stroke-dashoffset: 20;
+      stroke-opacity: 0.8;
+    }
+
+    .clockHands {
+      stroke-width: 1;
+      stroke-opacity: 0.9;
+    }
+  }
+
+  &.animated {
+    .progressCircle {
+      animation: clockContinuous 8s linear infinite;
+    }
+  }
+}
+
+@keyframes clockContinuous {
+  0% {
+    stroke-dashoffset: 125.6;
+    stroke-dasharray: 62.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 62.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon.animated .progressCircle {
+    animation: none;
+    stroke-dashoffset: 20;
+  }
+}

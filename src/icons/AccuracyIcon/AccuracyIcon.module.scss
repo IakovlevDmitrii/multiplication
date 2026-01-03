@@ -1,0 +1,61 @@
+.icon {
+  overflow: visible;
+
+  path {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-opacity: 0.6;
+  }
+
+  .line1 {
+    stroke-width: 1.2;
+  }
+
+  .line2 {
+    stroke-width: 1.4;
+  }
+
+  .line3 {
+    stroke-width: 1.6;
+  }
+
+  &.animated {
+    path {
+      animation-duration: 6s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    .line1 {
+      animation-name: accuracyPulse;
+    }
+
+    .line2 {
+      animation-name: accuracyPulse;
+      animation-delay: 0.5s;
+    }
+
+    .line3 {
+      animation-name: accuracyPulse;
+      animation-delay: 1s;
+    }
+  }
+}
+
+@keyframes accuracyPulse {
+  0%,
+  100% {
+    stroke-opacity: 0.1;
+  }
+  2%,
+  60% {
+    stroke-opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon.animated path {
+    animation: none !important;
+    stroke-opacity: 0.6;
+  }
+}

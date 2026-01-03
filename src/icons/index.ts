@@ -1,5 +1,11 @@
-export { AccuracyIcon } from './Accuracy.icon';
-export { BackspaceIcon } from './Backspace.icon';
-export { ClearIcon } from './Clear.icon';
-export { HomeIcon } from './Home.icon';
-export { SettingsIcon } from './Settings.icon';
+export { AccuracyIcon } from './AccuracyIcon';
+export { BackspaceIcon } from './BackspaceIcon';
+export { ClearIcon } from './ClearIcon';
+export { ClockIcon } from './ClockIcon';
+export { CorrectIcon } from './CorrectIcon';
+export { HomeIcon } from './HomeIcon';
+export { IncorrectIcon } from './IncorrectIcon';
+export { RangeMultiplierIcon } from './RangeMultiplierIcon';
+export { SettingsIcon } from './SettingsIcon';
+export { SingleMultiplierIcon } from './SingleMultiplierIcon';
+export { ToPerfectIcon } from './ToPerfectIcon';

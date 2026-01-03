@@ -10,17 +10,9 @@
   background-color: rgba(15, 23, 42, 0.5);
   border-bottom-left-radius: var(--radius-card);
   border-bottom-right-radius: var(--radius-card);
-  position: relative;
-  @include line-on(top);
-
-  @include tablet-up {
-    flex-direction: row;
-    align-items: center;
-  }
 }
 
-.timeInfo,
-.perfectionIndicator {
+.info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -28,17 +20,21 @@
   font-family: var(--font-family-sans), sans-serif;
 }
 
-.timeIcon,
-.perfectionIcon {
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
   font-size: 1.25rem;
   opacity: 0.8;
+  color: var(--color-primary-400);
 }
 
-.timeText,
-.perfectionText {
+.text {
   font-weight: 400;
 }
 
-.perfectionIndicator {
-  color: var(--color-primary-400);
+@include tablet-up {
+  .footer {
+    flex-direction: row;
+    align-items: center;
+  }
 }

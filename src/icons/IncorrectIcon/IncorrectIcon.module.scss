@@ -1,0 +1,48 @@
+.icon {
+  overflow: visible;
+
+  .crossLine1,
+  .crossLine2 {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-opacity: 0.9;
+  }
+
+  &:not(.animated) {
+    .crossLine1,
+    .crossLine2 {
+      stroke-width: 1.2;
+      stroke-opacity: 0.9;
+    }
+  }
+
+  &.animated {
+    .crossLine1 {
+      animation: incorrectPulse 6s ease-in-out infinite;
+    }
+
+    .crossLine2 {
+      animation: incorrectPulse 6s ease-in-out infinite;
+      animation-delay: 0.25s;
+    }
+  }
+}
+
+@keyframes incorrectPulse {
+  0%,
+  100% {
+    stroke-opacity: 0.1;
+  }
+  2%,
+  60% {
+    stroke-opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon.animated .crossLine1,
+  .icon.animated .crossLine2 {
+    animation: none;
+    stroke-opacity: 0.9;
+  }
+}
