@@ -19,12 +19,13 @@
 }
 
 .valueIndicator {
+  min-width: 10rem;
   background-color: var(--color-surface-panel);
   border: var(--border-base);
   border-radius: var(--radius-card-small);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   text-align: center;
-  align-self: stretch;
+  align-self: center;
 }
 
 .valueLabel {

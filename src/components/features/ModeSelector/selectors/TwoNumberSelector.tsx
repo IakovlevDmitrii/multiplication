@@ -1,64 +1,95 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ModeOption } from '../ModeOption';
 import { RangeGroup } from '../groups/RangeGroup';
 import { RangePreview } from '../groups/RangePreview';
-import { useGameConfig } from '../../../../hooks';
+import { OptionIndicatorIcon } from '../../../../icons';
 import { GAME_MODE } from '../../../../constants';
-import type { GameMode } from '../../../../types';
+import type { GameMode, GameConfig } from '../../../../types';
 
 interface TwoNumberSelectorProps {
   selectedMode: GameMode;
   setSelectedMode: (mode: GameMode) => void;
   isTransitioning?: boolean;
+  onSettingsChange?: (minNumber: number, maxNumber: number) => void;
+  currentConfig: GameConfig;
 }
 
 export const TwoNumberSelector = ({
   selectedMode,
   setSelectedMode,
   isTransitioning = false,
+  onSettingsChange,
+  currentConfig,
 }: TwoNumberSelectorProps) => {
-  const { updateConfig } = useGameConfig();
-  const { MODE, INITIAL_MIN_NUMBER, INITIAL_MAX_NUMBER } = useMemo(() => GAME_MODE.TWO_NUMBERS, []);
-  const [minNumber, setMinNumber] = useState<number>(INITIAL_MIN_NUMBER);
-  const [maxNumber, setMaxNumber] = useState<number>(INITIAL_MAX_NUMBER);
+  const MODE = GAME_MODE.MULTI.MODE;
+  const INITIAL_MIN_NUMBER = GAME_MODE.MULTI.INITIAL_MIN_NUMBER as number;
+  const INITIAL_MAX_NUMBER = GAME_MODE.MULTI.INITIAL_MAX_NUMBER as number;
+
+  const isActiveMode = currentConfig.mode === MODE;
+
+  const [minNumber, setMinNumber] = useState(
+    isActiveMode && 'minNumber' in currentConfig ? currentConfig.minNumber : INITIAL_MIN_NUMBER
+  );
+
+  const [maxNumber, setMaxNumber] = useState(
+    isActiveMode && 'maxNumber' in currentConfig ? currentConfig.maxNumber : INITIAL_MAX_NUMBER
+  );
+
   const isSelected = selectedMode === MODE;
+
+  useEffect(() => {
+    if (isSelected) {
+      if (isActiveMode) {
+        if ('minNumber' in currentConfig) {
+          setMinNumber(currentConfig.minNumber);
+        }
+        if ('maxNumber' in currentConfig) {
+          setMaxNumber(currentConfig.maxNumber);
+        }
+      } else {
+        setMinNumber(INITIAL_MIN_NUMBER);
+        setMaxNumber(INITIAL_MAX_NUMBER);
+      }
+    }
+  }, [isSelected, isActiveMode, currentConfig, INITIAL_MIN_NUMBER, INITIAL_MAX_NUMBER]);
 
   const handleNumberChange = useCallback(
     (type: 'min' | 'max', value: number) => {
-      const updates =
-        type === 'min'
-          ? { minNumber: value, maxNumber: Math.max(value, maxNumber) }
-          : { minNumber: Math.min(minNumber, value), maxNumber: value };
+      let newMin: number;
+      let newMax: number;
 
-      setMinNumber(updates.minNumber);
-      setMaxNumber(updates.maxNumber);
-
-      if (isSelected) {
-        updateConfig({
-          mode: MODE,
-          ...updates,
-        });
+      if (type === 'min') {
+        newMin = value;
+        newMax = Math.max(value, maxNumber);
+      } else {
+        newMax = value;
+        newMin = Math.min(minNumber, value);
       }
+
+      setMinNumber(newMin);
+      setMaxNumber(newMax);
+      onSettingsChange?.(newMin, newMax);
     },
-    [MODE, updateConfig, minNumber, maxNumber, isSelected]
+    [onSettingsChange, minNumber, maxNumber]
   );
 
   const handleSelectMode = useCallback(() => {
     if (!isSelected && !isTransitioning) {
-      updateConfig({
-        mode: MODE,
-        minNumber,
-        maxNumber,
-      });
       setSelectedMode(MODE);
     }
-  }, [MODE, updateConfig, setSelectedMode, isSelected, minNumber, maxNumber, isTransitioning]);
+  }, [MODE, isSelected, isTransitioning, setSelectedMode]);
 
   return (
     <ModeOption
       isSelected={isSelected}
       onSelect={handleSelectMode}
-      label=""
+      icon={
+        <>
+          <OptionIndicatorIcon />
+          <OptionIndicatorIcon />
+        </>
+      }
+      label="Два множителя"
       isTransitioning={isTransitioning}
     >
       <RangeGroup

@@ -1,0 +1,41 @@
+.icon {
+  overflow: visible;
+
+  .circle {
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-opacity: 0.9;
+  }
+
+  &:not(.animated) {
+    .circle {
+      stroke-width: 1.8;
+      stroke-opacity: 0.9;
+    }
+  }
+
+  &.animated {
+    .circle {
+      animation: dotPulse 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    stroke-opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    stroke-opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon.animated .circle {
+    animation: none;
+    stroke-opacity: 0.9;
+  }
+}

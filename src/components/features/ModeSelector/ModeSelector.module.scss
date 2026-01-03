@@ -1,5 +1,8 @@
-@import '../../../styles/mixins/breakpoints';
-@import '../../../styles/mixins/transitions';
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
 .modeOptions {
   display: flex;
@@ -8,9 +11,46 @@
 
   &.transitioning {
     pointer-events: none;
+  }
+}
 
-    .option {
-      @include transition-all(var(--transition-duration-fast), var(--transition-easing-decelerate));
-    }
+.saveSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--color-surface-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  animation: slideUp 0.3s ease;
+}
+
+.saveButton {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-primary-500);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-primary-600);
+  }
+
+  &:active {
+    background-color: var(--color-primary-700);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

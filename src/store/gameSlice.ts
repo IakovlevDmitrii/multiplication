@@ -10,9 +10,9 @@ const initialState: GameSliceState = {
   gameState: GAME_STATE.IDLE,
   results: [],
   gameConfig: {
-    mode: GAME_MODE.TWO_NUMBERS.MODE,
-    minNumber: GAME_MODE.TWO_NUMBERS.INITIAL_MIN_NUMBER,
-    maxNumber: GAME_MODE.TWO_NUMBERS.INITIAL_MAX_NUMBER,
+    mode: GAME_MODE.MULTI.MODE,
+    minNumber: GAME_MODE.MULTI.INITIAL_MIN_NUMBER,
+    maxNumber: GAME_MODE.MULTI.INITIAL_MAX_NUMBER,
   },
   settings: {
     questionCount: QUESTION_COUNTS[0].value,

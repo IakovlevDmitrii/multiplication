@@ -15,14 +15,14 @@ export type TimePerQuestionOption = (typeof TIME_PER_QUESTION)[number];
 export type QuestionCountOption = (typeof QUESTION_COUNTS)[number];
 
 export type SingleNumberConfig = {
-  mode: typeof GAME_MODE.SINGLE_NUMBER.MODE;
+  mode: typeof GAME_MODE.SINGLE.MODE;
   currentNumber: number;
   minMultiplier: number;
   maxMultiplier: number;
 };
 
 export type TwoNumbersConfig = {
-  mode: typeof GAME_MODE.TWO_NUMBERS.MODE;
+  mode: typeof GAME_MODE.MULTI.MODE;
   minNumber: number;
   maxNumber: number;
 };

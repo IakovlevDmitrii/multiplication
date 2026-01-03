@@ -5,14 +5,14 @@ export const GAME_STATE = {
 } as const;
 
 export const GAME_MODE = {
-  SINGLE_NUMBER: {
-    MODE: 'single-number',
+  SINGLE: {
+    MODE: 'single',
     INITIAL_SINGLE_NUMBER: 2,
     INITIAL_MIN_MULTIPLIER: 2,
     INITIAL_MAX_MULTIPLIER: 9,
   },
-  TWO_NUMBERS: {
-    MODE: 'two-numbers',
+  MULTI: {
+    MODE: 'multi',
     INITIAL_MIN_NUMBER: 2,
     INITIAL_MAX_NUMBER: 9,
   },

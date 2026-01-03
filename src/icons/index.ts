@@ -5,5 +5,6 @@ export { ClockIcon } from './ClockIcon';
 export { CorrectIcon } from './CorrectIcon';
 export { HomeIcon } from './HomeIcon';
 export { IncorrectIcon } from './IncorrectIcon';
+export { OptionIndicatorIcon } from './OptionIndicatorIcon';
 export { SettingsIcon } from './SettingsIcon';
 export { ToPerfectIcon } from './ToPerfectIcon';

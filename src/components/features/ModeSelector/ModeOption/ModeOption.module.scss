@@ -9,65 +9,36 @@
   border: var(--border-base);
   border-radius: var(--radius-card);
   overflow: hidden;
-  @include transition-all-accelerate();
+  transition: all 0.3s ease;
 
   &:hover:not(.transitioning) {
     border-color: var(--color-surface-600);
     transform: translateY(-1px);
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      0 1px 0 rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
 
-  &.optionSelected {
-    box-shadow:
-      0 12px 35px rgba(168, 85, 247, 0.15),
-      0 0 0 1px rgba(168, 85, 247, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  &.selected {
     background-color: var(--color-bg-primary);
-    background-image: var(--gradient-primary);
-    position: relative;
-    @include neon-line-on-top;
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.1);
+    border-color: var(--color-primary-400);
   }
 
   &.transitioning {
     opacity: 0.7;
-    transform: translateY(0);
+    pointer-events: none;
   }
 }
 
-.configPanel {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0 var(--option-padding) 0;
-  transition:
-    max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+.content {
   max-height: 0;
   opacity: 0;
-  transform: translateY(-8px);
+  overflow: hidden;
+  padding: 0 var(--option-padding);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &.configPanelOpen {
-    padding: 0.75rem var(--option-padding);
+  &.open {
     max-height: 800px;
     opacity: 1;
-    transform: translateY(0);
-    transition:
-      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.05s,
-      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-      padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  &.configPanelClosing {
-    transition:
-      max-height 0.25s cubic-bezier(0.4, 0, 1, 1),
-      opacity 0.2s cubic-bezier(0.4, 0, 1, 1),
-      transform 0.25s cubic-bezier(0.4, 0, 1, 1),
-      padding 0.25s cubic-bezier(0.4, 0, 1, 1);
+    padding: 1rem var(--option-padding);
   }
 }

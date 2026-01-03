@@ -11,7 +11,7 @@ export const generateQuestion = (
   const maxAttempts = 50;
 
   do {
-    if (gameConfig.mode === GAME_MODE.SINGLE_NUMBER.MODE) {
+    if (gameConfig.mode === GAME_MODE.SINGLE.MODE) {
       num1 = gameConfig.currentNumber;
       num2 = getRandomNumber(gameConfig.minMultiplier, gameConfig.maxMultiplier);
     } else {

@@ -4,13 +4,15 @@ import styles from './OptionHeader.module.scss';
 interface OptionHeaderProps {
   isSelected: boolean;
   onSelect: () => void;
-  label?: string | React.ReactNode;
+  icon?: React.ReactNode;
+  label?: string;
   disabled?: boolean;
 }
 
 export const OptionHeader = ({
   isSelected,
   onSelect,
+  icon,
   label,
   disabled = false,
 }: OptionHeaderProps) => {
@@ -21,8 +23,12 @@ export const OptionHeader = ({
       onClick={onSelect}
       disabled={disabled}
     >
-      <span className={styles.radioDot} />
-      {label && <span className={styles.optionLabel}>{label}</span>}
+      {icon && (
+        <div className={styles.optionIcon}>
+          <div className={styles.icon}>{icon}</div>
+        </div>
+      )}
+      {label && <span className={styles.label}>{label}</span>}
     </button>
   );
 };

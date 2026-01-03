@@ -40,7 +40,7 @@ export const generateSmartQuestion = (gameConfig: GameConfig): Question => {
 const generatePossibleQuestions = (gameConfig: GameConfig): QuestionWithWeight[] => {
   const questions: QuestionWithWeight[] = [];
 
-  if (gameConfig.mode === GAME_MODE.SINGLE_NUMBER.MODE) {
+  if (gameConfig.mode === GAME_MODE.SINGLE.MODE) {
     // Для одного числа - все возможные комбинации
     for (let num2 = gameConfig.minMultiplier; num2 <= gameConfig.maxMultiplier; num2++) {
       const weight = calculateWeight(gameConfig.currentNumber, num2);

@@ -20,13 +20,13 @@ export const RangePreview = ({
   minNumber,
   maxNumber,
 }: MultiplicationRangePreviewProps) => {
-  const { SINGLE_NUMBER, TWO_NUMBERS } = GAME_MODE;
+  const { SINGLE, MULTI } = GAME_MODE;
   const getPreviewText = () => {
-    if (mode === SINGLE_NUMBER.MODE && singleNumber && minMultiplier && maxMultiplier) {
+    if (mode === SINGLE.MODE && singleNumber && minMultiplier && maxMultiplier) {
       return `Будут вопросы: ${singleNumber} × ${minMultiplier} ... ${singleNumber} × ${maxMultiplier}`;
     }
 
-    if (mode === TWO_NUMBERS.MODE && minNumber && maxNumber) {
+    if (mode === MULTI.MODE && minNumber && maxNumber) {
       return `Будут вопросы от ${minNumber}×${minNumber} до ${maxNumber}×${maxNumber}`;
     }
   };

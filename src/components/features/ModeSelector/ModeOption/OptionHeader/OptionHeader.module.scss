@@ -10,25 +10,31 @@
   padding: 0.75rem var(--option-padding) 0.75rem;
   background-color: transparent;
   width: 100%;
+  border: none;
+  cursor: pointer;
   text-align: left;
   color: var(--color-text-primary);
   @include transition-all();
 
-  &:hover {
-    .optionLabel {
+  &:hover:not(:disabled) {
+    .icon,
+    .label {
       color: var(--color-primary-400);
-    }
-
-    .radioDot {
-      border-color: var(--color-primary-400);
     }
   }
 
   &:focus-visible {
-    outline: none;
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: 2px;
+  }
 
-    .radioDot {
-      @include focus-visible;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    .icon,
+    .label {
+      color: var(--color-text-disabled);
     }
   }
 
@@ -36,49 +42,47 @@
     position: relative;
     @include line-on(bottom);
 
-    .optionLabel {
+    .icon {
       color: var(--color-primary-400);
     }
 
-    .radioDot {
-      border-color: var(--color-primary-400);
-      background-color: var(--color-primary-400);
-      box-shadow:
-        0 0 0 4px rgba(168, 85, 247, 0.1),
-        0 4px 12px rgba(168, 85, 247, 0.3);
-      animation: radioPulse 2s ease-in-out infinite;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 6px;
-        height: 6px;
-        background-color: var(--color-bg-secondary);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-      }
+    .label {
+      color: var(--color-primary-400);
+      font-weight: 700;
     }
   }
 }
 
-.radioDot {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--color-surface-600);
-  border-radius: 50%;
+.optionIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 1.7rem;
+  min-height: 1.7rem;
   flex-shrink: 0;
-  @include transition-all-accelerate();
+}
 
-  @include tablet-up {
-    width: 24px;
-    height: 24px;
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  @include transition-colors();
+
+  &:not(:last-child) {
+    margin-right: 0.25rem;
+  }
+
+  & > * {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    object-fit: contain;
   }
 }
 
-.optionLabel {
+.label {
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--color-text-primary);
@@ -86,9 +90,40 @@
   letter-spacing: -0.01em;
   flex: 1;
   @include transition-colors();
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  @include tablet-up {
+@include tablet-up {
+  .radioButton {
+    padding: 1rem var(--option-padding) 1rem;
+  }
+
+  .label {
     font-size: var(--text-xl);
-    gap: 1rem;
+  }
+
+  .optionIcon {
+    min-width: 2rem;
+    min-height: 2rem;
+
+    .icon {
+      font-size: 1.75rem;
+
+      & > * {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+    }
+  }
+}
+
+.optionIconMultiple {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+
+  .icon {
+    flex-shrink: 0;
   }
 }
