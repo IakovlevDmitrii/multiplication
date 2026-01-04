@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { GAME_STATE, GAME_MODE, QUESTION_COUNTS, TIME_PER_QUESTION } from '../constants';
 import { generateQuestion } from '../helpers/generateQuestion';
-import { GameConfig, GameSliceState, QuestionCount, TimePerQuestion } from '../types';
+import { GameConfig, GameSliceState, Question, QuestionCount, TimePerQuestion } from '../types';
 
 const initialState: GameSliceState = {
   currentQuestion: null,
@@ -23,11 +23,13 @@ const initialState: GameSliceState = {
 export interface QuestionHistory {
   questions: Set<string>;
   lastQuestions: string[];
+  questionQueue: Question[];
 }
 
 let questionHistory: QuestionHistory = {
   questions: new Set(),
   lastQuestions: [],
+  questionQueue: [],
 };
 
 const gameSlice = createSlice({
@@ -39,11 +41,12 @@ const gameSlice = createSlice({
       state.results = [];
       state.userAnswer = '';
       state.gameState = GAME_STATE.PLAYING;
-      state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
       questionHistory = {
         questions: new Set(),
         lastQuestions: [],
+        questionQueue: [],
       };
+      state.currentQuestion = generateQuestion(state.gameConfig, questionHistory);
     },
 
     checkAnswer: state => {
@@ -97,6 +100,7 @@ const gameSlice = createSlice({
       questionHistory = {
         questions: new Set(),
         lastQuestions: [],
+        questionQueue: [],
       };
     },
     setTimePerQuestion: (state, action: PayloadAction<TimePerQuestion>) => {
