@@ -3,16 +3,6 @@
 
 .listContainer {
   padding: 1rem 0.5rem 1rem 0.5rem;
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto;
-  border: var(--border-base);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  background-color: var(--color-bg-primary);
-  background-image: var(--gradient-primary);
-  position: relative;
-  @include neon-line-on-top;
 }
 
 .list {
