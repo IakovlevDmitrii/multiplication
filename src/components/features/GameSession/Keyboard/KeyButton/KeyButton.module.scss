@@ -1,0 +1,90 @@
+@import '../../../../../styles/mixins/mixins';
+@import '../../../../../styles/mixins/breakpoints';
+@import '../../../../../styles/mixins/transitions';
+
+.keyButton {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-button);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-sans), sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  outline: none;
+  @include transition-all();
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 1rem rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    @include full-cover;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: var(--radius-button);
+    opacity: 0;
+    @include transition-opacity();
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      0 6px 20px rgba(0, 0, 0, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+  }
+}
+
+.hasIcon {
+  .keyContent {
+    display: none;
+  }
+
+  .iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-button);
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  @include transition-opacity();
+}
+
+.keyButton:active .buttonGlow {
+  opacity: 1;
+  animation: buttonRipple 0.3s var(--transition-easing);
+}

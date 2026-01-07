@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from '../../../ui';
 import { SummaryHeader } from './SummaryHeader';
 import { CorrectAnswerMeter } from './CorrectAnswerMeter';
 import { AccuracyMeter } from './AccuracyMeter';
@@ -14,13 +15,14 @@ export const Summary = () => {
   const percentage = Math.round((score / questionCount) * 100);
 
   return (
-    <article className={styles.summary}>
+    <Card className={styles.summary}>
+      <h2 className={styles.title}>Результаты</h2>
       <SummaryHeader percentage={percentage} />
       <div className={styles.stats}>
         <CorrectAnswerMeter score={score} questionCount={questionCount} percentage={percentage} />
         <AccuracyMeter accuracy={accuracy} />
       </div>
       <SummaryFooter results={results} percentage={percentage} />
-    </article>
+    </Card>
   );
 };

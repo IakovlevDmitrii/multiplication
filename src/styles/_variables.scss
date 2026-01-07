@@ -104,7 +104,9 @@
   //--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   //--shadow-card-sm: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-card:
+    0 12px 40px rgba(0, 0, 0, 0.5), 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(168, 85, 247, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 -1px 0 rgba(0, 0, 0, 0.6) inset;
 
   --gradient-primary: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
   --gradient-secondary: linear-gradient(
@@ -122,17 +124,12 @@
 
   --transition-duration-fast: 100ms;
   --transition-duration: 200ms;
-  --transition-duration-slow: 400ms;
+  --transition-duration-slow: 300ms;
 
   --transition-easing: ease-in-out;
   --transition-easing-accelerate: cubic-bezier(0.4, 0, 0.2, 1);
 
-  --page-layout-animation: slideIn var(--transition-duration-slow) var(--transition-easing);
-  --padding-base: var(--spacing-4);
-  --gap-base: var(--spacing-3);
+  --padding-base: var(--spacing-3);
+  --gap-base: var(--spacing-2);
   --border-base: 1px solid var(--color-border);
-
-  @include tablet-up {
-    --gap-base: var(--spacing-6);
-  }
 }

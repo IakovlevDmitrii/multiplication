@@ -35,11 +35,6 @@ body {
   background-color: var(--color-bg-secondary);
   text-rendering: optimizeLegibility;
   text-wrap: balance;
-
-  @include mobile-large-up {
-    background-color: var(--color-surface-panel);
-    background-image: var(--gradient-secondary);
-  }
 }
 
 #root {
@@ -89,13 +84,6 @@ a {
 ::selection {
   background-color: var(--color-primary-600);
   color: var(--color-bg-primary);
-}
-
-.container {
-  width: 100%;
-  max-width: var(--container-max-width, 1200px);
-  margin: 0 auto;
-  padding: 0 1rem;
 }
 
 .visually-hidden {

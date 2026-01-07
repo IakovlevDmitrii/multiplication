@@ -6,12 +6,13 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--gap-base);
+  padding: 0 0 0.5rem 0;
 }
 
 .titleText {
   margin: 0;
   padding: 0 0 0.25rem 0;
-  font-size: var(--text-xl);
+  font-size: var(--text-base);
   font-weight: 100;
   color: var(--color-text-primary);
   font-family: var(--font-family-sans), sans-serif;
@@ -23,7 +24,7 @@
   background-color: var(--color-surface-panel);
   border: var(--border-base);
   border-radius: var(--radius-card-small);
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
   text-align: center;
   align-self: center;
 }
@@ -33,17 +34,4 @@
   font-weight: 100;
   color: var(--color-primary-400);
   font-family: var(--font-family-mono), sans-serif;
-}
-
-@include mobile-large-up {
-  .valueLabel {
-    font-size: var(--text-2xl);
-  }
-}
-
-@include tablet-up {
-  .title {
-    flex-direction: row;
-    align-items: center;
-  }
 }

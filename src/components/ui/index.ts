@@ -1,4 +1,5 @@
 export { AccuracyLabel } from './AccuracyLabel';
+export { Card } from './Card';
 export { Correction } from './Correction';
 export { GameButton } from './GameButton';
 export { Modal } from './Modal';

@@ -1,22 +1,3 @@
-@import '../../styles/mixins/mixins';
-@import '../../styles/mixins/breakpoints';
-
-.layout {
-  @include page-layout;
-}
-
-.title {
-  margin: 0;
-  font-size: var(--text-3xl);
-  font-weight: 100;
-  letter-spacing: -0.025em;
-  color: var(--color-text-primary);
-  text-align: center;
-  width: 100%;
-}
-
-@include mobile-large-up {
-  .layout {
-    gap: var(--spacing-5);
-  }
+.page {
+  padding: var(--padding-base) 0 0 0;
 }

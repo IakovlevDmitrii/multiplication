@@ -31,6 +31,8 @@
   background-clip: text;
   letter-spacing: -0.025em;
   margin: 0;
+  animation: fadeIn var(--transition-duration-slow) var(--transition-easing) 0.1s forwards;
+  opacity: 0;
 }
 
 .home,
@@ -38,7 +40,6 @@
   display: flex;
   align-items: center;
   flex: 1 1;
-  @include transition-all();
 }
 
 .home {
@@ -47,4 +48,10 @@
 
 .settings {
   justify-content: flex-end;
+}
+
+.homeButton,
+.settingsButton {
+  animation: fadeIn var(--transition-duration-slow) var(--transition-easing) 0.2s forwards;
+  opacity: 0;
 }

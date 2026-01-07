@@ -8,11 +8,6 @@
   padding: 0 0 1rem 0;
   position: relative;
   @include line-on(bottom);
-
-  @include tablet-up {
-    flex-direction: row;
-    align-items: center;
-  }
 }
 
 .title {

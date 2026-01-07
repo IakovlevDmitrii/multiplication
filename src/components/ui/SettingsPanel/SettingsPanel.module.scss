@@ -1,15 +1,9 @@
-@import '../../../styles/mixins/mixins';
-
 .settingsPanel {
-  display: flex;
-  flex-direction: column;
   gap: var(--gap-base);
-  padding: var(--padding-base) 1rem 1.5rem;
-  border: var(--border-base);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  background-color: var(--color-bg-primary);
-  background-image: var(--gradient-primary);
-  position: relative;
-  @include neon-line-on-top;
+  padding: var(--padding-base) 2rem 1.5rem;
+}
+
+.questionContent {
+  display: flex;
+  align-items: center;
 }

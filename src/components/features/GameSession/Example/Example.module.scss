@@ -1,0 +1,24 @@
+.questionContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.example {
+  flex: 0 0 50%;
+  min-width: max-content;
+  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+  font-size: var(--text-3xl);
+  font-weight: 100;
+  letter-spacing: 0.3rem;
+}
+
+.answer {
+  flex: 1 0 0;
+  min-width: 0;
+  max-width: none;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  font-size: var(--text-3xl);
+  font-weight: 100;
+  letter-spacing: -0.02em;
+}

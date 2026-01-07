@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Card } from '../';
 import { SettingsPanelTitle } from './SettingsPanelTitle';
 import { SettingsPanelTrack } from './SettingsPanelTrack';
 import { SettingsPanelLabels } from './SettingsPanelLabels';
@@ -33,21 +34,19 @@ export const SettingsPanel = <T extends number>({
   );
 
   return (
-    <article className={styles.settingsPanel}>
+    <Card className={styles.settingsPanel}>
       <SettingsPanelTitle title={title} label={options[currentIndex]?.label} />
-
       <SettingsPanelTrack
         options={options}
         currentIndex={currentIndex}
         position={position}
         handleOptionClick={handleOptionClick}
       />
-
       <SettingsPanelLabels
         options={options}
         currentIndex={currentIndex}
         handleOptionClick={handleOptionClick}
       />
-    </article>
+    </Card>
   );
 };

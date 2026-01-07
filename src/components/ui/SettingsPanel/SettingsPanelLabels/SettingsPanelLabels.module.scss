@@ -47,7 +47,7 @@
 }
 
 .labelText {
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
   color: var(--color-text-secondary);
   font-family: var(--font-family-sans), sans-serif;
   display: block;
@@ -65,10 +65,4 @@
   border-radius: 50%;
   transform: translateX(-50%);
   animation: indicatorPulse 2s var(--transition-easing) infinite;
-}
-
-@include mobile-large-up {
-  .labelText {
-    font-size: var(--text-xl);
-  }
 }
