@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeaderStatItem } from './HeaderStatItem';
 import { AccuracyLabel, StatusIndicator } from '../../../../ui';
 import styles from './ResultsListHeader.module.scss';
 
@@ -7,28 +8,14 @@ interface ResultsListHeaderProps {
 }
 
 export const ResultsListHeader = ({ stats }: ResultsListHeaderProps) => {
+  const { correctCount, incorrectCount, accuracy } = stats;
   return (
     <header className={styles.header}>
       <h3 className={styles.title}>Детализация ответов</h3>
       <div className={styles.listStats}>
-        <div className={styles.statItem}>
-          <div className={styles.statIcon}>
-            <StatusIndicator isCorrect className={styles.icon} />
-          </div>
-          <span className={styles.statNumber}>{stats.correctCount}</span>
-        </div>
-        <div className={styles.statItem}>
-          <div className={styles.statIcon}>
-            <StatusIndicator isCorrect={false} className={styles.icon} />
-          </div>
-          <span className={styles.statNumber}>{stats.incorrectCount}</span>
-        </div>
-        <div className={styles.statItem}>
-          <div className={styles.statIcon}>
-            <AccuracyLabel className={styles.icon} />
-          </div>
-          <span className={styles.statNumber}>{stats.accuracy}%</span>
-        </div>
+        <HeaderStatItem icon={<StatusIndicator isCorrect />} value={correctCount} />
+        <HeaderStatItem icon={<StatusIndicator isCorrect={false} />} value={incorrectCount} />
+        <HeaderStatItem icon={<AccuracyLabel />} value={accuracy} />
       </div>
     </header>
   );

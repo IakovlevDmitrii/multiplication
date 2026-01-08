@@ -5,14 +5,14 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem 0.5rem 1rem;
   position: relative;
-  @include line-on(bottom);
+  @include neon-line-on-bottom;
 }
 
 .title {
   margin: 0;
-  font-size: var(--text-xl);
+  font-size: var(--text-4);
   font-weight: 300;
   line-height: 1;
   color: var(--color-text-primary);
@@ -24,35 +24,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
-}
-
-.statItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.375rem;
-  padding: 0.5rem;
-  border: var(--border-base);
-  background-color: var(--color-surface-panel);
-  border-radius: var(--radius-card);
-}
-
-.statIcon {
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
-.icon {
-  border-radius: 0.3rem;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.statNumber {
-  font-size: var(--text-base);
-  font-weight: 400;
-  color: var(--color-text-primary);
-  font-family: var(--font-family-mono), sans-serif;
 }
 
 @include mobile-large-up {

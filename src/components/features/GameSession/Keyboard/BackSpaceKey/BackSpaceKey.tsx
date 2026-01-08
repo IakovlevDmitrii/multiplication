@@ -1,26 +1,25 @@
 import React from 'react';
 import classNames from 'classnames';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../KeyButton';
+import { SpecialKey } from '../SpecialKey';
 import { BackspaceIcon } from '../../../../../icons';
 import { useAppDispatch } from '../../../../../hooks';
 import { backspaceAnswer } from '../../../../../store/gameSlice';
-import styles from './BackSpaceKeyButton.module.scss';
+import styles from './BackSpaceKey.module.scss';
 
-interface BackKeyButtonProps {
-  className?: string;
+interface BackSpaceKeyProps {
+  className: string;
 }
 
-export const BackSpaceKeyButton = ({ className }: BackKeyButtonProps) => {
+export const BackSpaceKey = ({ className }: BackSpaceKeyProps) => {
   const dispatch = useAppDispatch();
   const handleKeyPress = () => dispatch(backspaceAnswer());
-  const keyClassName = classNames(styles.key, className);
   return (
-    <KeyButton
-      keyType={KEY_BUTTON_VARIANTS.BACKSPACE}
+    <SpecialKey
       onClick={handleKeyPress}
-      className={keyClassName}
+      className={classNames(styles.key, className)}
+      aria-label="Удалить последнюю цифру"
     >
       <BackspaceIcon />
-    </KeyButton>
+    </SpecialKey>
   );
 };

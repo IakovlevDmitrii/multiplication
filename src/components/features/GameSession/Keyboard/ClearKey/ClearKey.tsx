@@ -1,26 +1,25 @@
 import React from 'react';
 import classNames from 'classnames';
+import { SpecialKey } from '../SpecialKey';
 import { ClearIcon } from '../../../../../icons';
-import { KeyButton, KEY_BUTTON_VARIANTS } from '../KeyButton';
 import { useAppDispatch } from '../../../../../hooks';
 import { clearAnswer } from '../../../../../store/gameSlice';
-import styles from './ClearKeyButton.module.scss';
+import styles from './ClearKey.module.scss';
 
-interface ClearKeyButtonProps {
-  className?: string;
+interface ClearKeyProps {
+  className: string;
 }
 
-export const ClearKeyButton = ({ className }: ClearKeyButtonProps) => {
+export const ClearKey = ({ className }: ClearKeyProps) => {
   const dispatch = useAppDispatch();
   const handleKeyPress = () => dispatch(clearAnswer());
-  const keyClassName = classNames(styles.key, className);
   return (
-    <KeyButton
-      keyType={KEY_BUTTON_VARIANTS.CLEAR}
+    <SpecialKey
       onClick={handleKeyPress}
-      className={keyClassName}
+      className={classNames(styles.key, className)}
+      aria-label="Очистить ответ"
     >
       <ClearIcon />
-    </KeyButton>
+    </SpecialKey>
   );
 };

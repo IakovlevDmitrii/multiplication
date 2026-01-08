@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Card } from '../../../ui';
+import { Card, SmallCard } from '../../../ui';
 import { ResultsListHeader } from './ResultsListHeader';
 import { ResultItem } from './ResultItem';
 import { useAppSelector } from '../../../../hooks';
@@ -33,18 +33,20 @@ export const ResultsList = (): React.JSX.Element | null => {
   return (
     <Card className={styles.listContainer}>
       <ResultsListHeader stats={stats} />
-      <div className={styles.list}>
-        {results.map((result: GameResult, index) => (
-          <ResultItem
-            key={index}
-            index={index}
-            question={result.question}
-            answer={result.userAnswer}
-            isCorrect={result.isCorrect}
-            correctAnswer={result.correctAnswer}
-          />
-        ))}
-      </div>
+      <SmallCard>
+        <div className={styles.list}>
+          {results.map((result: GameResult, index) => (
+            <ResultItem
+              key={index}
+              index={index}
+              question={result.question}
+              answer={result.userAnswer}
+              isCorrect={result.isCorrect}
+              correctAnswer={result.correctAnswer}
+            />
+          ))}
+        </div>
+      </SmallCard>
     </Card>
   );
 };

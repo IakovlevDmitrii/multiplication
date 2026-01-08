@@ -8,7 +8,7 @@
   background-color: var(--color-bg-secondary);
   padding: 0 0 0.5rem 0;
   position: relative;
-  @include line-on(bottom);
+  @include neon-line-on-bottom;
 }
 
 .title {
@@ -17,7 +17,7 @@
   justify-content: center;
   flex: 4;
   font-family: var(--font-family-display), sans-serif;
-  font-size: var(--text-3xl);
+  font-size: var(--text-8);
   font-weight: 300;
   background-image: linear-gradient(
     90deg,

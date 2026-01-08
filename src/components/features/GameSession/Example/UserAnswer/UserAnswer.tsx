@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
+import { SmallCard } from '../../../../ui';
 import { useAppSelector } from '../../../../../hooks';
 import styles from './UserAnswer.module.scss';
 
@@ -43,7 +44,7 @@ export const UserAnswer = ({ className }: UserAnswerProps) => {
   };
 
   return (
-    <div
+    <SmallCard
       className={classNames(styles.display, className, {
         [styles.hasAnswer]: !isEmpty,
       })}
@@ -55,6 +56,6 @@ export const UserAnswer = ({ className }: UserAnswerProps) => {
       >
         {renderAnswer()}
       </div>
-    </div>
+    </SmallCard>
   );
 };

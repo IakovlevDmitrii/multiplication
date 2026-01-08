@@ -40,7 +40,7 @@
 
   &.radioButtonActive {
     position: relative;
-    @include line-on(bottom);
+    @include neon-line-on-bottom;
 
     .icon {
       color: var(--color-primary-400);
@@ -83,7 +83,7 @@
 }
 
 .label {
-  font-size: var(--text-lg);
+  font-size: var(--text-5);
   font-weight: 600;
   color: var(--color-text-primary);
   font-family: var(--font-family-sans), sans-serif;
@@ -101,7 +101,7 @@
   }
 
   .label {
-    font-size: var(--text-xl);
+    font-size: var(--text-6);
   }
 
   .optionIcon {

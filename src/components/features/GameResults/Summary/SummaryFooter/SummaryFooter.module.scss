@@ -4,9 +4,8 @@
 .footer {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
-  font-size: var(--text-sm);
-  padding: 0.875rem 1rem;
+  font-size: var(--text-3);
+  padding: 0.5rem 1rem;
   background-color: rgba(15, 23, 42, 0.5);
   border-bottom-left-radius: var(--radius-card);
   border-bottom-right-radius: var(--radius-card);

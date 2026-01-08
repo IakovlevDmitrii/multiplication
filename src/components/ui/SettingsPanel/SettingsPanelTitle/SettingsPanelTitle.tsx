@@ -1,4 +1,5 @@
 import React from 'react';
+import { SmallCard } from '../../SmallCard';
 import styles from './SettingsPanelTitle.module.scss';
 
 interface SettingsPanelHeaderProps {
@@ -10,9 +11,9 @@ export const SettingsPanelTitle = ({ title, label }: SettingsPanelHeaderProps) =
   return (
     <div className={styles.title}>
       <h3 className={styles.titleText}>{title}</h3>
-      <div className={styles.valueIndicator}>
-        <span className={styles.valueLabel}>{label}</span>
-      </div>
+      <SmallCard className={styles.label}>
+        <span className={styles.labelText}>{label}</span>
+      </SmallCard>
     </div>
   );
 };

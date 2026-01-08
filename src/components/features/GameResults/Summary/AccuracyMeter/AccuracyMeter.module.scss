@@ -5,8 +5,8 @@
 }
 
 .accuracyValue {
-  font-size: var(--text-2xl);
-  font-weight: 400;
+  font-size: var(--text-6);
+  font-weight: 100;
 }
 
 .accuracyExcellent {
@@ -102,7 +102,7 @@
 }
 
 .markerLabel {
-  font-size: var(--text-xs);
+  font-size: var(--text-2);
   font-weight: 500;
   color: var(--color-primary-600);
   font-family: var(--font-family-mono), sans-serif;

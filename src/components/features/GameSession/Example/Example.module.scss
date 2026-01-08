@@ -1,24 +1,62 @@
-.questionContent {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+@import '../../../../styles/mixins/mixins';
+@import '../../../../styles/mixins/transitions';
 
 .example {
+  gap: var(--gap-base);
+  padding: var(--padding-base) 1rem;
+}
+
+.barContainer {
+  position: relative;
+  height: 0.25rem;
+  background-color: var(--color-surface-panel);
+  border-radius: var(--radius-1);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 2s infinite;
+    @include full-cover;
+  }
+}
+
+.timeBar,
+.questionsBar {
+  height: 100%;
+  border-radius: var(--radius-1);
+  width: 0;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+  @include transition-width();
+}
+
+.timeBar {
+  background-image: linear-gradient(90deg, #4facfe 0%, #00f2fe 50%, #4facfe 100%);
+}
+
+.questionsBar {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary-900) 0%,
+    var(--color-primary-600) 50%,
+    var(--color-primary-900) 100%
+  );
+}
+
+.question {
   flex: 0 0 50%;
-  min-width: max-content;
-  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
-  font-size: var(--text-3xl);
-  font-weight: 100;
-  letter-spacing: 0.3rem;
+  height: 4rem;
 }
 
 .answer {
   flex: 1 0 0;
-  min-width: 0;
-  max-width: none;
-  padding: 0.5rem 0.5rem 0.5rem 0;
-  font-size: var(--text-3xl);
-  font-weight: 100;
-  letter-spacing: -0.02em;
+  height: 4rem;
+}
+
+.exampleContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

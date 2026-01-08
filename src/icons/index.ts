@@ -7,4 +7,5 @@ export { HomeIcon } from './HomeIcon';
 export { IncorrectIcon } from './IncorrectIcon';
 export { OptionIndicatorIcon } from './OptionIndicatorIcon';
 export { SettingsIcon } from './SettingsIcon';
+export { SubmitIcon } from './SubmitIcon';
 export { ToPerfectIcon } from './ToPerfectIcon';

@@ -1,4 +1,5 @@
 import React from 'react';
+import { SmallCard } from '../../../../ui';
 import styles from './SummaryCard.module.scss';
 
 interface SummaryCardProps {
@@ -10,7 +11,7 @@ interface SummaryCardProps {
 
 export const SummaryCard = ({ icon, label, value, children }: SummaryCardProps) => {
   return (
-    <article className={styles.card}>
+    <SmallCard className={styles.card}>
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
         <div className={styles.content}>
@@ -19,6 +20,6 @@ export const SummaryCard = ({ icon, label, value, children }: SummaryCardProps) 
         </div>
       </div>
       <div className={styles.body}>{children}</div>
-    </article>
+    </SmallCard>
   );
 };

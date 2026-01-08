@@ -5,15 +5,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-surface-panel);
-  background-image: var(--gradient-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
+  padding: 0 0 0 0.3rem;
+  min-width: 0;
 }
 
 .question {
+  font-size: var(--text-8);
+  font-family: var(--font-family-sans), sans-serif;
+  font-weight: 100;
   color: var(--color-text-primary);
-  font-family: var(--font-family-mono), sans-serif;
+  letter-spacing: 0.3rem;
   white-space: nowrap;
   position: relative;
 
@@ -24,7 +25,7 @@
     &::before {
       content: 'Подождите...';
       font-family: var(--font-family-sans), sans-serif;
-      font-size: var(--text-base);
+      font-size: var(--text-4);
       letter-spacing: 0;
     }
   }

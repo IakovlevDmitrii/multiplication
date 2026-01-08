@@ -7,4 +7,5 @@ export { Number } from './Number';
 export { OptionNumber } from './OptionNumber';
 export { QuestionSection } from './QuestionSection';
 export { SettingsPanel } from './SettingsPanel';
+export { SmallCard } from './SmallCard';
 export { StatusIndicator } from './StatusIndicator';

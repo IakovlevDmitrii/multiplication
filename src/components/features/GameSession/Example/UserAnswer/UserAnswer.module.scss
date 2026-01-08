@@ -5,17 +5,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: var(--color-surface-panel);
-  background-image: var(--gradient-secondary);
-  border: 1px solid rgba(168, 85, 247, 0.08);
-  border-radius: var(--radius-card);
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  min-width: 0;
 
   &.hasAnswer {
-    border-color: rgba(168, 85, 247, 0.2);
-
     .answer {
       color: var(--color-primary-400);
     }
@@ -23,13 +19,22 @@
 }
 
 .answer {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 100%;
+  padding: 0 0.5rem 0 0;
   color: var(--color-text-primary);
   font-family: var(--font-family-mono), sans-serif;
-  white-space: nowrap;
+  font-size: var(--text-8);
+  font-weight: 100;
+  letter-spacing: -0.02em;
   position: relative;
+  min-width: 0;
 
   &.empty {
-    color: var(--color-text-secondary);
+    font-family: var(--font-family-sans), sans-serif;
+    font-size: var(--text-9);
+    color: var(--color-primary-400);
     opacity: 0.5;
   }
 
@@ -45,6 +50,7 @@
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum';
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 
   &:not(:last-child) {
     margin-right: 0.05em;

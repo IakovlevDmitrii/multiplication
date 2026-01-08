@@ -10,7 +10,7 @@
 
 .title {
   display: block;
-  font-size: var(--text-lg);
+  font-size: var(--text-5);
   font-weight: 300;
   color: var(--color-text-primary);
   font-family: var(--font-family-sans), sans-serif;
@@ -37,11 +37,11 @@
   width: var(--button-size);
   height: var(--button-size);
   background: var(--color-bg-secondary);
-  border-radius: var(--radius-default);
+  border-radius: var(--radius-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-2xl);
+  font-size: var(--text-7);
   font-weight: 400;
   color: var(--color-text-primary);
   position: relative;

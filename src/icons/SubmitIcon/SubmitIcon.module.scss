@@ -1,0 +1,16 @@
+.icon {
+  overflow: visible;
+
+  .circle {
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-opacity: 0.9;
+  }
+
+  .check {
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: 0.9;
+  }
+}
