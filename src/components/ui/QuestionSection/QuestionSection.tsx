@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { SmallCard } from '../SmallCard';
 import { Number } from '../Number';
 import styles from './QuestionSection.module.scss';
 
@@ -18,17 +19,17 @@ export const QuestionSection = ({ isCorrect, question, answer }: QuestionSection
 
   return (
     <div className={className}>
-      <div className={styles.numbers}>
+      <SmallCard className={styles.numbers}>
         <Number className={styles.number}>{num1}</Number>
         <span className={styles.multiply}>×</span>
         <Number className={styles.number}>{num2}</Number>
-      </div>
+      </SmallCard>
       <div className={styles.equals}>
         <span className={styles.equalsIcon}>=</span>
       </div>
-      <div className={styles.equation}>
+      <SmallCard className={styles.equation}>
         <Number className={styles.number}>{answer}</Number>
-      </div>
+      </SmallCard>
     </div>
   );
 };

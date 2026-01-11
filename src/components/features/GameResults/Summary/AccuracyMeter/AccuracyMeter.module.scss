@@ -5,7 +5,7 @@
 }
 
 .accuracyValue {
-  font-size: var(--text-6);
+  font-size: var(--text-5);
   font-weight: 100;
 }
 
@@ -27,168 +27,84 @@
 
 .meterTrack {
   position: relative;
-  height: 3rem;
+  height: 2.25rem;
   border-radius: var(--radius-card-small);
-  border: var(--border-base);
-  background-color: var(--color-surface-panel);
   overflow: hidden;
+
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(4px);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 0 2px rgba(0, 0, 0, 0.25),
+    inset 0 4px 10px rgba(255, 255, 255, 0.22),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.65),
+    inset 4px 0 10px rgba(0, 0, 0, 0.35),
+    inset -4px 0 10px rgba(0, 0, 0, 0.35);
 }
 
 .meterFill {
   position: absolute;
   top: 0;
   left: 0;
-  height: 2rem;
+  height: 1.5rem;
   border-radius: var(--radius-card-small);
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 
+  box-shadow:
+    inset 0 2px 8px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.35),
+    inset 3px 0 10px rgba(0, 0, 0, 0.25),
+    inset -3px 0 10px rgba(0, 0, 0, 0.25);
+
   &.accuracyExcellent {
     background-image: linear-gradient(90deg, var(--color-excellent), var(--color-excellent-light));
+    box-shadow:
+      inset 0 2px 8px rgba(255, 255, 255, 0.5),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35),
+      inset 3px 0 10px rgba(0, 0, 0, 0.25),
+      inset -3px 0 10px rgba(0, 0, 0, 0.25),
+      0 0 15px rgba(139, 92, 246, 0.6),
+      0 0 30px rgba(167, 139, 250, 0.4);
   }
 
   &.accuracyGood {
     background-image: linear-gradient(90deg, var(--color-good), var(--color-good-light));
+    box-shadow:
+      inset 0 2px 8px rgba(255, 255, 255, 0.45),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35),
+      inset 3px 0 10px rgba(0, 0, 0, 0.25),
+      inset -3px 0 10px rgba(0, 0, 0, 0.25),
+      0 0 15px rgba(59, 130, 246, 0.6),
+      0 0 30px rgba(96, 165, 250, 0.4);
   }
 
   &.accuracyAverage {
     background-image: linear-gradient(90deg, var(--color-average), var(--color-average-light));
+    box-shadow:
+      inset 0 2px 8px rgba(255, 255, 255, 0.4),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35),
+      inset 3px 0 10px rgba(0, 0, 0, 0.25),
+      inset -3px 0 10px rgba(0, 0, 0, 0.25),
+      0 0 15px rgba(245, 158, 11, 0.6),
+      0 0 30px rgba(251, 191, 36, 0.4);
   }
 
   &.accuracyPoor {
     background-image: linear-gradient(90deg, var(--color-poor), var(--color-poor-light));
-  }
-}
-
-.meterMarkers {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  z-index: 2;
-  margin: 0 3px 0 2px;
-}
-
-.marker {
-  position: absolute;
-  transform: translateX(-50%);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  pointer-events: none;
-}
-
-.marker:first-child {
-  .markerLabel {
-    transform: translateX(50%);
-  }
-}
-
-.marker:last-child {
-  .markerLabel {
-    transform: translateX(-50%);
-    margin-right: 0.125rem;
-  }
-}
-
-.markerLine {
-  width: 1px;
-  height: 0.75rem;
-  background: var(--color-surface-600);
-  margin-top: 0.25rem;
-  opacity: 0.7;
-}
-
-.markerLabel {
-  font-size: var(--text-2);
-  font-weight: 500;
-  color: var(--color-primary-600);
-  font-family: var(--font-family-mono), sans-serif;
-  margin-top: 0.125rem;
-  white-space: nowrap;
-  opacity: 0.8;
-}
-
-.qualityLabels {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0.5rem;
-  z-index: 3;
-}
-
-.qualityLabel {
-  font-size: 0.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-
-  &.qualityPoor {
-    color: var(--color-poor);
-  }
-
-  &.qualityAverage {
-    color: var(--color-average);
-  }
-
-  &.qualityGood {
-    color: var(--color-good);
-  }
-
-  &.qualityExcellent {
-    color: var(--color-excellent);
-  }
-
-  .meterFill.accuracyPoor ~ &,
-  .meterFill.accuracyAverage ~ &,
-  .meterFill.accuracyGood ~ &,
-  .meterFill.accuracyExcellent ~ & {
-    opacity: 0.9;
-  }
-}
-
-@include mobile-large-up {
-  .meterMarkers {
-    margin: 0 2px;
-  }
-
-  .marker:first-child {
-    left: 0.75%;
-  }
-
-  .marker:last-child {
-    left: 99.25%;
-  }
-
-  .markerLabel {
-    font-size: 0.75rem;
-  }
-
-  .qualityLabel {
-    font-size: 0.625rem;
+    box-shadow:
+      inset 0 2px 8px rgba(255, 255, 255, 0.35),
+      inset 0 -2px 8px rgba(0, 0, 0, 0.35),
+      inset 3px 0 10px rgba(0, 0, 0, 0.25),
+      inset -3px 0 10px rgba(0, 0, 0, 0.25),
+      0 0 15px rgba(239, 68, 68, 0.6),
+      0 0 30px rgba(248, 113, 113, 0.4);
   }
 }
 
 @include tablet-up {
-  .meterMarkers {
-    margin: 0 3px;
-  }
-
-  .marker:first-child {
-    left: 1%;
-  }
-
-  .marker:last-child {
-    left: 99%;
-  }
-
   .meterTrack {
     height: 3.5rem;
     border-radius: 0.875rem;
@@ -196,9 +112,5 @@
 
   .meterFill {
     border-radius: 0.875rem;
-  }
-
-  .qualityLabel {
-    font-size: 0.75rem;
   }
 }

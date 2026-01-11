@@ -2,16 +2,16 @@
 @import '../../../../styles/mixins/breakpoints';
 
 .keyboard {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
 }
 
 .keys {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: var(--gap-base);
+  gap: 0.25rem;
   max-width: 400px;
-  padding: var(--padding-base);
+  padding: 0.5rem;
 
   grid-template-areas:
     'key1 key2 key3'

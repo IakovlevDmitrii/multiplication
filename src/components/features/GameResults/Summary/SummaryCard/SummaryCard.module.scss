@@ -4,8 +4,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: var(--padding-base) 1rem;
+  gap: 0.25rem;
+  padding: var(--padding-base) 0.5rem;  
 }
 
 .header {
@@ -28,7 +28,7 @@
 }
 
 .label {
-  font-size: var(--text-3);
+  font-size: var(--text-2);
   font-weight: 500;
   color: var(--color-text-secondary);
   font-family: var(--font-family-sans), sans-serif;

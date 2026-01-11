@@ -7,13 +7,10 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  border: var(--border-base);
-  background-color: var(--color-surface-panel);
-  border-radius: var(--radius-card-small);
 }
 
 .correctValue {
-  font-size: var(--result-font-size);
+  font-size: var(--text-3);
   font-weight: 400;
   color: var(--color-primary-400);
 }

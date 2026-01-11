@@ -16,7 +16,6 @@ export const Summary = () => {
 
   return (
     <Card className={styles.summary}>
-      <h2 className={styles.title}>Результаты</h2>
       <SummaryHeader percentage={percentage} />
       <div className={styles.stats}>
         <CorrectAnswerMeter score={score} questionCount={questionCount} percentage={percentage} />

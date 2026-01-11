@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { SmallCard } from '../SmallCard';
 import { Number } from '../Number';
 import styles from './Correction.module.scss';
 
@@ -10,10 +11,10 @@ interface CorrectionProps {
 
 export const Correction = ({ correctAnswer, className }: CorrectionProps) => {
   return (
-    <div className={classNames(styles.correction, className)}>
+    <SmallCard className={classNames(styles.correction, className)}>
       <strong>
         <Number className={styles.correctValue}>{correctAnswer}</Number>
       </strong>
-    </div>
+    </SmallCard>
   );
 };

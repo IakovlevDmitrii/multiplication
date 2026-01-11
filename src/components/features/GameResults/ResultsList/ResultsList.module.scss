@@ -36,19 +36,12 @@
 }
 
 .emptyList {
+  @include card;
   padding: 2.5rem 1.5rem;
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   width: 100%;
-  border: var(--border-base);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  background-color: var(--color-bg-primary);
-  background-image: var(--gradient-card);
-  position: relative;
-  @include neon-line-on-top;
 }
 
 .emptyText {
