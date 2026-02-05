@@ -5,10 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-bg-secondary);
-  padding: 0 0 0.5rem 0;
+  height: 2.5rem;
   position: relative;
-  @include neon-line-on-bottom;
 }
 
 .title {
@@ -19,19 +17,13 @@
   font-family: var(--font-family-display), sans-serif;
   font-size: var(--text-8);
   font-weight: 300;
-  background-image: linear-gradient(
-    90deg,
-    var(--color-primary-900) 0%,
-    var(--color-primary-600) 25%,
-    var(--color-primary-600) 75%,
-    var(--color-primary-900) 100%
-  );
-  -webkit-background-clip: text;
+  background-image: var(--gradient-neon-title);
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.025em;
   margin: 0;
-  animation: fadeIn var(--transition-duration-slow) var(--transition-easing) 0.1s forwards;
+  animation: fadeIn var(--transition-duration-slow) var(--transition-easing) var(--transition-delay)
+    forwards;
   opacity: 0;
 }
 
@@ -52,6 +44,16 @@
 
 .homeButton,
 .settingsButton {
-  animation: fadeIn var(--transition-duration-slow) var(--transition-easing) 0.2s forwards;
+  animation: fadeIn var(--transition-duration-slow) var(--transition-easing) var(--transition-delay)
+    forwards;
   opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

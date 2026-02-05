@@ -3,7 +3,7 @@ import { Card } from '../../../ui';
 import { SummaryHeader } from './SummaryHeader';
 import { CorrectAnswerMeter } from './CorrectAnswerMeter';
 import { AccuracyMeter } from './AccuracyMeter';
-import { SummaryFooter } from './SummaryFooter';
+import { SummaryResume } from './SummaryResume';
 import { useAppSelector } from '../../../../hooks';
 import styles from './Summary.module.scss';
 
@@ -21,7 +21,7 @@ export const Summary = () => {
         <CorrectAnswerMeter score={score} questionCount={questionCount} percentage={percentage} />
         <AccuracyMeter accuracy={accuracy} />
       </div>
-      <SummaryFooter results={results} percentage={percentage} />
+      <SummaryResume results={results} percentage={percentage} />
     </Card>
   );
 };

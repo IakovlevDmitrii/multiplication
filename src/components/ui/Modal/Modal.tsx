@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -7,73 +8,43 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps): React.JSX.Element | null => {
-  const modalRef = useRef<HTMLDivElement>(null);
-  const lastFocusedElement = useRef<HTMLElement | null>(null);
-
+export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   useEffect(() => {
-    if (isOpen) {
-      lastFocusedElement.current = document.activeElement as HTMLElement;
-      document.body.style.overflow = 'hidden';
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
 
-      setTimeout(() => {
-        modalRef.current?.focus();
-      }, 100);
-    } else {
-      document.body.style.overflow = '';
-      lastFocusedElement.current?.focus();
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden'; // Блокируем скролл
     }
 
     return () => {
-      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'auto';
     };
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
-  const handleClose = () => {
-    onClose();
-  };
-
   if (!isOpen) return null;
+  const modalRoot = document.getElementById('modal-root') || document.body;
 
-  return (
-    <div
-      className={styles.modalBackdrop}
-      onClick={handleBackdropClick}
-      role="dialog"
-      aria-modal="true"
-    >
-      <div ref={modalRef} className={styles.modal} tabIndex={-1}>
+  return ReactDOM.createPortal(
+    <div className={styles.modalBackdrop} onClick={onClose} role="dialog" aria-modal="true">
+      <div className={styles.modal} onClick={e => e.stopPropagation()} tabIndex={-1}>
         <div className={styles.modalHeader}>
           <button
             type="button"
             className={styles.closeButton}
-            onClick={handleClose}
+            onClick={onClose}
             aria-label="Закрыть"
           >
             <span className={styles.closeIcon}>×</span>
-            <span className={styles.closeHoverEffect} />
+            <span className={styles.closeHoverEffect}></span>
           </button>
         </div>
-
         <div className={styles.modalContent}>{children}</div>
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };

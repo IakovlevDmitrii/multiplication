@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <a href="https://www.id-iakovlev.ru/" target="blanck">
-        © 2025. idcor
+        © 2026. idcor
       </a>
     </footer>
   );

@@ -6,13 +6,11 @@
 .radioButton {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.75rem var(--option-padding) 0.75rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem var(--option-padding) 0.5rem;
   background-color: transparent;
   width: 100%;
-  border: none;
-  cursor: pointer;
-  text-align: left;
   color: var(--color-text-primary);
   @include transition-all();
 
@@ -39,7 +37,6 @@
   }
 
   &.radioButtonActive {
-    position: relative;
     @include neon-line-on-bottom;
 
     .icon {
@@ -48,7 +45,7 @@
 
     .label {
       color: var(--color-primary-400);
-      font-weight: 700;
+      font-weight: 300;
     }
   }
 }
@@ -56,7 +53,6 @@
 .optionIcon {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   min-width: 1.7rem;
   min-height: 1.7rem;
   flex-shrink: 0;
@@ -67,7 +63,6 @@
   align-items: center;
   justify-content: center;
   color: var(--color-text-secondary);
-  font-size: 1.5rem;
   @include transition-colors();
 
   &:not(:last-child) {
@@ -83,8 +78,9 @@
 }
 
 .label {
-  font-size: var(--text-5);
-  font-weight: 600;
+  text-align: left;
+  font-size: var(--text-4);
+  font-weight: 300;
   color: var(--color-text-primary);
   font-family: var(--font-family-sans), sans-serif;
   letter-spacing: -0.01em;

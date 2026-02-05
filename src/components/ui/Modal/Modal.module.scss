@@ -9,144 +9,95 @@
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(7px);
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  z-index: 3;
-  padding: 0.5rem;
-  @include page-layout-animation;
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 5;
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
 .modal {
+  width: 100%;
+  max-width: calc(100vw - 1rem);
+  max-height: calc(100vh - 2rem);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  background-image: var(--gradient-primary);
-  border: var(--border-base);
-  border-radius: var(--radius-card);
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  overflow-y: auto;
-  outline: none;
-  width: 100%;
-  max-width: 24rem;
-  max-height: calc(100vh - 1rem);
-  animation: modalSlideUp var(--transition-duration-slow) var(--transition-easing-accelerate);
-
-  @include tablet-up {
-    animation: var(--page-layout-animation);
-    max-height: 90vh;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow: hidden;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .modalHeader {
-  position: sticky;
-  top: 1.5rem;
-  padding: 0 0.25rem 0 0;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
-  height: 0;
-  z-index: 2;
-  backdrop-filter: blur(10px);
+  padding: 0.5rem 1rem 0;
 }
 
 .closeButton {
   width: 2.5rem;
   height: 2.5rem;
-  background-color: var(--color-surface-panel);
-  border-radius: var(--radius-button);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  @include transition-all-accelerate();
+  background: var(--color-surface-panel);
+  border: 1px solid var(--color-surface-700);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
 
   &:hover {
-    background-color: var(--color-surface-700);
-
-    .closeIcon {
-      opacity: 1;
-      color: var(--color-text-primary);
-      transform: rotate(45deg);
-    }
+    background: var(--color-surface-700);
+    color: var(--color-text-primary);
+    transform: scale(1.05);
   }
 
   &:active {
-    transform: rotate(45deg) scale(0.95);
-  }
-
-  &:focus-visible {
-    @include focus-visible;
+    transform: scale(0.95);
   }
 }
 
 .closeIcon {
-  font-size: var(--text-2xl);
-  color: var(--color-text-secondary);
+  font-size: 1.5rem;
   font-weight: 300;
-  position: relative;
-  z-index: 1;
-  @include transition-all();
+  line-height: 1;
 }
 
 .closeHoverEffect {
-  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  border-radius: var(--radius-button);
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
   opacity: 0;
-  @include full-cover;
-  @include transition-opacity();
-}
+  transition: opacity 0.2s ease;
 
-.closeButton:hover .closeHoverEffect {
-  opacity: 1;
+  .closeButton:hover & {
+    opacity: 1;
+  }
 }
 
 .modalContent {
-  padding: 0.75rem calc(1.5rem - 8px) 0.75rem 1rem;
+  flex: 1;
   overflow-y: auto;
-  min-height: 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-surface-600) var(--color-surface-panel);
+  padding: 0 1.5rem 0;
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track {
     background: transparent;
-    margin: 1.5rem 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--color-surface-600);
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: content-box;
-
-    &:hover {
-      background-color: var(--color-surface-500);
-    }
+    background: var(--color-surface-600);
+    border-radius: 3px;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .modalBackdrop,
-  .modal {
-    animation-duration: 0.01ms;
-    animation-iteration-count: 1;
-  }
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-600) transparent;
 }

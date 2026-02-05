@@ -1,72 +1,6 @@
 @import './mixins/breakpoints';
-@import './animations';
 
 :root {
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-mono: 'JetBrains Mono', 'Cascadia Code', monospace, sans-serif;
-  --font-family-display: 'Space Grotesk', sans-serif;
-
-  --text-1: 0.5rem; // 8px
-  --text-2: 0.75rem; // 12px
-  --text-3: 0.875rem; // 14px
-  --text-4: 1rem; // 16px
-  --text-5: 1.125rem; // 18px
-  --text-6: 1.25rem; // 20px
-  --text-7: 1.5rem; // 24px
-  --text-8: 1.875rem; // 30px
-  --text-9: 2.25rem; // 36px
-  --text-10: 3rem; // 48px
-
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
-
-  --color-primary-50: #faf5ff;
-  --color-primary-100: #f3e8ff;
-  --color-primary-200: #e9d5ff;
-  --color-primary-300: #d8b4fe;
-  --color-primary-400: #c084fc;
-  --color-primary-500: #a855f7;
-  --color-primary-600: #9333ea;
-  --color-primary-700: #7e22ce;
-  --color-primary-800: #6b21a8;
-  --color-primary-900: #581c87;
-
-  --color-surface-50: #f8fafc;
-  --color-surface-100: #f1f5f9;
-  --color-surface-200: #e2e8f0;
-  --color-surface-300: #cbd5e1;
-  --color-surface-400: #94a3b8;
-  --color-surface-500: #64748b;
-  --color-surface-600: #475569;
-  --color-surface-700: #334155;
-  --color-surface-800: #1e293b;
-  --color-surface-900: #0f172a;
-  --color-surface-950: #020617;
-
-  --color-bg-primary: var(--color-surface-950);
-  --color-bg-secondary: var(--color-surface-900);
-  --color-surface-panel: var(--color-surface-800);
-  --color-text-primary: var(--color-surface-100);
-  --color-text-secondary: var(--color-surface-400);
-
-  --color-correct: #10b981;
-  --color-correct-light: #34d399;
-  --color-excellent: #8b5cf6;
-  --color-excellent-light: #a78bfa;
-  --color-good: #3b82f6;
-  --color-good-light: #60a5fa;
-  --color-average: #f59e0b;
-  --color-average-light: #fbbf24;
-  --color-incorrect: #ef4444;
-  --color-incorrect-light: rgba(239, 68, 68, 0.1);
-
-  --color-poor: #ef4444;
-  --color-poor-light: #f87171;
-
-  --color-keyboard-bg: var(--color-surface-panel);
-  --color-border: var(--color-surface-700);
-
   --radius-1: 0.25rem; /* 4px */
   --radius-2: 0.5rem; /* 8px */
   --radius-3: 0.75rem; /* 12px */
@@ -75,7 +9,6 @@
   --radius-6: 2rem; /* 32px */
   --radius-7: 3rem; /* 48px */
   --radius-8: 4rem; /* 64px */
-
   --radius-card: var(--radius-3);
   --radius-card-small: var(--radius-2);
   --radius-button: var(--radius-3);
@@ -91,19 +24,18 @@
   --space-9: 2.25rem; /* 36px */
   --space-10: 2.5rem; /* 40px */
 
-  --shadow-card:
-    0 8px 30px rgba(0, 0, 0, 0.4), 0 3px 10px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
-  --shadow-card-small:
-    0 2px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(0, 0, 0, 0.2),
-    inset 0 -3px 8px rgba(0, 0, 0, 0.8), inset -3px 0 6px rgba(0, 0, 0, 0.7),
-    inset 0 2px 6px rgba(168, 85, 247, 0.2), inset 2px 0 4px rgba(168, 85, 247, 0.15);
-
   --gradient-neon-line: linear-gradient(
     90deg,
     transparent 0%,
     var(--color-primary-500) 25%,
     transparent 100%
+  );
+  --gradient-neon-title: linear-gradient(
+    90deg,
+    var(--color-primary-900) 0%,
+    var(--color-primary-600) 25%,
+    var(--color-primary-600) 75%,
+    var(--color-primary-900) 100%
   );
   --gradient-card: linear-gradient(
     145deg,
@@ -124,11 +56,20 @@
   --transition-duration-fast: 100ms;
   --transition-duration: 200ms;
   --transition-duration-slow: 300ms;
-
   --transition-easing: ease-in-out;
   --transition-easing-accelerate: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-delay: 0.1s;
+
+  --border-base: 1px solid var(--color-surface-700);
+
+  --shadow-card:
+    0 8px 30px rgba(0, 0, 0, 0.4), 0 3px 10px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  --shadow-card-small:
+    0 2px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(0, 0, 0, 0.2),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.8), inset -3px 0 6px rgba(0, 0, 0, 0.7),
+    inset 0 2px 6px rgba(168, 85, 247, 0.2), inset 2px 0 4px rgba(168, 85, 247, 0.15);
 
   --padding-base: var(--space-3);
   --gap-base: var(--space-2);
-  --border-base: 1px solid var(--color-border);
 }

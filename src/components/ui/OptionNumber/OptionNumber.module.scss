@@ -3,7 +3,7 @@
 
 .display {
   min-width: 5rem;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.5rem;
   background-color: var(--color-bg-secondary);
   border: var(--border-base);
   border-radius: var(--radius-button);
@@ -19,13 +19,10 @@
 }
 
 .number {
-  font-size: var(--text-8);
+  font-size: var(--text-7);
   font-weight: 300;
   color: var(--color-text-primary);
   font-family: var(--font-family-mono), sans-serif;
-  letter-spacing: 0.02em;
-  display: block;
-  line-height: 1.2;
 
   .display:hover & {
     color: var(--color-primary-400);

@@ -1,14 +1,11 @@
 @import '../../../../../styles/mixins/mixins';
 @import '../../../../../styles/mixins/breakpoints';
 
-.footer {
+.card {
   display: flex;
   flex-direction: column;
   font-size: var(--text-2);
-  padding: 0.25rem 1.5rem;
-  background-color: rgba(15, 23, 42, 0.5);
-  border-bottom-left-radius: var(--radius-card);
-  border-bottom-right-radius: var(--radius-card);
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
 .info {

@@ -1,0 +1,1 @@
+export { SummaryResume } from './SummaryResume';

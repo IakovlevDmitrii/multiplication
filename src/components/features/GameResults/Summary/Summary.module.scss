@@ -4,11 +4,11 @@
 
 .summary {
   gap: 0.25rem;
-  padding: var(--padding-base) 1rem;
+  padding: var(--space-3) 1rem;
 }
 
 .stats {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-base);
+  gap: var(--space-2);
 }

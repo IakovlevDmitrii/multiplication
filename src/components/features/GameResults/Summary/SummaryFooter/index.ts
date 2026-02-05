@@ -1,1 +1,0 @@
-export { SummaryFooter } from './SummaryFooter';

@@ -10,11 +10,10 @@ interface PageLayoutProps {
 }
 
 export const Page = ({ className, children }: PageLayoutProps) => {
-  const mainClasses = classNames(styles.main, className);
   return (
     <div className={styles.page}>
       <Header />
-      <main className={mainClasses}>{children}</main>
+      <main className={classNames(styles.main, className)}>{children}</main>
       <Footer />
     </div>
   );

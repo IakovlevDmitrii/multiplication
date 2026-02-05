@@ -5,13 +5,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 0 1rem 0.5rem 1rem;
-  position: relative;
+  padding: 0 0 0.5rem 0;
   @include neon-line-on-bottom;
 }
 
 .title {
   margin: 0;
+  padding: 0 0.5rem 0 0.5rem;
   font-size: var(--text-4);
   font-weight: 300;
   line-height: 1;

@@ -8,6 +8,5 @@ interface CardProps {
 }
 
 export const Card = ({ className, children }: CardProps) => {
-  const cardClasses = classNames(styles.card, className);
-  return <article className={cardClasses}>{children}</article>;
+  return <article className={classNames(styles.card, className)}>{children}</article>;
 };

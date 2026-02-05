@@ -10,9 +10,7 @@ interface HeaderStatItemProps {
 export const HeaderStatItem = ({ icon, value }: HeaderStatItemProps) => {
   return (
     <SmallCard className={styles.statItem}>
-      <div className={styles.statIcon}>
-        <div className={styles.icon}>{icon}</div>
-      </div>
+      <div className={styles.icon}>{icon}</div>
       <span className={styles.statNumber}>{value}</span>
     </SmallCard>
   );

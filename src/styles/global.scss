@@ -1,5 +1,7 @@
 @import '../styles/mixins/mixins';
 @import '../styles/mixins/breakpoints';
+@import './colors.scss';
+@import './typography.scss';
 
 *,
 *::before,
@@ -26,12 +28,12 @@ body {
   -webkit-tap-highlight-color: transparent;
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--font-family-sans), sans-serif;
-  font-size: var(--text-base, 1rem);
+  font-size: var(--text-4);
   font-kerning: normal;
   font-variant-ligatures: common-ligatures;
   font-feature-settings: 'kern', 'liga', 'clig', 'calt', 'cv11', 'ss01';
   font-variation-settings: 'opsz' 32;
-  line-height: var(--line-height-tight, 1.2);
+  line-height: 1.2;
   background-color: var(--color-bg-secondary);
   text-rendering: optimizeLegibility;
   text-wrap: balance;

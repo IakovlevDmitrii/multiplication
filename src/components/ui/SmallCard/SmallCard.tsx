@@ -8,6 +8,5 @@ interface SmallCardProps {
 }
 
 export const SmallCard = ({ className, children }: SmallCardProps) => {
-  const cardClasses = classNames(styles.card, className);
-  return <div className={cardClasses}>{children}</div>;
+  return <div className={classNames(styles.card, className)}>{children}</div>;
 };

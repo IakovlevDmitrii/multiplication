@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
   background-color: var(--color-surface-panel);
   border: var(--border-base);
   border-radius: var(--radius-card);
@@ -11,7 +12,7 @@
 }
 
 .previewText {
-  font-size: var(--text-4);
+  font-size: var(--text-2);
   font-weight: 300;
   color: var(--color-text-primary);
   line-height: 1.4;
